@@ -1,8 +1,14 @@
 var express = require('express');
 var router = express.Router();
+var conn = require('./../DB/connection')
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
+  conn.connectDB().then(()=>{
+    console.log("Furula");
+    conn.closeDB();
+  }).catch((err)=>{
+    console.log(err);
+  });
   res.render('index', { title: 'Express' });
 });
 
