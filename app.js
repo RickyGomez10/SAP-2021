@@ -7,6 +7,7 @@ require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var loginRouter = require('./routes/login');
 
 var app = express();
 
@@ -26,9 +27,11 @@ app.use('/bs', express.static(__dirname + '/node_modules/bootstrap/dist/css')); 
 app.use('/swal', express.static(__dirname + '/node_modules/sweetalert2/dist')); // SweetAlerts
 app.use('/bi', express.static(__dirname + '/node_modules/bootstrap-icons')); // Bootstrap icons
 app.use('/img', express.static(__dirname + '/public/images')); // Images
+app.use('/css', express.static(__dirname + '/public/stylesheets'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/login', loginRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,8 +1,28 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #F1FAEE !important;
 }
 
-a {
-  color: #00B7FF;
+.menu-p{
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #fff;
+  background-color: #1D3557;
+}
+
+.form-login{
+  background-color: #fff;
+  color: #1D3557;
+  border-radius: 10px;
+  box-shadow: 4px 5px 5px -1px rgba(0,0,0,0.55);
+  -webkit-box-shadow: 4px 5px 5px -1px rgba(0,0,0,0.55);
+  -moz-box-shadow: 4px 5px 5px -1px rgba(0,0,0,0.55);
+}
+
+.a-login{
+  text-decoration: none;
+}
+
+.btn-login{
+  background-color: #1D3557 !important;
+  border-color: #1D3557 !important;
 }
