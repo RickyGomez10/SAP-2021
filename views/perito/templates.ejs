@@ -41,7 +41,7 @@
                         <h6 class="collapse-header">Acciones sobre el valuo</h6>
                         <a class="collapse-item" href="addSchema">Añadir Planos</a>
                         <a class="collapse-item" href="exportSchema">Exportar informes</a>
-
+                    
                     </div>
                 </div>
             </li>
@@ -50,8 +50,7 @@
                 Titulo
             </div>
             <li class="nav-item">
-                <a class="nav-link" href="templates"><i
-                        class="fas fa-virus fa-chart-area"></i><span>Plantillas</span></a>
+                <a class="nav-link" href="templates"><i class="fas fa-virus fa-chart-area"></i><span>Plantillas</span></a>
             </li>
             <hr class="sidebar-divider d-none d-md-block">
             <div class="text-center d-none d-md-inline">
@@ -91,25 +90,56 @@
                 </nav>
                 <!-- End of Topbar -->
             <div class="container-fluid">
-                <h1>Añadir planos al informe</h1>
+                <h1>Plantillas previas</h1>
                 <div class="row">
-                    <div class="col-lg-9">
+                    <div class="col-lg-6">
                         <div class="card shadow mb-4">
-                            <a href="#collapseCardCharge" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                                <h6 class="m-0 font-weight-bold text-primary">Cargar Planos</h6>
+                            <a href="#collapseCardCharge1" class="d-block card-header py-3" data-toggle="collapse"
+                                role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                                <h6 class="m-0 font-weight-bold text-primary">Modificar y editar plantilla</h6>
+                            </a>
+                            <div class="collapse hide" id="collapseCardCharge1">
+                                <div class="card-body">
+                                    <p>Seleccione la plantilla</p>
+                                    <p class="font-weight-bold">*Selecciona cualquier informe del listado a continuación</p>
+                                    <form action="products" class="mb-3" method="post" enctype="multipart/form-data">
+                                        <div class="row mb-2">
+                                            <select name="unity" class="form-control mr-1 " id="">
+                                                <option value="null">Seleccione el informe a modificar</option>
+                                            </select>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <input type="submit" class="btn btn-success form-control" value="Editar">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div> 
+                    <div class="col-lg-6">
+                        <div class="card shadow mb-4">
+                            <a href="#collapseCardCharge" class="d-block card-header py-3" data-toggle="collapse"
+                                role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                                <h6 class="m-0 font-weight-bold text-primary">Asignar plantillas a peritos</h6>
                             </a>
                             <div class="collapse hide" id="collapseCardCharge">
                                 <div class="card-body">
-                                    <p>Carga planos al informe</p>
-                                    <p class="font-weight-bold">*Debes un plano</p>
-                                    <form action="products" class="input-group mb-3" method="post" enctype="multipart/form-data">
-                                        <select name="unity" class="form-control mr-1" id="">
-                                            <option value="null">Seleccione el informe a usar</option>
-                                        </select>
-                                        <input type="submit" class="input-group-prepend btn btn-success" name="upload" value="Cargar">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" name="route" id="inputGroupFile01">
-                                            <label class="custom-file-label" for="inputGroupFile01">Cargar Plano</label>
+                                    <p>Asignación de informes</p>
+                                    <p class="font-weight-bold">*Seleccione el informe a habilitar</p>
+                                    <form action="products" class="mb-3" method="post" enctype="multipart/form-data">
+                                        <div class="row mb-2">
+                                            <select name="unity" class="form-control mr-1 " id="">
+                                                <option value="null">Seleccione un informe</option>
+                                            </select>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <select name="unity" class="form-control mr-1 " id="">
+                                                <option value="null">Seleccione el perito a habilitar</option>
+                                            </select>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <input type="submit" class="btn btn-success form-control" value="Asignar">
                                         </div>
                                     </form>
                                 </div>

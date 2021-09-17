@@ -8,5 +8,12 @@ router.get('/', function(req, res, next) {
 router.get('/addSchema', function(req, res, next) {
   res.render('perito/addPlano', { title: 'Añadir planos' });
 });
+router.get('/exportSchema', function(req, res, next) {
+  res.render('perito/exportPlano', { title: 'Exportar planos' });
+});
+router.get('/templates', function(req, res, next) {
+  res.render('perito/templates', { title: 'Plantillas previas' });
+});
+
 
 module.exports = router;
