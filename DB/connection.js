@@ -2,11 +2,14 @@ const mongoose = require('mongoose');
 
 const URI = "mongodb+srv://"+process.env.DB_USER+":"+process.env.DB_PASS+"@sap.6hxuc.mongodb.net/"+process.env.DB_NAME+"?retryWrites=true&w=majority"
 
-const connectDB = async () =>{
+const connectDB = async (error) =>{
     await mongoose.connect(URI, {
         useUnifiedTopology: true,
         useNewUrlParser: true
     });
+    if(error){
+        console.log(error);
+    }
     console.log('Conexión a base de datos abierta');
 }
 
