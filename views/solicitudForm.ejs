@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="solicitud/insertar" method="post">
+        <label for="dui">
+            DUI:
+        </label>
+        <input type="text" name="dui" id="dui">
+        <label for="nombre">nombre</label>
+        <input type="text" name="nombre" id="nombre">
+        <label for="telefono">Numero telefonico</label>
+        <input type="text" name="telefono" id="telefono">
+        <label for="correo">Correo electronico</label>
+        <input type="text" name="correo" id="correo">
+        <label for="propiedad">Propiedad</label>
+        <select name="propiedad" id="propiedad">
+        <%
+        for (propiedad of prop)
+        {
+            %><option value="<%= propiedad._id %>"> <%= propiedad.propietario %></option><%
+        }
+        %>
+
+    </select>
+
+   
+    <input type="submit" value="enviar">
+    </form>
+    
+</body>
+</html>l
