@@ -7,47 +7,14 @@
   </title>
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <script src="/jq/jquery.min.js"></script>
-  <script>
-    var displayOnline = true;
-    var displayOffline = true;
-    async function connRoutine(delay) {
-      // await ...
-      try{
-        ping(delay);
-      }catch(e){
-        console.clear();
+
+  <%- include("./internetCheck.ejs") %>
+    <script>
+      function exe() {
+        console.log(online ? "Online" : "Offline");
       }
+    </script>
 
-      setTimeout(() => connRoutine(delay), delay)
-    }
-
-    function ping(delay) {
-      $.ajax({
-        url: "/connStatus",
-        type: "GET",
-        dataType: "json",
-        timeout: delay,
-        success: function () {
-          if (displayOnline) {
-            $("#status").html("Your current connection status is: Online");
-            console.log("Online");
-            displayOnline = false;
-            displayOffline = true;
-          }
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-          if (displayOffline) {
-            $("#status").html("Your current connection status is: Offline");
-            console.log("Offline");
-            displayOffline = false;
-            displayOnline = true;
-          }
-        }
-      });
-    }
-    connRoutine(5000);
-
-  </script>
 </head>
 
 <body>
@@ -56,7 +23,7 @@
   </h1>
   <p>Welcome to <%= title %>
   </p>
-  <button id="statusCheck" onclick="ping()">Click to check the connection</button><br />
+  <button id="statusCheck" onclick="exe()">Click to check the connection</button><br />
   <h2 id="status">Your current connection status is:</h2>
 </body>
 
