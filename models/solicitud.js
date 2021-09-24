@@ -12,4 +12,4 @@ const solicitudSchema = mongoose.Schema({
     perito: mongoose.Schema.Types.ObjectId
 });
 
-module.exports = mongoose.model('user', userSchema);
+module.exports = mongoose.model('solicitud', solicitudSchema);
