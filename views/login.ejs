@@ -23,7 +23,7 @@
 <body>
     <div class="container-fluid">
         <div class="row justify-content-center align-items-center">
-            <form class="form-login mt-5 col-11 col-md-6 col-lg-3">
+            <form id="loginForm" name="loginForm" class="form-login mt-5 col-11 col-md-6 col-lg-3">
                 <h1 class="text-center">Inicio de Sesión</h1>
                 <div class="mb-3 mt-5">
                     <label for="usuario" class="form-label">Usuario</label>
@@ -35,7 +35,7 @@
                 </div>
                 <a class="a-login" href="#">¿He olvidado mi contraseña?</a>
                 <div class="d-flex align-items-end flex-column bd-highlight mb-3 mt-3">
-                    <button class="btn btn-primary btn-login mt-3" onclick="enviarDatos()">Ingresar</button>
+                    <button type="submit" class="btn btn-primary btn-login mt-3">Ingresar</button>
                 </div>
 
             </form>

@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 require('dotenv').config();
 
+const conn = require('./DB/connection');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
@@ -40,6 +41,8 @@ app.use('/perito', peritoRouter);
 app.use('/imagen', imagenRouter);
 app.use('/propiedad', propiedadRouter);
 app.use('/solicitud', solicitudRouter);
+
+conn.connectDB();
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

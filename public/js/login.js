@@ -1,4 +1,5 @@
-function enviarDatos() {
+$("#loginForm").on("submit", function (e) {
+    e.preventDefault();
     $.ajax('/login/verificar', {
         type: 'POST',  // http method
         datatype: 'json',
@@ -11,4 +12,4 @@ function enviarDatos() {
             console.log("error");
         }
     });
-}
+});
