@@ -33,6 +33,7 @@ app.use('/swal', express.static(__dirname + '/node_modules/sweetalert2/dist')); 
 app.use('/bi', express.static(__dirname + '/node_modules/bootstrap-icons')); // Bootstrap icons
 app.use('/img', express.static(__dirname + '/public/images')); // Images
 app.use('/css', express.static(__dirname + '/public/stylesheets'));
+app.use('/', express.static(__dirname));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

@@ -5,13 +5,27 @@
   <title>
     <%= title %>
   </title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href='/css/style.css' />
   <script src="/jq/jquery.min.js"></script>
 
-  <%- include("./internetCheck.ejs") %>
+  <%- //include("./internetCheck.ejs") %>
     <script>
       function exe() {
         console.log(online ? "Online" : "Offline");
+      }
+
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js').then(function (registration) {
+            console.log('ServiceWorker registered');
+          }, function (err) {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+
+      function load(){
+        window.location.href="/";
       }
     </script>
 
@@ -24,6 +38,7 @@
   <p>Welcome to <%= title %>
   </p>
   <button id="statusCheck" onclick="exe()">Click to check the connection</button><br />
+  <button onclick="load()">Move it!</button><br />
   <h2 id="status">Your current connection status is:</h2>
 </body>
 
