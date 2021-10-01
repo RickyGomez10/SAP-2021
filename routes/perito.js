@@ -4,6 +4,8 @@ const conn = require('./../DB/connection');
 const Usuario = require('../models/user');
 
 router.get('/', function(req, res, next) {
+  console.log(req.cookies.username);
+  console.log('hola');
   res.render('perito/menu', { title: 'Inicio', contenido: 'home', user: req.cookies.username });
 });
 router.get('/addSchema', function(req, res, next) {

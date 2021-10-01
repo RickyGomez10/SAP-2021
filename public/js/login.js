@@ -4,7 +4,7 @@ $("#loginForm").on("submit", function (e) {
         type: 'POST',  // http method
         datatype: 'json',
         async: true,
-        data: { user: document.getElementById('usuario').value, pass: document.getElementById('contra').value },  // data to submit
+        data: { user: document.getElementById('username').value, pass: document.getElementById('contra').value },  // data to submit
         success: function (response) {
             console.log(response);
         },

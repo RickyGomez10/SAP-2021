@@ -1,11 +1,11 @@
 var CACHE_NAME = 'offline-v0.1';
 var urlsToCache = [
   '/',
-  '/css/style.css',
   '/jq/jquery.min.js'
 ];
 //1h
 self.addEventListener('install', function (event) {
+ 
   console.log('Service worker installed.');
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -22,7 +22,7 @@ self.addEventListener('activate', function (event) {
     caches.keys().then(function (cacheNames) {
       return Promise.all(
         cacheNames.map(cache => {
-          if(cache !== CACHE_NAME){
+          if(cache !== CACHE_NAME + ' - http://localhost:3000'){
             console.log('Clearing old cache');
             return caches.delete(cache);
           }
