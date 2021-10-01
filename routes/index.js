@@ -14,6 +14,10 @@ router.get('/register', function (req, res, next) {
   res.render('register');
 });
 
+router.get('/simpleTest', (req, res, next)=>{
+  res.render('avaluoSimple', { title: 'Avaluo simple' })
+});
+
 router.get('/connect', function(req, res, next) {
   conn.connectDB().then(()=>{
     console.log("Furula");
