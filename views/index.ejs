@@ -5,7 +5,14 @@
   <title>
     <%= title %>
   </title>
-  <link rel='stylesheet' href='/css/style.css' />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/home.css" rel="stylesheet" />
   <script src="/jq/jquery.min.js"></script>
 
   <%- //include("./internetCheck.ejs") %>
@@ -24,8 +31,8 @@
         });
       }
 
-      function load(){
-        window.location.href="/";
+      function load() {
+        window.location.href = "/";
       }
     </script>
 
@@ -37,7 +44,7 @@
   </h1>
   <p>Welcome to <%= title %>
   </p>
-  <button id="statusCheck" onclick="exe()">Click to check the connection</button><br />
+  <button id="statusCheck" onclick="exe()">Click to checks the connection</button><br />
   <button onclick="load()">Move it!</button><br />
   <h2 id="status">Your current connection status is:</h2>
 </body>

@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 var conn = require('./../DB/connection')
 
+router.get('/home', (req,res,next)=>{
+  res.render('home', { title: 'SAP | Home' });
+})
+
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
