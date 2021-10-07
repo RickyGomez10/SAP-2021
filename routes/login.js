@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const conn = require('./../DB/connection')
 const Usuario = require('../models/user');
 
 router.get('/', function (req, res, next) {
