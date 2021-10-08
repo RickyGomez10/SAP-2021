@@ -10,15 +10,13 @@
                 <div class="card-body">
                     <p>Carga planos al informe</p>
                     <p class="font-weight-bold">*Debes un plano</p>
-                    <form action="products" class="input-group mb-3" method="post" enctype="multipart/form-data">
-                        <select name="unity" class="form-control mr-1" id="">
+                    <form action="/imagen/upload" class="input-group mb-3" method="post" enctype="multipart/form-data">
+                        <select name="unity" class="form-control mr-1" id="" hidden>
                             <option value="null">Seleccione el informe a usar</option>
                         </select>
-                        <input type="submit" class="input-group-prepend btn btn-success" name="upload" value="Cargar">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="route" id="inputGroupFile01">
-                            <label class="custom-file-label" for="inputGroupFile01">Cargar Plano</label>
-                        </div>
+                        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del plano">
+                        <input type="file" class="form-control btn btn-success" name="image" id="image" accept=".png, .jpg, .jpeg">
+                        <input type="submit" value="Enviar">
                     </form>
                 </div>
             </div>
