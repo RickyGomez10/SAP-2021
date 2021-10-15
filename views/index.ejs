@@ -14,14 +14,18 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
   <link href="/stylesheets/style.css" rel="stylesheet" />
   <script src="/jq/jquery.min.js"></script>
+  <script src="/views/internetCheck.js"></script>
+  <script src="/views/retrieveInfo.js"></script>
 
-  <%- //include("./internetCheck.ejs") %>
+
     <script>
       function exe() {
         console.log(online ? "Online" : "Offline");
+      
+
       }
 
-      /*if ('serviceWorker' in navigator) {
+      if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
           navigator.serviceWorker.register('/sw.js').then(function (registration) {
             console.log('ServiceWorker registered');
@@ -29,11 +33,13 @@
             console.log('ServiceWorker registration failed: ', err);
           });
         });
-      }*/
+      }
 
       function load() {
         window.location.href = "/";
       }
+
+    
     </script>
 
 </head>
@@ -46,6 +52,8 @@
   </p>
   <button id="statusCheck" onclick="exe()">Click to checks the connection</button><br />
   <button onclick="load()">Move it!</button><br />
+  <button onclick="insertInfo()">InsertLocal!</button><br />
+  <button onclick="retrieveLocalInfo()">retrieveLocal!</button><br />
   <h2 id="status">Your current connection status is:</h2>
 </body>
 

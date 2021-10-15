@@ -1,6 +1,7 @@
 var CACHE_NAME = 'offline-v0.1';
 var urlsToCache = [
   '/',
+  '/css/style.css',
   '/jq/jquery.min.js'
 ];
 //1h
