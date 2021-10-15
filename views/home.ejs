@@ -14,7 +14,7 @@
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
         rel="stylesheet" type="text/css" />
-    <link href="/assets/css/home.css" rel="stylesheet" />
+    <link href="/bs/home.css" rel="stylesheet" />
     <script src="/jq/jquery.min.js"></script>
     <script src="/bjs/bootstrap.bundle.min.js"></script>
 </head>
@@ -53,29 +53,89 @@
                         solicita a nuestro personal para programar una visita a un inmueble y realizar un avalúo formal.
                         No esperes más, ¡estamos para ayudarte!
                     </p>
-                    <a class="btn btn-dark btn-xl" href="/simpleTest">Haz tu propio avalúo</a>
-                    <button type="button" class="btn btn-info btn-xl" data-toggle="modal"
-                        data-target="#avaluoModal">Solicita un avalúo completo</button>
+                    <div class="d-flex justify-content-around align-items-center">
+                        <a class="btn btn-dark btn-xl" href="/simpleTest">Haz tu propio avalúo</a>
+                        <label>O</label>
+                        <button type="button" class="btn btn-info btn-xl" data-toggle="modal"
+                            data-target="#avaluoModal">Solicita un avalúo completo</button>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Modal de solicitud -->
         <div class="modal fade" id="avaluoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Formulario de solicitud de avalúo</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        ...
+                        <label>Llene el formulario a continuación para realizar una solicitud de avalúo. Posteriormente
+                            se le contactará para continuar con el proceso.</label>
+                        <form class="pt-1">
+                            <div class="d-flex justify-content-around pt-2">
+                                <div class="col px-2">
+                                    <label for="dui">Documento de Identidad</label>
+                                    <input type="text" id="dui" class="form-control" placeholder="Ej: 12345678-9">
+                                </div>
+                                <div class="col px-2">
+                                    <label for="dir1">Dirección</label>
+                                    <input type="text" id="dir1" class="form-control" placeholder="Línea 1">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-around pt-2">
+                                <div class="col px-2">
+                                    <label for="nombres">Nombres</label>
+                                    <input type="text" id="nombres" class="form-control" placeholder="Nombres">
+                                </div>
+                                <div class="col px-2">
+                                    <input type="text" id="dir2" class="form-control" placeholder="Línea 2 (Opcional)">
+                                    <label for="refs">Puntos de referencia</label>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-around pt-2">
+                                <div class="col px-2">
+                                    <label for="apellidos">Apellidos</label>
+                                    <input type="text" id="apellidos" class="form-control" placeholder="Apellidos">
+                                </div>
+                                <div class="col px-1">
+                                    <textarea rows="2" id="refs" class="form-control" placeholder="Cerca de..."></textarea>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-around pt-2">
+                                <div class="col px-2">
+                                    <label for="tel">Teléfono de contacto</label>
+                                    <input type="text" id="tel" class="form-control" placeholder="Ej: 2222-2222">
+                                </div>
+                                <div class="col px-2">
+                                    <label for="pais">País</label>
+                                    <select class="form-control" id="pais">
+                                        <option>El Salvador</option>
+                                        <option>Guatemala</option>
+                                        <option>Honduras</option>
+                                      </select>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-around pt-2">
+                                <div class="col px-2">
+                                    <label for="correo">Correo electrónico</label>
+                                    <input type="text" id="correo" class="form-control" placeholder="correo@ejemplo.com">
+                                </div>
+                                <div class="col px-2">
+                                    <label for="ciudad">Ciudad</label>
+                                    <input type="text" id="ciudad" class="form-control" placeholder="Ciudad">
+                                </div>
+                            </div>
+                        </form>
+                        </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary">Enviar solicitud</button>
                     </div>
                 </div>
             </div>
