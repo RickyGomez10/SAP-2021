@@ -1,12 +1,24 @@
 var express = require('express');
 var router = express.Router();
 var conn = require('./../DB/connection')
+var mexp = require('math-expression-evaluator');
 
 router.get('/home', (req,res,next)=>{
   res.render('home', { title: 'SAP | Home' });
 })
 
 router.get('/', function(req, res, next) {
+
+  var indicador = "2+([var1]*[var2])";
+  var campos = ["var1","var2"];
+  var valores = ["5","3"];
+  for (let i = 0; i < 2; i++) {
+    //const regex = new RegExp("\\s*\\["+campos[i]+"*?\\]\\s*", "g");
+    indicador = indicador.replace("["+campos[i]+"]",valores[i]);
+  }
+  //const regex =/\s*\[.*?\]\s*/g;
+  console.log(indicador);
+  console.log(mexp.eval(indicador));
   res.render('index', { title: 'Express' });
 });
 
