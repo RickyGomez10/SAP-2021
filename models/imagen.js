@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const imagenSchema = mongoose.Schema({
     nombre: String,
+    tipo: Number
     
 });
 

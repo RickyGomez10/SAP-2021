@@ -7,9 +7,10 @@ const solicitudSchema = mongoose.Schema({
     nombre: String,
     telefono: String,
     correo: String,
-    Aceptado: Boolean,
-    Propiedad: mongoose.Schema.Types.ObjectId,
-    perito: mongoose.Schema.Types.ObjectId
+    aceptado: Boolean,
+    propiedad: mongoose.Schema.Types.ObjectId,
+    perito: mongoose.Schema.Types.ObjectId,
+    avaluoSimple: Object
 });
 
 module.exports = mongoose.model('solicitud', solicitudSchema);

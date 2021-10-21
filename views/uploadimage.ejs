@@ -1,25 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<title>Document</title>
-</head>
 
 <body>
 	<div class="container">
 		<h1>Suba una imagen</h1>
 		<form method="POST" action="upload" enctype="multipart/form-data">
 
-			<div class="avatar-upload">
+			<div class="avatar-upload form-group">
 				<div class="avatar-preview">
 					<div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7)"></div>
 				</div>
 				<label for="nombre">Nombre de imagen:</label>
-				<input type="text" name="nombre" id="nombre">
+				<input class="form-control" type="text" name="nombre" id="nombre">
 				
 				<input type="file" name="image" id="image" accept=".png, .jpg, .jpeg" />
 				<label for="imageUpload"></label>
@@ -129,5 +119,3 @@ body {
 		readURL(this);
 	});
 </script>
-
-</html>

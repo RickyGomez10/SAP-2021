@@ -4,8 +4,7 @@ const propiedadSchema = mongoose.Schema({
     direccion: String,
     departamento: String,
     municipio: String,
-    metroscuadrados:String,
+    metroscuadrados:Number,
     propietario: String
 });
-
 module.exports = mongoose.model('propiedad', propiedadSchema);

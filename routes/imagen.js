@@ -7,6 +7,7 @@ const { response, path } = require('../app');
 const pat = require('path');
 const multer = require('multer')
 
+var objectid = require('mongodb').ObjectId
 // Subida de archivos
 const storage = multer.diskStorage({
   destination: (req, file, cb)=>{
@@ -29,7 +30,9 @@ const upload = multer({storage: storage})
 
 
 router.get('/upload', function(req, res, next){
-    res.render('uploadimage');
+
+  res.render('perito/menu', { title: 'Inicio', contenido: '../uploadimage', user: req.cookies.username });
+  //res.render('uploadimage');
 })
 
 router.post('/upload', upload.single("image"), function(req, res, next) {
@@ -50,13 +53,36 @@ router.post('/upload', upload.single("image"), function(req, res, next) {
     });
 });
 
-
-
-
 router.post('/insertar', upload.single("image"), function(req, res, next) {
-
-  
-  
+ 
 });
 
+//buscar imagen, falta implementar logica para obtener url del servidor
+router.get('/search', (req, res, next)=>{
+  var id = req.body.imagenid
+  var o_id = new objectid(id)
+  conn.connectDB().then(()=>{
+    imagenSchema.find({_id: o_id}).then(user=>{
+      res.status(200).json(user);
+      console.log('imagen encontrada')
+    }).catch(error=>
+      console.log(error)
+      )
+  })
+
+})
+
+//buscar todas las imagenes, falta implementar logica para obtener url del servidor
+
+router.get('/searchall', (req, res, next)=>{
+
+  conn.connectDB().then(()=>{
+    imagenSchema.find().then(user=>{
+      res.status(200).json(user);
+      console.log('imagenes encontradas')
+    }).catch(error=>
+      console.log(error)
+      )
+  })
+})
 module.exports = router;
