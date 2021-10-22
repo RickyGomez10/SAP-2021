@@ -1,0 +1,312 @@
+<form>
+    <div class="form-group row">
+      <label for="solicitante" class="col-sm-2 col-form-label col-form-label-sm">SOLICITANTE:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control form-control-sm" id="solicitante" >
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="propietario" class="col-sm-2 col-form-label col-form-label-sm">PROPIETARIOS:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control form-control-sm" id="propietario" >
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="dirEscritura" class="col-sm-2 col-form-label col-form-label-sm">DIRECCIÓN ESCRITURA:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control form-control-sm" id="dirEscritura" >
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="dirCampo" class="col-sm-2 col-form-label col-form-label-sm">DIRECCIÓN EN CAMPO:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control form-control-sm" id="dirCampo" >
+      </div>
+    </div>
+    <h4 class="my-4">Descripción general del inmueble</h4>
+
+    <div class="form-group row">
+      <label class="col-12 col-lg-2 col-form-label col-form-label-sm">TIPO DE BIEN</label>
+      <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+        <input class="form-check-input" type="checkbox" id="urbano" value="urbano">
+        <label class="form-check-label pr-3" for="urbano">Urbano</label>
+        <input class="form-check-input" type="checkbox" id="rural" value="rural">
+        <label class="form-check-label pr-3" for="rural">Rural</label>
+        <input class="form-check-input" type="checkbox" id="subUrbano" value="subUrbano">
+        <label class="form-check-label pr-3" for="subUrbano">Sub urbano</label>
+        <input class="form-check-input" type="checkbox" id="rustico" value="rustico">
+        <label class="form-check-label pr-3" for="rustico">Rústico</label>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-12 col-lg-2 col-form-label col-form-label-sm">CAT. EN LA ZONA</label>
+      <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+        <input class="form-check-input" type="checkbox" id="alta" value="alta">
+        <label class="form-check-label pr-3" for="alta">Alta</label>
+        <input class="form-check-input" type="checkbox" id="mAlta" value="mAlta">
+        <label class="form-check-label pr-3" for="mAlta">Media Alta</label>
+        <input class="form-check-input" type="checkbox" id="media" value="media">
+        <label class="form-check-label pr-3" for="media">Media</label>
+        <input class="form-check-input" type="checkbox" id="mBaja" value="mBaja">
+        <label class="form-check-label pr-3" for="mBaja">Media Baja</label>
+        <input class="form-check-input" type="checkbox" id="baja" value="baja">
+        <label class="form-check-label pr-3" for="baja">Baja</label>
+        <input class="form-check-input" type="checkbox" id="marginal" value="marginal">
+        <label class="form-check-label pr-3" for="marginal">Marginal</label>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-12 col-lg-2 col-form-label col-form-label-sm">USO ACTUAL</label>
+      <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+        <input class="form-check-input" type="checkbox" id="residencial" value="residencial">
+        <label class="form-check-label pr-3" for="residencial">Residencial</label>
+        <input class="form-check-input" type="checkbox" id="industrial" value="industrial">
+        <label class="form-check-label pr-3" for="industrial">Industrial</label>
+        <input class="form-check-input" type="checkbox" id="oficinas" value="oficinas">
+        <label class="form-check-label pr-3" for="oficinas">Oficinas</label>
+        <input class="form-check-input" type="checkbox" id="comercio" value="comercio">
+        <label class="form-check-label pr-3" for="comercio">Comercio</label>
+        <input class="form-check-input" type="checkbox" id="recreativo" value="recreativo">
+        <label class="form-check-label pr-3" for="recreativo">Rrecreativo</label>
+        <input class="form-check-input" type="checkbox" id="valdio" value="valdio">
+        <label class="form-check-label pr-3" for="valdio">Valdío</label>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-12 col-lg-2 col-form-label col-form-label-sm">OFERTA EN ZONA</label>
+      <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+        <input class="form-check-input" type="checkbox" id="abundante" value="abundante">
+        <label class="form-check-label pr-3" for="abundante">Abundante</label>
+        <input class="form-check-input" type="checkbox" id="promedio" value="promedio">
+        <label class="form-check-label pr-3" for="promedio">Promedio</label>
+        <input class="form-check-input" type="checkbox" id="regular" value="regular">
+        <label class="form-check-label pr-3" for="regular">Regular</label>
+        <input class="form-check-input" type="checkbox" id="equilibrada" value="equilibrada">
+        <label class="form-check-label pr-3" for="equilibrada">Equilibrada</label>
+        <input class="form-check-input" type="checkbox" id="escasa" value="escasa">
+        <label class="form-check-label pr-3" for="escasa">Escasa</label>
+        <input class="form-check-input" type="checkbox" id="no" value="no">
+        <label class="form-check-label pr-3" for="no">No se observó</label>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-12 col-lg-2 col-form-label col-form-label-sm">DEMANDA EN ZONA</label>
+      <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+        <input class="form-check-input" type="checkbox" id="Dalta" value="Dalta">
+        <label class="form-check-label pr-3" for="Dalta">Alta</label>
+        <input class="form-check-input" type="checkbox" id="Dbuena" value="Dbuena">
+        <label class="form-check-label pr-3" for="Dbuena">Buena</label>
+        <input class="form-check-input" type="checkbox" id="Destable" value="Destable">
+        <label class="form-check-label pr-3" for="Destable">Estable</label>
+        <input class="form-check-input" type="checkbox" id="Dregular" value="Dregular">
+        <label class="form-check-label pr-3" for="Dregular">Regular</label>
+        <input class="form-check-input" type="checkbox" id="Dbaja" value="Dbaja">
+        <label class="form-check-label pr-3" for="Dbaja">Baja</label>
+        <input class="form-check-input" type="checkbox" id="Dno" value="Dno">
+        <label class="form-check-label pr-3" for="Dno">No existe</label>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-12 col-lg-2 col-form-label col-form-label-sm">PLUSVALIA</label>
+      <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+        <input class="form-check-input" type="checkbox" id="Pcreciente" value="Pcreciente">
+        <label class="form-check-label pr-3" for="Pcreciente">Creciente</label>
+        <input class="form-check-input" type="checkbox" id="Pestable" value="Pestable">
+        <label class="form-check-label pr-3" for="Pestable">Estable</label>
+        <input class="form-check-input" type="checkbox" id="Pdeterioro" value="Pdeterioro">
+        <label class="form-check-label pr-3" for="Pdeterioro">En deterioro</label>
+        <input class="form-check-input" type="checkbox" id="Ptrans" value="Ptrans">
+        <label class="form-check-label pr-3" for="Ptrans">En transición</label>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-12 col-lg-2 col-form-label col-form-label-sm">ENTORNO</label>
+      <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+        <input class="form-check-input" type="checkbox" id="superior" value="superior">
+        <label class="form-check-label pr-3" for="superior">Superior</label>
+        <input class="form-check-input" type="checkbox" id="similar" value="similar">
+        <label class="form-check-label pr-3" for="similar">Similar</label>
+        <input class="form-check-input" type="checkbox" id="inferior" value="inferior">
+        <label class="form-check-label pr-3" for="inferior">Inferior</label>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="ocupado" class="col-sm-2 col-form-label col-form-label-sm">OCUPADO POR:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control form-control-sm" id="ocupado" >
+      </div>
+    </div>
+    <h4 class="my-4">Linderos y descripción según escritura</h4>
+    <div class="form-group row">
+      <label for="ocupado" class="col-sm-2 col-form-label col-form-label-sm">DISTANCIAS DE LUGARES IMPORTANTES:</label>
+      <div class="col-sm-10">
+        <div class="form-inline">
+          <div class="form-group">
+            <label for="escuelas" class="col-form-label col-form-label-sm mr-sm-3">Escuelas o colegios</label>
+            <input type="number" class="form-control form-control-sm" id="escuelas" placeholder="mt" min="0">
+          </div>
+          <div class="form-group">
+            <label for="transporte" class="col-form-label col-form-label-sm  mx-sm-3">Transporte público</label>
+            <input type="number" class="form-control form-control-sm" id="transporte" placeholder="mt" min="0">
+          </div>
+          <div class="form-group ">
+            <label for="comercio" class="col-form-label col-form-label-sm  mx-sm-3">Comercio formal</label>
+            <input type="number" class="form-control form-control-sm" id="comercio" placeholder="mt" min="0">
+          </div>
+        </div>
+      </div>
+    </div>
+    <h4 class="mt-4">Descripción del terreno</h4>
+    <h5>Medidas perimétricas y colindancias: (verificado en campo)</h5>
+    <div class="form-group row">
+      <div class="col-sm-2">
+        <label for="norte" class="col-form-label col-form-label-sm">Norte</label>
+        <input type="number" class="form-control form-control-sm" id="norte" min="0">
+      </div>
+      <div class="col-sm-10">
+        <label for="Lnorte" class="col-form-label col-form-label-sm">Linda con</label>
+        <input type="text" class="form-control form-control-sm" id="Lnorte" min="0">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-2">
+        <label for="sur" class="col-form-label col-form-label-sm">Sur</label>
+        <input type="number" class="form-control form-control-sm" id="sur" min="0">
+      </div>
+      <div class="col-sm-10">
+        <label for="Lsur" class="col-form-label col-form-label-sm">Linda con</label>
+        <input type="text" class="form-control form-control-sm" id="Lsur" min="0">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-2">
+        <label for="oriente" class="col-form-label col-form-label-sm">Oriente</label>
+        <input type="number" class="form-control form-control-sm" id="oriente" min="0">
+      </div>
+      <div class="col-sm-10">
+        <label for="Loriente" class="col-form-label col-form-label-sm">Linda con</label>
+        <input type="text" class="form-control form-control-sm" id="Loriente" min="0">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-2">
+        <label for="poniente" class="col-form-label col-form-label-sm">Poniente</label>
+        <input type="number" class="form-control form-control-sm" id="poniente" min="0">
+      </div>
+      <div class="col-sm-10">
+        <label for="Lponiente" class="col-form-label col-form-label-sm">Linda con</label>
+        <input type="text" class="form-control form-control-sm" id="Lponiente" min="0">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inscripcion" class="col-sm-2 col-form-label col-form-label-sm">N° DE INSCRIPCIÓN R.P.R.H.</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control form-control-sm" id="inscripcion">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="ocupado" class="col-sm-2 col-form-label col-form-label-sm">ÁREA DE TERRENO SEGÚN ESCRITURA:</label>
+      <div class="col-sm-10">
+        <div class="form-inline">
+          <div class="form-group mr-3">
+            <input type="number" class="form-control form-control-sm" id="areaEscritura" placeholder="M2" min="0">
+          </div>
+          <div class="form-group">
+            <input type="number" class="form-control form-control-sm" id="volumenEscritura" placeholder="V2" min="0">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="ocupado" class="col-sm-2 col-form-label col-form-label-sm">ÁREA DE TERRENO SEGÚN CAMPO:</label>
+      <div class="col-sm-10">
+        <div class="form-inline">
+          <div class="form-group mr-3">
+            <input type="number" class="form-control form-control-sm" id="areaCampo" placeholder="M2" min="0">
+          </div>
+          <div class="form-group">
+            <input type="number" class="form-control form-control-sm" id="volumenCampo" placeholder="V2" min="0">
+          </div>
+        </div>
+      </div>
+    </div>
+    <h4 class="my-4">Información sobre servicios</h4>
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" name="aguaPotable" id="aguaPotable" value="aguaPotable">
+          <label class="form-check-label" for="aguaPotable">Agua potable</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" name="electrica" id="electrica" value="energiaElectrica">
+          <label class="form-check-label" for="electrica">E. Electrica</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" name="aceras" id="aceras" value="aceras">
+          <label class="form-check-label" for="aceras">Aceras</label>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" name="arriate" id="arriate" value="arriate">
+          <label class="form-check-label" for="arriate">Arriate</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" name="alumbrado" id="alumbrado" value="alumbrado">
+          <label class="form-check-label" for="alumbrado">Alum. Público</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" name="aseo" id="aseo" value="aseo" >
+          <label class="form-check-label" for="aseo">Tren de aseo</label>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" name="tanque" id="tanque" value="tanque">
+          <label class="form-check-label" for="tanque">Tanque</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" name="telefono" id="telefono" value="telefono">
+          <label class="form-check-label" for="telefono">Teléfono</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" name="caseta" id="caseta" value="caseta" >
+          <label class="form-check-label" for="caseta">Caseta de vig.</label>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" name="cisterna" id="cisterna" value="cisterna">
+          <label class="form-check-label" for="cisterna">Cisterna</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" name="alcantarillados" id="alcantarillados" value="alcantarillados">
+          <label class="form-check-label" for=alcantarillados">Alcantarillados</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row my-3">
+      <label for="acceso" class="col-sm-2 col-form-label col-form-label-sm">ACCESO:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control form-control-sm" id="acceso" >
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-12 col-lg-2 col-form-label col-form-label-sm">FORMA PARTE DE UN PROYECTO:</label>
+      <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+        <input class="form-check-input" type="checkbox" id="condominio" value="condominio">
+        <label class="form-check-label pr-3" for="condominio">Condominio vertical</label>
+        <input class="form-check-input" type="checkbox" id="urbanizacion" value="urbanizacion">
+        <label class="form-check-label pr-3" for="urbanizacion">De urbanización</label>
+        <input class="form-check-input" type="checkbox" id="formal" value="formal">
+        <label class="form-check-label pr-3" for="formal">Formal</label>
+        <div class="form-inline">
+          <div class="form-group">
+            <label for="otros" class="col-form-label col-form-label-sm mr-sm-3">Otros:</label>
+            <input type="text" class="form-control form-control-sm" id="otros">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+</form>

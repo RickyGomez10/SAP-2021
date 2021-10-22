@@ -18,6 +18,9 @@ router.get('/exportSchema', function(req, res, next) {
 router.get('/templates', function(req, res, next) {
   res.render('perito/menu', { title: 'Plantillas previas', contenido: 'templates', user: req.cookies.username });
 });
+router.get('/avaluo', function(req, res, next) {
+  res.render('perito/menu', { title: 'Avalúo', contenido: 'avaluo', user: req.cookies.username });
+});
 router.get('/buscar-propiedad', function(req, res, next) {
   res.render('perito/menu', { title: 'Búscar Propiedad', contenido: 'buscarPropiedad', user: req.cookies.username, propiedades: "" });
 });
