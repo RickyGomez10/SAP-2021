@@ -296,6 +296,23 @@
     <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
     <!-- Core theme JS-->
     <script src="/assets/js/home.js"></script>
+    <script>
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if (pair[0] == variable) {
+                    return pair[1];
+                }
+            }
+        }
+        $(document).ready(function () {
+            if (getQueryVariable("modal") == "true") {
+                $("#avaluoModal").modal();
+            }
+        });
+    </script>
 </body>
 
 </html>

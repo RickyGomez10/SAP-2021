@@ -49,39 +49,63 @@
                         valor de su vivienda, debera colocar el área de construcción en m2, y los demas datos que se le
                         soliciten para poder realizar el test.
                     </p>
-                    <form action="">
+                    <form action="simpleTest" class="<%= status %>" method="post">
                         <div class="row mb-3">
                             <div class="col">
                                 <label for="name">Nombre:</label>
-                                <input type="text" name="name" id="name" class="form-control">
+                                <input type="text" name="name" id="name" class="form-control" required>
                             </div>
                             <div class="col">
                                 <label for="lastname">Apellido:</label>
-                                <input type="text" name="lastname" id="lastname" class="form-control">
+                                <input type="text" name="lastname" id="lastname" class="form-control" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="">Coordenadas</label>
                             <div class="col">
                                 <label for="ln">Longitud:</label>
-                                <input type="text" name="lg" id="lg" class="form-control">
+                                <input type="text" name="lg" id="lg" class="form-control" required>
                             </div>
                             <div class="col">
                                 <label for="lt">Latitud:</label>
-                                <input type="text" name="lt" id="lt" class="form-control">
+                                <input type="text" name="lt" id="lt" class="form-control" required>
                             </div>
                         </div>
-                        <textarea name="Direccion" placeholder="Dirección" class="form-control mb-3" id="" cols="30"
-                            rows="10"></textarea>
+                        <textarea name="address" placeholder="Dirección" class="form-control mb-3" id="add" cols="30"
+                            rows="5" required></textarea>
                         <div class="row mb-3">
                             <div class="col">
-                                <textarea placeholder="Observaciones sobre el inmueble" name="" id="" cols="30" rows="1"
-                                    class="form-control"></textarea>
+                                <textarea placeholder="Observaciones sobre el inmueble" name="obs" id="obs" cols="30" rows="1"
+                                    class="form-control" required></textarea>
                             </div>
                             <div class="col">
-                                <input type="text" name="" placeholder="Area de construcción en m2" class="form-control"
-                                    id="">
+                                <input type="text" name="area" id="area" placeholder="Area de construcción en m2" class="form-control"
+                                    required>
                             </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <input type="text" value="San Miguel" name="dpto" id="dpto" class="form-control" disabled required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                  <label class="input-group-text" for="inputGroupSelect01">Cuadrante</label>
+                                </div>
+                                <select name="cuadrante" class="custom-select form-control" id="inputGroupSelect01">
+                                  <option selected>Escoja el cuadrante donde esta ubicada su vivienda...</option>
+                                  <option value="900">Cuadrante Central</option>
+                                  <option value="750">Cuadrante 2</option>
+                                  <option value="625">Cuadrante 3</option>
+                                </select>
+                              </div>
+                        </div>
+                        <div class="row">
+                            <p class="font-weight-bold">*Los cuadrantes van desde el centro de la ciudad (el eje), hacia afuera 5 cuadras a la redonda</p>
+                        </div>
+                        <div class="row mb-3">
+                            <p class="font-weight-bold">* El area de construccion de su vivienda debe ser igual a la suma de todas sus areas techadas.</p>
                         </div>
                         <div class="map mb-3">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248265.04888118472!2d-88.20290918479486!3d13.526913369425364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f7b2a70bc830dab%3A0x76ac9c406eec5592!2sSan%20Miguel!5e0!3m2!1ses!2ssv!4v1633069049679!5m2!1ses!2ssv" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
@@ -91,6 +115,19 @@
                         </div>
                         <input type="submit" value="Procesar Datos" class="btn btn-success form-control">
                     </form>
+                    <div class="card <%= result %>">
+                        <div class="card-header ">
+                          Resultado de tu solicitud:
+                        </div>
+                        <div class="card-body">
+                          <h5 class="card-title">Nombre Completo: <%= fullname %> </h5>
+                          <p class="card-text">Direccion: <%= address %></p>
+                          <p class="card-text">Area: <%= area %></p>
+                          <p class="card-text">El valor aproxmado de su vivienda es: <%= total %></p>
+                          <a href="home?modal=true" class="btn btn-primary">Solicita tu avaluo real ahora!</a>
+                          <a class="btn btn-success" onclick="javascript:window.print()">Imprimir PDF</a>
+                        </div>
+                      </div>
                 </div>
 
             </div>

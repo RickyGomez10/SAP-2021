@@ -4,7 +4,8 @@ var conn = require('./../DB/connection')
 var mexp = require('math-expression-evaluator');
 
 router.get('/home', (req,res,next)=>{
-  res.render('home', { title: 'SAP | Home' });
+  var script = "";
+  res.render('home', { title: 'SAP | Home'});
 })
 
 router.get('/', function(req, res, next) {
@@ -27,7 +28,25 @@ router.get('/register', function (req, res, next) {
 });
 
 router.get('/simpleTest', (req, res, next)=>{
-  res.render('avaluoSimple', { title: 'Avaluo simple' })
+  res.render('avaluoSimple', { title: 'Avaluo simple', status:'', result:"d-none", fullname:"", address:"", area:"", total:""})
+});
+
+router.post('/simpleTest', (req, res, next)=>{
+  var name = req.body.name;
+  var lastname = req.body.lastname;
+  let namefull = name +" "+ lastname;
+  var lg = req.body.lg;
+  var lt = req.body.lt;
+  var address = req.body.address;
+  var obs = req.body.obs;
+  var area = req.body.area;
+  var dpto = req.body.dpto;
+  var cuadrante = req.body.cuadrante;
+
+  var total = cuadrante * area;
+  console.log(address);
+ 
+  res.render('avaluoSimple', { title: 'Avaluo simple', status:'d-none', result:"visible" , fullname:namefull, address:address, area:area, total:"$"+total});
 });
 
 router.get('/connect', function(req, res, next) {
