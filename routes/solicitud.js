@@ -33,8 +33,8 @@ router.post('/insertar', function (req, res, next) {
     puntosReferencia: req.body.refs,
     pais: req.body.pais,
     ciudad: req.body.ciudad,
-    aceptado: false,
-    valuo: req.body.valuo ? req.body.valuo : null,
+    refDatos: null,
+    avaluoSimple: req.body.valuo ? req.body.valuo : null,
     perito: null,
   }
 

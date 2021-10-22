@@ -12,7 +12,7 @@ const solicitudSchema = mongoose.Schema({
     puntosReferencia: String,
     pais: String,
     ciudad: String,
-    aceptado: Boolean,
+    completado: Boolean,
     valuo: Object,
     perito: mongoose.Schema.Types.ObjectId
 });
