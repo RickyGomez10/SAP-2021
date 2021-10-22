@@ -12,8 +12,8 @@ const solicitudSchema = mongoose.Schema({
     puntosReferencia: String,
     pais: String,
     ciudad: String,
-    completado: Boolean,
-    valuo: Object,
+    refDatos: mongoose.Schema.Types.ObjectId,
+    avaluoSimple: Object,
     perito: mongoose.Schema.Types.ObjectId
 });
 

@@ -2,11 +2,14 @@ var CACHE_NAME = 'offline-v0.1';
 var urlsToCache = [
   '/',
   '/css/style.css',
-  '/jq/jquery.min.js'
+  '/jq/jquery.min.js',
+  '/idb/index-min.js'
 ];
-//1h
+
+if (typeof idb === "undefined") self.importScripts("/idb/index-min.js");
+
 self.addEventListener('install', function (event) {
- 
+
   console.log('Service worker installed.');
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -17,7 +20,7 @@ self.addEventListener('install', function (event) {
   );
 });
 
-self.addEventListener('activate', function (event) {
+/*self.addEventListener('activate', function (event) {
   console.log('Service worker activated.');
   event.waitUntil(
     caches.keys().then(function (cacheNames) {
@@ -29,6 +32,29 @@ self.addEventListener('activate', function (event) {
           }
         })
       )
+    })
+  );
+});*/
+
+self.addEventListener('activate', function (event) {
+
+  var cacheAllowlist = ['offline-v0.1'];
+  console.log('Service worker activated.');
+
+  event.waitUntil(
+    demo()
+  );
+
+  event.waitUntil(
+    caches.keys().then(function (cacheNames) {
+      return Promise.all(
+        cacheNames.map(function (cacheName) {
+          if (cacheAllowlist.indexOf(cacheName) === -1) {
+            console.log('Clearing old cache');
+            return caches.delete(cacheName);
+          }
+        })
+      );
     })
   );
 });
@@ -73,3 +99,48 @@ self.addEventListener('fetch', function (event) {
       })
   );
 });
+
+async function demo() {
+  const db = await idb.openDB('Articles', 1, {
+    upgrade(db) {
+      // Create a store of objects
+      const store = db.createObjectStore('articles', {
+        // The 'id' property of the object will be the key.
+        keyPath: 'id',
+        // If it isn't explicitly set, create a value by auto incrementing.
+        autoIncrement: true,
+      });
+      // Create an index on the 'date' property of the objects.
+      store.createIndex('date', 'date');
+    },
+  });
+
+  // Add an article:
+  await db.add('articles', {
+    title: 'Article 1',
+    date: new Date('2019-01-01'),
+    body: '…',
+  });
+
+  // Add multiple articles in one transaction:
+  {
+    const tx = db.transaction('articles', 'readwrite');
+    await Promise.all([
+      tx.store.add({
+        title: 'Article 2',
+        date: new Date('2019-01-01'),
+        body: '…',
+      }),
+      tx.store.add({
+        title: 'Article 3',
+        date: new Date('2019-01-02'),
+        body: '…',
+      }),
+      tx.done,
+    ]);
+  }
+
+  // Get all the articles in date order:
+  console.log(await db.getAllFromIndex('articles', 'date'));
+
+}

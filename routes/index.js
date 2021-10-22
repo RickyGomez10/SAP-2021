@@ -60,7 +60,7 @@ router.get('/connect', function(req, res, next) {
 });
 
 router.get('/connStatus', function(req, res, next) {
-  res.json({ msg: 'OK' }).status(200);
+  return res.json({ msg: 'OK' }).status(200);
 });
 
 module.exports = router;

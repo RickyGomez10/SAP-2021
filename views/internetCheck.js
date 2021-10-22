@@ -52,4 +52,4 @@
             }
         });
     }
-    connRoutine(5000);
+    //connRoutine(5000);

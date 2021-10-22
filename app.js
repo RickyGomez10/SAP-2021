@@ -32,6 +32,7 @@ app.use('/bs', express.static(__dirname + '/public/assets/css')); // redirect CS
 app.use('/swal', express.static(__dirname + '/node_modules/sweetalert2/dist')); // SweetAlerts
 app.use('/bi', express.static(__dirname + '/node_modules/bootstrap-icons')); // Bootstrap icons
 app.use('/img', express.static(__dirname + '/public/images')); // Images
+app.use('/idb', express.static(__dirname + '/node_modules/idb/build/iife')); //IndexedDB
 app.use('/css', express.static(__dirname + '/public/stylesheets'));
 app.use('/', express.static(__dirname));
 
