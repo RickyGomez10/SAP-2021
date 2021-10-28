@@ -16,6 +16,17 @@
         rel="stylesheet">
     <link href="/bs/safely.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
+    <script>
+        if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('/sw.js').then(function (registration) {
+            console.log('ServiceWorker registered');
+          }, function (err) {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+    </script>
     
 </head>
 

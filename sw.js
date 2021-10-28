@@ -2,6 +2,8 @@ var CACHE_NAME = 'offline-v0.1';
 var urlsToCache = [
   '/',
   '/css/style.css',
+  '/bs/safely.css',
+  '/bjs/bootstrap.bundle.min.js.map',
   '/jq/jquery.min.js',
   '/idb/index-min.js'
 ];

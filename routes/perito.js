@@ -18,8 +18,11 @@ router.get('/exportSchema', function(req, res, next) {
 router.get('/templates', function(req, res, next) {
   res.render('perito/menu', { title: 'Plantillas previas', contenido: 'templates', user: req.cookies.username });
 });
-router.get('/avaluo', function(req, res, next) {
-  res.render('perito/menu', { title: 'Avalúo', contenido: 'avaluo', user: req.cookies.username });
+router.get('/avaluo/:idAvaluo?', function(req, res, next) {
+  if(req.params.idAvaluo)
+    res.render('perito/menu', { title: 'Avalúo', contenido: 'avaluo', user: req.cookies.username, avaluo: req.params.idAvaluo });
+  else
+    res.render('perito/menu', { title: 'Inicio', contenido: 'home', user: req.cookies.username });
 });
 router.get('/buscar-propiedad', function(req, res, next) {
   res.render('perito/menu', { title: 'Búscar Propiedad', contenido: 'buscarPropiedad', user: req.cookies.username, propiedades: "" });
