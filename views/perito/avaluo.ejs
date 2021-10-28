@@ -39,23 +39,6 @@
       </div>
     </div>
     <div class="form-group row">
-      <label class="col-12 col-lg-2 col-form-label col-form-label-sm">CAT. EN LA ZONA</label>
-      <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
-        <input class="form-check-input" type="checkbox" id="alta" value="alta">
-        <label class="form-check-label pr-3" for="alta">Alta</label>
-        <input class="form-check-input" type="checkbox" id="mAlta" value="mAlta">
-        <label class="form-check-label pr-3" for="mAlta">Media Alta</label>
-        <input class="form-check-input" type="checkbox" id="media" value="media">
-        <label class="form-check-label pr-3" for="media">Media</label>
-        <input class="form-check-input" type="checkbox" id="mBaja" value="mBaja">
-        <label class="form-check-label pr-3" for="mBaja">Media Baja</label>
-        <input class="form-check-input" type="checkbox" id="baja" value="baja">
-        <label class="form-check-label pr-3" for="baja">Baja</label>
-        <input class="form-check-input" type="checkbox" id="marginal" value="marginal">
-        <label class="form-check-label pr-3" for="marginal">Marginal</label>
-      </div>
-    </div>
-    <div class="form-group row">
       <label class="col-12 col-lg-2 col-form-label col-form-label-sm">USO ACTUAL</label>
       <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
         <input class="form-check-input" type="checkbox" id="residencial" value="residencial">
@@ -308,5 +291,86 @@
         </div>
       </div>
     </div>
-    
+    <h4 class="my-4">Descripción de las construcciones</h4>
+    <div class="form-group row my-3">
+      <label for="edadEstimada" class="col-sm-2 col-form-label col-form-label-sm">EDAD ESTIMADA DE LA CONSTRUCCIÓN (años):</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control form-control-sm" id="edadEstimada" >
+      </div>
+    </div>
+    <div class="form-group row my-3">
+      <label for="vidaUtil" class="col-sm-2 col-form-label col-form-label-sm">VIDA ÚTIL REMANENTE (años):</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control form-control-sm" id="vidaUtil" >
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-12 col-lg-2 col-form-label col-form-label-sm">TIPO DE CONSTRUCCIÓN:</label>
+      <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+        <input class="form-check-input" type="checkbox" id="mixto" value="mixto">
+        <label class="form-check-label pr-3" for="mixto">mixto L.B.C.</label>
+        <input class="form-check-input" type="checkbox" id="mamposteria" value="mamposteria">
+        <label class="form-check-label pr-3" for="mamposteria">Mampostería</label>
+        <input class="form-check-input" type="checkbox" id="prefabricado" value="prefabricado">
+        <label class="form-check-label pr-3" for="prefabricado">Prefabricado</label>
+        <input class="form-check-input" type="checkbox" id="tipoPerf" value="tipoPerf">
+        <label class="form-check-label pr-3" for="tipoPerf">est. tipo perf.</label>
+        <input class="form-check-input" type="checkbox" id="adobe" value="adobe">
+        <label class="form-check-label pr-3" for="adobe">Adobe</label>
+        <input class="form-check-input" type="checkbox" id="bahareque" value="bahareque">
+        <label class="form-check-label pr-3" for="bahareque">Bahareque</label>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-12 col-lg-2 col-form-label col-form-label-sm">TIPO DE EDIFICACIÓN:</label>
+      <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+        <input class="form-check-input" type="checkbox" id="unifamiliar" value="unifamiliar">
+        <label class="form-check-label pr-3" for="unifamiliar">Unifamiliar</label>
+        <input class="form-check-input" type="checkbox" id="condV" value="condV">
+        <label class="form-check-label pr-3" for="condV">Cond. Vert.</label>
+        <input class="form-check-input" type="checkbox" id="condH" value="condH">
+        <label class="form-check-label pr-3" for="condH">Cond. Horiz.</label>
+        <input class="form-check-input" type="checkbox" id="multifamiliar" value="multifamiliar">
+        <label class="form-check-label pr-3" for="multifamiliar">Multifamiliar</label>
+        <input class="form-check-input" type="checkbox" id="otroEdif" value="otroEdif">
+        <label class="form-check-label pr-3" for="otroEdif">Otro</label>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-12 col-lg-2 col-form-label col-form-label-sm">DISTRIBUCIÓN ARQUITECTÓNICA:</label>
+      <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+        <input class="form-check-input" type="checkbox" id="arqBuena" value="arqBuena">
+        <label class="form-check-label pr-3" for="arqBuena">Buena</label>
+        <input class="form-check-input" type="checkbox" id="arqRegular" value="arqRegular">
+        <label class="form-check-label pr-3" for="arqRegular">Regular</label>
+        <input class="form-check-input" type="checkbox" id="arqDeficiente" value="arqDeficiente">
+        <label class="form-check-label pr-3" for="arqDeficiente">Deficiente</label>
+        <input class="form-check-input" type="checkbox" id="arqMala" value="arqMala">
+        <label class="form-check-label pr-3" for="arqMala">Mala</label>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-12 col-lg-2 col-form-label col-form-label-sm">TIPO DE DISEÑO:</label>
+      <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+        <input class="form-check-input" type="checkbox" id="1planta" value="1planta">
+        <label class="form-check-label pr-3" for="1planta">1 Planta</label>
+        <input class="form-check-input" type="checkbox" id="2planta" value="2planta">
+        <label class="form-check-label pr-3" for="2planta">2 Planta</label>
+        <input class="form-check-input" type="checkbox" id="3planta" value="3planta">
+        <label class="form-check-label pr-3" for="3planta">3 Planta</label>
+        <input class="form-check-input" type="checkbox" id="8niveles" value="8niveles">
+        <label class="form-check-label pr-3" for="8niveles">Edificio de 8 niveles</label>
+      </div>
+    </div>
+    <h4 class="my-4">Descripción de la vivienda</h4>
+    <div class="form-group row">
+      <label for="solicitante" class="col-sm-1 col-form-label col-form-label-sm">COCHERA:</label>
+      <div class="form-check col-sm-1">
+        <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+      </div>
+      <label for="solicitante" class="col-sm-1 col-form-label col-form-label-sm">Paredes:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control form-control-sm" id="solicitante" >
+      </div>
+    </div>
 </form>
