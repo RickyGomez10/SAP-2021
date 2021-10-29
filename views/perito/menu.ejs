@@ -18,16 +18,16 @@
     <link href="/css/style.css" rel="stylesheet">
     <script>
         if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function () {
-          navigator.serviceWorker.register('/sw.js').then(function (registration) {
-            console.log('ServiceWorker registered');
-          }, function (err) {
-            console.log('ServiceWorker registration failed: ', err);
-          });
-        });
-      }
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js').then(function (registration) {
+                    console.log('ServiceWorker registered');
+                }, function (err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
     </script>
-    
+
 </head>
 
 <body id="page-top">
@@ -77,10 +77,12 @@
                 Herramientas
             </div>
             <li class="nav-item">
-                <a class="nav-link" href="/perito/templates"><i class="fas fa-virus fa-chart-area"></i><span>Plantillas</span></a>
+                <a class="nav-link" href="/perito/templates"><i
+                        class="fas fa-virus fa-chart-area"></i><span>Plantillas</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/perito/buscar-propiedad"><i class="fas fa-virus fa-chart-area"></i><span>Búscar Propiedades</span></a>
+                <a class="nav-link" href="/perito/buscar-propiedad"><i
+                        class="fas fa-virus fa-chart-area"></i><span>Búscar Propiedades</span></a>
             </li>
             <hr class="sidebar-divider d-none d-md-block">
             <div class="text-center d-none d-md-inline">

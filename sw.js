@@ -1,5 +1,5 @@
-var CACHE_NAME = 'offline-v0.1';
-var urlsToCache = [
+const CACHE_NAME = 'offline-v0.1';
+const urlsToCache = [
   '/',
   '/css/style.css',
   '/bs/safely.css',
@@ -7,6 +7,7 @@ var urlsToCache = [
   '/jq/jquery.min.js',
   '/idb/index-min.js'
 ];
+const LOCAL_DB_NAME = 'dbSAP'
 
 if (typeof idb === "undefined") self.importScripts("/idb/index-min.js");
 
@@ -42,10 +43,6 @@ self.addEventListener('activate', function (event) {
 
   var cacheAllowlist = ['offline-v0.1'];
   console.log('Service worker activated.');
-
-  event.waitUntil(
-    demo()
-  );
 
   event.waitUntil(
     caches.keys().then(function (cacheNames) {
@@ -102,11 +99,24 @@ self.addEventListener('fetch', function (event) {
   );
 });
 
-async function demo() {
-  const db = await idb.openDB('Articles', 1, {
+addEventListener('message', event => {
+  let data = JSON.parse(event.data);
+  if(data.action == 'guardar_avaluo'){
+    //deleteLocalDB()
+    console.log('Guardando localmente avalúo');
+    console.log(data.form);
+    event.waitUntil(
+      storeData(data.form)
+    );
+    event.source.postMessage("Avalúo guardado localmente.");
+  }
+});
+
+async function storeData(data) {
+  const db = await idb.openDB(LOCAL_DB_NAME, 1, {
     upgrade(db) {
       // Create a store of objects
-      const store = db.createObjectStore('articles', {
+      const store = db.createObjectStore('avaluos', {
         // The 'id' property of the object will be the key.
         keyPath: 'id',
         // If it isn't explicitly set, create a value by auto incrementing.
@@ -118,31 +128,9 @@ async function demo() {
   });
 
   // Add an article:
-  await db.add('articles', {
-    title: 'Article 1',
-    date: new Date('2019-01-01'),
-    body: '…',
-  });
-
-  // Add multiple articles in one transaction:
-  {
-    const tx = db.transaction('articles', 'readwrite');
-    await Promise.all([
-      tx.store.add({
-        title: 'Article 2',
-        date: new Date('2019-01-01'),
-        body: '…',
-      }),
-      tx.store.add({
-        title: 'Article 3',
-        date: new Date('2019-01-02'),
-        body: '…',
-      }),
-      tx.done,
-    ]);
-  }
+  await db.add('avaluos', data);
 
   // Get all the articles in date order:
-  console.log(await db.getAllFromIndex('articles', 'date'));
+  console.log(await db.getAllFromIndex('avaluos', 'date'));
 
 }
