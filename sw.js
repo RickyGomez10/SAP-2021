@@ -7,7 +7,7 @@ const urlsToCache = [
   '/jq/jquery.min.js',
   '/idb/index-min.js'
 ];
-const LOCAL_DB_NAME = 'dbSAP'
+const LOCAL_DB_NAME = 'dbSAP';
 
 if (typeof idb === "undefined") self.importScripts("/idb/index-min.js");
 
