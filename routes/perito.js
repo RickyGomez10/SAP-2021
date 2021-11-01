@@ -27,6 +27,20 @@ router.get('/avaluo/:idAvaluo?', function(req, res, next) {
 router.get('/buscar-propiedad', function(req, res, next) {
   res.render('perito/menu', { title: 'Búscar Propiedad', contenido: 'buscarPropiedad', user: req.cookies.username, propiedades: "" });
 });
+router.get('/propiedad', function(req, res, next) {
+  Usuario.find({})
+    .exec()
+    .then(doc => {
+      if (doc != null) {
+        console.log(doc);
+        res.render('perito/menu', { title: 'Propiedad', contenido: 'propiedad', lista: doc, user: req.cookies.username});
+      }else{
+        res.render('perito/menu', { title: 'Propiedad', contenido: 'propiedad', lista: null, user: req.cookies.username});
+      }
+    })
+    .catch(err => console.log(err));
+  
+});
 
 router.post('/buscar', function(req, res, next) {
   var dir = req.body.dir;
