@@ -5,7 +5,8 @@ const urlsToCache = [
   '/bs/safely.css',
   '/bjs/bootstrap.bundle.min.js.map',
   '/jq/jquery.min.js',
-  '/idb/index-min.js'
+  '/idb/index-min.js',
+  '/swal/sweetalert2.all.min.js'
 ];
 const LOCAL_DB_NAME = 'dbSAP';
 
