@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col">
+        <h1>Imágenes registradas en el sistema</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="card shadow mb-4">
+            <a href="#collapseCardTable" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                <h6 class="m-0 font-weight-bold text-primary">Imágenes almacenadas en el sistema</h6>
+            </a>
+            <div class="collapse hide" id="collapseCardTable">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Número</th>
+                                    <th>Nombre de la imagen</th>
+                                    <th>Accion</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bodyOrders">
+                                <% for (var i = 0; i < imagenes.length ; i++) { %>
+                                    <tr>
+                                      <th><%= i+1 %></th>
+                                      <td> <%= imagenes[i].nombre %> </td>
+                                      <td> <a href="/perito/images-visualizer/<%= imagenes[i]._id %>">Ver imagen</a> </td>
+                                    </tr>
+                                  <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

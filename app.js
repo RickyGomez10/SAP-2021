@@ -26,6 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/js', express.static(__dirname + '/public/js'));
+app.use('/imagesdb', express.static(__dirname + '/images'));
 app.use('/bjs', express.static(__dirname + '/public/assets/vendor/bootstrap/js')); // redirect bootstrap JS
 app.use('/jq', express.static(__dirname + '/public/assets/vendor/jquery')); // redirect JS jQuery
 app.use('/bs', express.static(__dirname + '/public/assets/css')); // redirect CSS bootstrap

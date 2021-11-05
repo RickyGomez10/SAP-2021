@@ -4,6 +4,7 @@ const Usuario = require("../models/user");
 const Propiedad = require("../models/propiedad");
 const avaluoSchema = require("../models/avaluo");
 const peritoSchema = require("../models/user");
+const Imagen = require("../models/imagen");
 const conn = require('./../DB/connection')
 const { PreconditionFailed } = require("http-errors");
 
@@ -210,6 +211,28 @@ router.post("/insertarAvaluo", function (req, res, next) {
     */
 })
 
+router.get('/images-visualizer', (req, res, next)=>{
+  Imagen.find({}).
+  exec()
+  .then(doc =>{
+    res.render("perito/menu", {
+      title: "Imagenes",
+      contenido: "imageVi",
+      user: req.cookies.username,
+      imagenes : doc
+    });
+  });
+  
+})
+
+router.get('/images-visualizer/:id', (req, res, next)=>{
+  Imagen.findById(req.params.id)
+  .exec()
+  .then(result =>{
+    console.log(result);
+    res.render('perito/image-viewer',{title:"Imagen: "+result.nombre, nombre:result.nombre});
+  });
+})
 
 router.get('/close', function(req, res, next) {
   res.clearCookie('username');
