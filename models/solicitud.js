@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-const propiedad = require('./propiedad')
-const perito = require('./user')
+
 const solicitudSchema = mongoose.Schema({
     dui: String,
     nombres: String,
@@ -12,7 +11,7 @@ const solicitudSchema = mongoose.Schema({
     puntosReferencia: String,
     pais: String,
     ciudad: String,
-    refDatos: mongoose.Schema.Types.ObjectId,
+    avaluoCompletado: Boolean,
     avaluoSimple: Object,
     perito: mongoose.Schema.Types.ObjectId
 });

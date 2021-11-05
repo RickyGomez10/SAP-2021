@@ -3,10 +3,11 @@ const router = express.Router();
 const Usuario = require("../models/user");
 const Propiedad = require("../models/propiedad");
 const avaluoSchema = require("../models/avaluo");
+const solicitudSchema = require("../models/solicitud");
 const peritoSchema = require("../models/user");
 const Imagen = require("../models/imagen");
 const conn = require('./../DB/connection')
-const { PreconditionFailed } = require("http-errors");
+var objectid = require('mongodb').ObjectId;
 
 router.get("/", function (req, res, next) {
   if(!req.cookies.username) return res.redirect('/login');
@@ -131,27 +132,22 @@ router.get("/listado", function (req, res, next) {
     .then((doc) => {
       var peritoid = doc[0]._id;
 
-      avaluoSchema.find({perito: peritoid})
+      solicitudSchema.find({perito: peritoid})
         .exec()
         .then((doc) => {
+          let list = []
           if (doc != null) {
-            console.log(doc);
-            res.render("perito/menu", {
-              title: "Plantillas previas",
-              contenido: "listaAvaluos",
-              lista: doc,
-              user: req.cookies.username,
-            });
-          } else {
-            res.render("perito/menu", {
-              title: "Plantillas previas",
-              contenido: "listaAvaluos",
-              lista: [],
-              user: req.cookies.username,
-            });
+            list = doc;
+            
           }
+          res.render("perito/menu", {
+            title: "Mis avalúos",
+            contenido: "listaAvaluos",
+            lista: list,
+            user: req.cookies.username,
+          });
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log("uno"));
     })
     .catch((err) => console.log(err));
 
@@ -189,6 +185,7 @@ router.post("/insertarAvaluo", function (req, res, next) {
     avaluo = {
       modelo: req.body,
       perito: perito[0]._id,
+      propiedad: null
     };
 
     var avaluo = await avaluoSchema(avaluo).save();
@@ -239,5 +236,43 @@ router.get('/close', function(req, res, next) {
   res.redirect('/login');
 })
 
+router.get("/asignarAvaluo", function (req, res, next) {
+  if(!req.cookies.username) return res.redirect('/login');
+  conn.connectDB().then(async()=>{
+    propiedades = await Propiedad.find()
+    peritos = await peritoSchema.find()
+    res.render("perito/menu", {
+      title: "Asignar Avaluo",
+      contenido: "asignacionAvaluo",
+      user: req.cookies.username,
+      prop: propiedades,
+      peritos: peritos
+    });
+  })
+})//cierre de asignar avaluo
+
+router.post("/asignarAvaluo", function (req, res, next) {
+
+  console.log(req.body)
+  var id = req.body.propiedad
+  var propiedad_id = new objectid(id)
+
+  var id2 = req.body.perito
+  var perito_id = new objectid(id2)
+    avaluo ={
+      modelo: null,
+      propiedad: propiedad_id,
+      perito: perito_id,
+
+    }
+  avaluoSchema(avaluo).save().then(avaluo =>{
+    console.log(avaluo)
+    return res.json({}).status(200)
+
+  }).catch(err=>{
+      console.log(err)
+      return res.json({}).status(500)
+    })
+  })//cierre de asignar avaluo
 
 module.exports = router;
