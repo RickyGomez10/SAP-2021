@@ -98,7 +98,6 @@ router.post("/buscar", function (req, res, next) {
   })
     .exec()
     .then((doc) => {
-      console.log(doc);
       res.render("perito/menu", {
         title: "Búscar Propiedad",
         contenido: "buscarPropiedad",
@@ -110,11 +109,41 @@ router.post("/buscar", function (req, res, next) {
 });
 
 router.get("/listado", function (req, res, next) {
-  Usuario.find({})
+  Usuario.find({ user: req.cookies.username })
+    .exec()
+    .then((doc) => {
+      var peritoid = doc[0]._id;
+
+      avaluoSchema.find({perito: peritoid})
+        .exec()
+        .then((doc) => {
+          if (doc != null) {
+            console.log(doc);
+            res.render("perito/menu", {
+              title: "Plantillas previas",
+              contenido: "listaAvaluos",
+              lista: doc,
+              user: req.cookies.username,
+            });
+          } else {
+            res.render("perito/menu", {
+              title: "Plantillas previas",
+              contenido: "listaAvaluos",
+              lista: [],
+              user: req.cookies.username,
+            });
+          }
+        })
+        .catch((err) => console.log(err));
+    })
+    .catch((err) => console.log(err));
+
+
+
+  /*Usuario.find({})
     .exec()
     .then((doc) => {
       if (doc != null) {
-        console.log(doc);
         res.render("perito/menu", {
           title: "Plantillas previas",
           contenido: "listaAvaluos",
@@ -130,15 +159,15 @@ router.get("/listado", function (req, res, next) {
         });
       }
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(err));*/
 });
 
 router.post("/insertarAvaluo", function (req, res, next) {
 
   conn.connectDB().then(async () => {
-    
+
     var perito = await peritoSchema.find({ user: req.body.idAvaluo });
-    
+
     avaluo = {
       modelo: req.body,
       perito: perito[0]._id,
@@ -147,20 +176,21 @@ router.post("/insertarAvaluo", function (req, res, next) {
     var avaluo = await avaluoSchema(avaluo).save();
     console.log("Se ha guardado correctamente el avaluo")
     conn.closeDB();
+    return res.json({}).status(200);
   })
-/* otra forma de guardar el avaluo
-  peritoSchema.find({ user: req.body.idAvaluo }).then((doc) => {
-    avaluo = {
-      modelo: req.body,
-      perito: doc[0]._id,
-    };
-
-    avaluoSchema(avaluo)
-      .save()
-      .then((doc) => console.log("Se ha guardado correctamente el avaluo"))
-      .catch((err) => console.log(err));
-  });
-  */
+  /* otra forma de guardar el avaluo
+    peritoSchema.find({ user: req.body.idAvaluo }).then((doc) => {
+      avaluo = {
+        modelo: req.body,
+        perito: doc[0]._id,
+      };
+  
+      avaluoSchema(avaluo)
+        .save()
+        .then((doc) => console.log("Se ha guardado correctamente el avaluo"))
+        .catch((err) => console.log(err));
+    });
+    */
 });
 
 module.exports = router;
