@@ -16,7 +16,8 @@ router.get("/", function (req, res, next) {
     contenido: "home",
     user: req.cookies.username,
   });
-});
+})
+
 router.get("/addSchema", function (req, res, next) {
   if(!req.cookies.username) return res.redirect('/login');
   res.render("perito/menu", {
@@ -24,7 +25,8 @@ router.get("/addSchema", function (req, res, next) {
     contenido: "addPlano",
     user: req.cookies.username,
   });
-});
+})
+
 router.get("/exportSchema", function (req, res, next) {
   if(!req.cookies.username) return res.redirect('/login');
   res.render("perito/menu", {
@@ -32,7 +34,8 @@ router.get("/exportSchema", function (req, res, next) {
     contenido: "exportPlano",
     user: req.cookies.username,
   });
-});
+})
+
 router.get("/templates", function (req, res, next) {
   if(!req.cookies.username) return res.redirect('/login');
   res.render("perito/menu", {
@@ -40,7 +43,8 @@ router.get("/templates", function (req, res, next) {
     contenido: "templates",
     user: req.cookies.username,
   });
-});
+})
+ 
 router.get("/avaluo/:idAvaluo?", function (req, res, next) {
   if(!req.cookies.username) return res.redirect('/login');
   if (req.params.idAvaluo)
@@ -56,7 +60,8 @@ router.get("/avaluo/:idAvaluo?", function (req, res, next) {
       contenido: "home",
       user: req.cookies.username,
     });
-});
+})
+ 
 router.get("/buscar-propiedad", function (req, res, next) {
   if(!req.cookies.username) return res.redirect('/login');
   res.render("perito/menu", {
@@ -65,7 +70,8 @@ router.get("/buscar-propiedad", function (req, res, next) {
     user: req.cookies.username,
     propiedades: "",
   });
-});
+})
+ 
 router.get("/propiedad", function (req, res, next) {
   if(!req.cookies.username) return res.redirect('/login');
   Usuario.find({})
@@ -89,7 +95,8 @@ router.get("/propiedad", function (req, res, next) {
       }
     })
     .catch((err) => console.log(err));
-});
+})
+ 
 
 router.post("/buscar", function (req, res, next) {
   var dir = req.body.dir;
@@ -113,7 +120,8 @@ router.post("/buscar", function (req, res, next) {
       });
     })
     .catch((err) => console.log(err));
-});
+})
+
 
 router.get("/listado", function (req, res, next) {
   if(!req.cookies.username) return res.redirect('/login');
@@ -168,7 +176,8 @@ router.get("/listado", function (req, res, next) {
       }
     })
     .catch((err) => console.log(err));*/
-});
+})
+
 
 router.post("/insertarAvaluo", function (req, res, next) {
 
@@ -199,11 +208,13 @@ router.post("/insertarAvaluo", function (req, res, next) {
         .catch((err) => console.log(err));
     });
     */
-});
+})
+
 
 router.get('/close', function(req, res, next) {
   res.clearCookie('username');
   res.redirect('/login');
-});
+})
+
 
 module.exports = router;
