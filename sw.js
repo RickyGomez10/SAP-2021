@@ -9,6 +9,7 @@ const urlsToCache = [
   '/swal/sweetalert2.all.min.js'
 ];
 const LOCAL_DB_NAME = 'dbSAP';
+var statusDelete = false;
 
 if (typeof idb === "undefined") self.importScripts("/idb/index-min.js");
 
@@ -102,36 +103,62 @@ self.addEventListener('fetch', function (event) {
 
 addEventListener('message', event => {
   let data = JSON.parse(event.data);
-  if(data.action == 'guardar_avaluo'){
-    //deleteLocalDB()
-    console.log('Guardando localmente avalúo');
-    console.log(data.form);
+  if (data.action == 'guardar_avaluo') {
     event.waitUntil(
       storeData(data.form)
     );
-    event.source.postMessage("Avalúo guardado localmente.");
+    event.source.postMessage("saved");
   }
+
+  if (data.action == 'borrar_avaluo') {
+    event.waitUntil(
+      deleteData(data.form)
+    );
+  }
+
 });
 
 async function storeData(data) {
-  const db = await idb.openDB(LOCAL_DB_NAME, 1, {
+  const db = await getDB();
+
+  const store = db.transaction('avaluos').objectStore('avaluos');
+  let result = await store.get(data.idAvaluo);
+
+  if(result){
+    await db.put('avaluos', {
+      idAvaluo: data.idAvaluo,
+      form: data
+    });
+  }else{
+    await db.add('avaluos', {
+      idAvaluo: data.idAvaluo,
+      form: data
+    });
+  }
+}
+
+async function deleteData(data) {
+  const db = await getDB();
+
+  const store = db.transaction('avaluos').objectStore('avaluos');
+  let result = await store.get(data.idAvaluo);
+
+  if(result){
+    await db.delete('avaluos', data.idAvaluo);
+  }
+}
+
+async function getDB(){
+  return await idb.openDB(LOCAL_DB_NAME, 1, {
     upgrade(db) {
-      // Create a store of objects
-      const store = db.createObjectStore('avaluos', {
-        // The 'id' property of the object will be the key.
-        keyPath: 'id',
-        // If it isn't explicitly set, create a value by auto incrementing.
-        autoIncrement: true,
-      });
-      // Create an index on the 'date' property of the objects.
+      const store = db.createObjectStore(
+        'avaluos',
+        {
+          keyPath: 'idAvaluo',
+          autoIncrement: true,
+        }
+      );
       store.createIndex('date', 'date');
     },
   });
-
-  // Add an article:
-  await db.add('avaluos', data);
-
-  // Get all the articles in date order:
-  console.log(await db.getAllFromIndex('avaluos', 'date'));
-
 }
