@@ -5,7 +5,7 @@ $( document ).ready(function() {
             type: 'POST',  // http method
             datatype: 'json',
             async: true,
-            data: { user: document.getElementById('username').value, pass: document.getElementById('contra').value },  // data to submit
+            data: { username: document.getElementById('username').value, password: document.getElementById('password').value },  // data to submit
             success: function (response) {
                 location.href = '/perito';
             },
