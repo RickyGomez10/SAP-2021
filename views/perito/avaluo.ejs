@@ -662,6 +662,31 @@
         'warning'
       )
     }
+    try{
+      let res = JSON.parse(event.data);
+      let entries = Object.entries(res.form);
+      console.log(entries);
+      entries.forEach(element => {
+        if(element[0]==element[1]){
+          $("#"+element[0]).prop('checked', true);
+        }else{
+          $("#"+element[0]).val(element[1]);
+        }
+      });
+      Swal.fire(
+        'Datos Locales',
+        'Se han encontrado datos locales. Su formulario se ha restaurado con estos datos.',
+        'warning'
+      )
+    }catch(err){ }
+      
+  });
+
+  $(document).ready(function () {
+    let id = $("#form-avaluo").data().avaluo;
+    navigator.serviceWorker.ready.then(registration => {
+      registration.active.postMessage(JSON.stringify({ action: 'buscar_avaluo', idAvaluo: id }));
+    });
   });
 
   function guardarAvaluo() {

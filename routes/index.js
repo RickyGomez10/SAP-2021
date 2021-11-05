@@ -4,7 +4,6 @@ var conn = require('./../DB/connection')
 var mexp = require('math-expression-evaluator');
 
 router.get('/home', (req,res,next)=>{
-  var script = "";
   res.render('home', { title: 'SAP | Home'});
 })
 

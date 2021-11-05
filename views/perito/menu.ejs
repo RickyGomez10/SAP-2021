@@ -17,6 +17,7 @@
     <link href="/bs/safely.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
     <script src="/swal/sweetalert2.all.min.js"></script>
+    <script src="/jq/jquery.min.js"></script>
     <script>
         
         if ('serviceWorker' in navigator) {
@@ -55,6 +56,14 @@
                 <a class="nav-link" href="/perito/listado"><i class="fas fa-virus fa-chart-area"></i><span>Mis
                         avalúos</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/perito/propiedad"><i class="fas fa-plus fa-chart-area"></i><span>
+                        Ver y crear informes</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/perito/asignarAvaluo"><i class="fas fa-plus fa-chart-area"></i><span>
+                        Asignar informe</span></a>
+            </li>
             <hr class="sidebar-divider d-none d-md-block">
             <div class="sidebar-heading">
                 Informe
@@ -85,6 +94,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="/perito/buscar-propiedad"><i
                         class="fas fa-virus fa-chart-area"></i><span>Búscar Propiedades</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/perito/images-visualizer"><i
+                        class="fas fa-images fa-chart-area"></i><span>Ver imágenes</span></a>
             </li>
             <hr class="sidebar-divider d-none d-md-block">
             <div class="text-center d-none d-md-inline">
@@ -167,14 +180,13 @@
                 <div class="modal-body">Selecciona cerrar si realmente quieres cerrar sesion</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="close">Cerrar</a>
+                    <a class="btn btn-primary" href="/perito/close">Cerrar</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="/jq/jquery.min.js"></script>
     <script src="/bjs/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
@@ -189,6 +201,9 @@
     <!-- Page level custom scripts -->
     <script src="/assets/js/demo/chart-area-demo.js"></script>
     <script src="/assets/js/demo/chart-pie-demo.js"></script>
+    <script src="/assets/js/demo/datatables-demo.js"></script>
+    <script src="/assets/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="/assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <script type="text/javascript" src="/js/login.js"></script>
 

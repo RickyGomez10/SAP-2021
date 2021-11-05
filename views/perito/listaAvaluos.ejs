@@ -5,7 +5,6 @@
         <th scope="col">#</th>
         <th scope="col">Nombre</th>
         <th scope="col">Dirección</th>
-        <th scope="col">Fecha</th>
         <th scope="col">Estado</th>
         <th scope="col">Opciones</th>
       </tr>
@@ -14,20 +13,11 @@
       <% for (var i = 0; i < lista.length ; i++) { %>
         <tr>
           <th><%= i+1 %></th>
-          <td> <%= lista[i].user %> </td>
-          <td> <%= lista[i].password %> </td>
-          <td> <%= lista[i].rol %> </td>
-          <td> <%= lista[i].user %> </td>
-          <td> <a href=<%= "/perito/avaluo/"+lista[i].user %>>Ver</a> </td>
+          <td> <%= lista[i].nombres + " " + lista[i].apellidos %> </td>
+          <td> <%= lista[i].direccion1 + " " + lista[i].direccion2 + ", "+lista[i].ciudad + ", "+lista[i].pais %> </td>
+          <td> <%= lista[i].avaluoCompletado?"Completado":"Por completar" %> </td>
+          <td> <a href=<%= "/perito/avaluo/"+lista[i]._id %>>Ver</a> </td>
         </tr>
       <% } %>
-      <tr>
-        <th>☼</th>
-        <td>Avalúo 254</td>
-        <td>Calle Don Bosco y Av. Manuel Gallardo, 1-1, Santa Tecla</td>
-        <td>15/8/2021</td>
-        <td>Completado</td>
-        <td>Ver</td>
-      </tr>
     </tbody>
   </table>
