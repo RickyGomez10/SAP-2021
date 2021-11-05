@@ -7,9 +7,10 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/verificar', function (req, res, next) {
-  var usuario = req.body.user;
-  var contra = req.body.pass;
+  var usuario = req.body.username;
+  var contra = req.body.password;
 
+  console.log(usuario);
   Usuario.findOne({ user: usuario })
     .exec()
     .then(doc => {
@@ -17,7 +18,7 @@ router.post('/verificar', function (req, res, next) {
       if (doc != null) {
         if (doc.password == contra) {
           res.cookie('username',usuario);
-          res.status(200).send({ msg: 'Validación correcta' });
+          res.redirect('/perito');
         } else {
           res.status(401).send({ msg: 'Error de validación' });
         }
