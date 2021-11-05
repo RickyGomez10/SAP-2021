@@ -8,6 +8,7 @@ const conn = require('./../DB/connection')
 const { PreconditionFailed } = require("http-errors");
 
 router.get("/", function (req, res, next) {
+  if(!req.cookies.username) return res.redirect('/login');
   console.log(req.cookies.username);
   console.log("hola");
   res.render("perito/menu", {
@@ -17,6 +18,7 @@ router.get("/", function (req, res, next) {
   });
 });
 router.get("/addSchema", function (req, res, next) {
+  if(!req.cookies.username) return res.redirect('/login');
   res.render("perito/menu", {
     title: "Añadir planos",
     contenido: "addPlano",
@@ -24,6 +26,7 @@ router.get("/addSchema", function (req, res, next) {
   });
 });
 router.get("/exportSchema", function (req, res, next) {
+  if(!req.cookies.username) return res.redirect('/login');
   res.render("perito/menu", {
     title: "Exportar planos",
     contenido: "exportPlano",
@@ -31,6 +34,7 @@ router.get("/exportSchema", function (req, res, next) {
   });
 });
 router.get("/templates", function (req, res, next) {
+  if(!req.cookies.username) return res.redirect('/login');
   res.render("perito/menu", {
     title: "Plantillas previas",
     contenido: "templates",
@@ -38,6 +42,7 @@ router.get("/templates", function (req, res, next) {
   });
 });
 router.get("/avaluo/:idAvaluo?", function (req, res, next) {
+  if(!req.cookies.username) return res.redirect('/login');
   if (req.params.idAvaluo)
     res.render("perito/menu", {
       title: "Avalúo",
@@ -53,6 +58,7 @@ router.get("/avaluo/:idAvaluo?", function (req, res, next) {
     });
 });
 router.get("/buscar-propiedad", function (req, res, next) {
+  if(!req.cookies.username) return res.redirect('/login');
   res.render("perito/menu", {
     title: "Búscar Propiedad",
     contenido: "buscarPropiedad",
@@ -61,6 +67,7 @@ router.get("/buscar-propiedad", function (req, res, next) {
   });
 });
 router.get("/propiedad", function (req, res, next) {
+  if(!req.cookies.username) return res.redirect('/login');
   Usuario.find({})
     .exec()
     .then((doc) => {
@@ -109,6 +116,7 @@ router.post("/buscar", function (req, res, next) {
 });
 
 router.get("/listado", function (req, res, next) {
+  if(!req.cookies.username) return res.redirect('/login');
   Usuario.find({ user: req.cookies.username })
     .exec()
     .then((doc) => {
@@ -191,6 +199,11 @@ router.post("/insertarAvaluo", function (req, res, next) {
         .catch((err) => console.log(err));
     });
     */
+});
+
+router.get('/close', function(req, res, next) {
+  res.clearCookie('username');
+  res.redirect('/login');
 });
 
 module.exports = router;
