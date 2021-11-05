@@ -137,29 +137,6 @@ router.get("/listado", function (req, res, next) {
         .catch((err) => console.log(err));
     })
     .catch((err) => console.log(err));
-
-
-
-  /*Usuario.find({})
-    .exec()
-    .then((doc) => {
-      if (doc != null) {
-        res.render("perito/menu", {
-          title: "Plantillas previas",
-          contenido: "listaAvaluos",
-          lista: doc,
-          user: req.cookies.username,
-        });
-      } else {
-        res.render("perito/menu", {
-          title: "Plantillas previas",
-          contenido: "listaAvaluos",
-          lista: null,
-          user: req.cookies.username,
-        });
-      }
-    })
-    .catch((err) => console.log(err));*/
 });
 
 router.post("/insertarAvaluo", function (req, res, next) {
