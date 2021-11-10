@@ -1,0 +1,67 @@
+<h1>Avaluos a asignar</h1>
+<table class="table table-hover mt-5">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Dui</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Direccion</th>
+        <th scope="col">Puntos de referencia</th>
+        <th scope="col">Peritos disponibles para asignación</th>
+        <th scope="col">Accion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (var i = 0; i < solicitudes.length ; i++) { %>
+        <tr>
+          <th><%= i+1 %></th>
+          <td><%= solicitudes[i].dui %></th>
+          <td> <%= solicitudes[i].nombres + " " + solicitudes[i].apellidos %> </td>
+          <td><%= solicitudes[i].telefono %></td>
+          <td><%= solicitudes[i].correo %></td>
+          <td> <%= solicitudes[i].direccion1 + " " + solicitudes[i].direccion2 + ", "+solicitudes[i].ciudad + ", "+solicitudes[i].pais %> </td>
+          <td><%= solicitudes[i].puntosReferencia %></td>
+          <td> <select class= "form-control" name="propiedad" id=<%= solicitudes[i]._id %>
+            <%
+            for (perito of peritos)
+            {
+                %><option value="<%= perito._id %>"> <%= perito.user %></option><%
+            }
+            %></td>
+            <td> <button class="btn btn-primary"  name= <%= solicitudes[i]._id %> onClick="asignarAvaluo(this.name)"> Asignar Avaluo</button></td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+
+<script>
+    function asignarAvaluo(id) {
+      var elem = document.getElementById(id);
+      console.log(elem);
+      
+      var info = { idSolicitud:elem.id, idPerito: elem.value};
+      console.log(info)
+      $.ajax({
+        url: "/perito/asignarAvaluo",
+        type: "POST",
+        dataType: "json",
+        data: info,
+        success: function () {
+          $('#form-avaluo').trigger("reset");
+          Swal.fire(
+            'Éxito',
+            'La asignación de avalúo  se ha procesado correctamente.',
+            'success'
+          );
+        },
+        error: function (xhr, status, error) {
+          alert("Fallo al enviar datos, almacenando localmente...");
+        }
+      });
+  
+    }
+  
+  //console.log(data);
+  </script>

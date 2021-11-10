@@ -182,16 +182,21 @@ router.get("/avaluos", function (req, res, next) {
 router.post("/insertarAvaluo", function (req, res, next) {
 
   conn.connectDB().then(async () => {
-
-    var perito = await peritoSchema.find({ user: req.body.idAvaluo });
-
+    idavaluo = new objectid(req.body.idAvaluo);
+    //var perito = await peritoSchema.find({ user: req.body.idAvaluo });
+    var solicitud = await solicitudSchema.find({_id: idavaluo});
+    var idPerito = new objectid(solicitud.perito);
+    console.log(req.body);
     avaluo = {
+      _id: idavaluo,
       modelo: req.body,
-      perito: perito[0]._id,
+      perito: idPerito,
       propiedad: null
     };
 
     var avaluo = await avaluoSchema(avaluo).save();
+    solicitud.avaluoCompletado = true;
+    var updatedSolicitud = await solicitudSchema.findOneAndUpdate({_id: idavaluo},{ avaluoCompletado: true})
     console.log("Se ha guardado correctamente el avaluo")
     conn.closeDB();
     return res.json({}).status(200);
@@ -242,39 +247,33 @@ router.get('/close', function (req, res, next) {
 router.get("/asignarAvaluo", function (req, res, next) {
   if (!req.cookies.username) return res.redirect('/login');
   conn.connectDB().then(async () => {
-    propiedades = await Propiedad.find()
-    peritos = await peritoSchema.find()
+    var propiedades = await Propiedad.find();
+    var solicitudes_avaluos = await solicitudSchema.find({perito: null});
+    var peritos = await peritoSchema.find();
+    
+
     res.render("perito/menu", {
       title: "Asignar Avaluo",
       contenido: "asignacionAvaluo",
       user: req.cookies.username,
       prop: propiedades,
-      peritos: peritos
+      peritos: peritos,
+      solicitudes: solicitudes_avaluos,
     });
   })
 });//cierre de asignar avaluo
 
 router.post("/asignarAvaluo", function (req, res, next) {
 
-  console.log(req.body)
-  var id = req.body.propiedad
-  var propiedad_id = new objectid(id)
+  conn.connectDB().then(async () => {
+    console.log(res)
+    var idSolicitud = new objectid(req.body.idSolicitud);
+    var idPerito = new objectid(req.body.idPerito);
+    var solicitudAv = await solicitudSchema.findOneAndUpdate({_id: idSolicitud},{perito: idPerito});
 
-  var id2 = req.body.perito
-  var perito_id = new objectid(id2)
-  avaluo = {
-    modelo: null,
-    propiedad: propiedad_id,
-    perito: perito_id,
+    conn.closeDB();
+    return res.json({}).status(200);
 
-  }
-  avaluoSchema(avaluo).save().then(avaluo => {
-    console.log(avaluo)
-    return res.json({}).status(200)
-
-  }).catch(err => {
-    console.log(err)
-    return res.json({}).status(500)
   })
 });//cierre de asignar avaluo
 
