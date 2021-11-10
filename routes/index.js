@@ -5,8 +5,12 @@ var mexp = require('math-expression-evaluator');
 
 router.get('/home', (req,res,next)=>{
   res.render('home', { title: 'SAP | Home'});
-})
+});
 
+router.get('/', (req,res,next)=>{
+  res.render('home', { title: 'SAP | Home'});
+});
+/*
 router.get('/', function(req, res, next) {
 
   var indicador = "2+([var1]*[var2])";
@@ -16,12 +20,11 @@ router.get('/', function(req, res, next) {
     //const regex = new RegExp("\\s*\\["+campos[i]+"*?\\]\\s*", "g");
     indicador = indicador.replace("["+campos[i]+"]",valores[i]);
   }
-  //const regex =/\s*\[.*?\]\s*/g;
   console.log(indicador);
   console.log(mexp.eval(indicador));
   res.render('index', { title: 'Express' });
 });
-
+*/
 router.get('/register', function (req, res, next) {
   res.render('register');
 });
