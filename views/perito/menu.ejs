@@ -20,7 +20,7 @@
     <script src="/jq/jquery.min.js"></script>
     <script>
         
-        if ('serviceWorker' in navigator) {
+        /*if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
                 navigator.serviceWorker.register('/sw.js').then(function (registration) {
                     console.log('ServiceWorker registered');
@@ -28,7 +28,7 @@
                     console.log('ServiceWorker registration failed: ', err);
                 });
             });
-        }
+        }*/
     </script>
 
 </head>
@@ -53,16 +53,12 @@
                 Avalúos
             </div>
             <li class="nav-item">
-                <a class="nav-link" href="/perito/listado"><i class="fas fa-virus fa-chart-area"></i><span>Mis
+                <a class="nav-link" href="/perito/avaluos"><i class="fas fa-virus fa-chart-area"></i><span>Mis
                         avalúos</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/perito/propiedad"><i class="fas fa-plus fa-chart-area"></i><span>
+                <a class="nav-link" href="/perito/informes"><i class="fas fa-plus fa-chart-area"></i><span>
                         Ver y crear informes</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/perito/asignarAvaluo"><i class="fas fa-plus fa-chart-area"></i><span>
-                        Asignar informe</span></a>
             </li>
             <hr class="sidebar-divider d-none d-md-block">
             <div class="sidebar-heading">
