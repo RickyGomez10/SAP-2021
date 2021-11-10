@@ -624,31 +624,31 @@
   <div class="form-group row">
     <label for="areaPrincipal" class="col-sm-2 col-form-label col-form-label-sm">PRINCIPAL:</label>
     <div class="col-sm-10">
-      <input type="number" class="form-control form-control-sm" id="areaPrincipal" name="areaPrincipal" min="0">
+      <input type="number" class="form-control form-control-sm" id="areaPrincipal" name="areaPrincipal" min="0" value="0" onfocusout="sumaArea()">
     </div>
   </div>
   <div class="form-group row">
     <label for="2nivel" class="col-sm-2 col-form-label col-form-label-sm">2 NIVEL:</label>
     <div class="col-sm-10">
-      <input type="number" class="form-control form-control-sm" id="2nivel" name="2nivel" min="0">
+      <input type="number" class="form-control form-control-sm" id="2nivel" name="2nivel" min="0" value="0" onfocusout="sumaArea()">
     </div>
   </div>
   <div class="form-group row">
     <label for="areaCochera" class="col-sm-2 col-form-label col-form-label-sm">COCHERA:</label>
     <div class="col-sm-10">
-      <input type="number" class="form-control form-control-sm" id="areaCochera" name="areaCochera" min="0">
+      <input type="number" class="form-control form-control-sm" id="areaCochera" name="areaCochera" min="0" value="0" onfocusout="sumaArea()">
     </div>
   </div>
   <div class="form-group row">
     <label for="areaTechado" class="col-sm-2 col-form-label col-form-label-sm">PATIO TECHADO:</label>
     <div class="col-sm-10">
-      <input type="number" class="form-control form-control-sm" id="areaTechado" name="areaTechado" min="0">
+      <input type="number" class="form-control form-control-sm" id="areaTechado" name="areaTechado" min="0" value="0" onfocusout="sumaArea()">
     </div>
   </div>
   <div class="form-group row">
     <label for="areaTotal" class="col-sm-2 col-form-label col-form-label-sm">TOTAL DE ÁREA DE CONSTRUCCIÓN:</label>
     <div class="col-sm-10">
-      <input type="number" class="form-control form-control-sm" id="areaTotal" name="areaTotal" min="0">
+      <input type="number" class="form-control form-control-sm" id="areaTotal" name="areaTotal" min="0" value="0">
     </div>
   </div>
   <button type="button" class="btn btn-primary btn-lg btn-block mt-5" onclick="guardarAvaluo()">GUARDAR</button>
@@ -725,6 +725,17 @@
       }
     });
 
+  }
+
+  function sumaArea(){
+    var a1 = Number(document.getElementById("areaPrincipal").value);
+    var a2 = Number(document.getElementById("2nivel").value);
+    var a3 = Number(document.getElementById("areaCochera").value);
+    var a4 = Number(document.getElementById("areaTechado").value);
+    var total = document.getElementById("areaTotal");
+
+
+    total.value = a1+a2+a3+a4;
   }
 
 //console.log(data);
