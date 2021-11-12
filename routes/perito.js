@@ -328,7 +328,6 @@ router.get("/asignarAvaluo", function (req, res, next) {
     var propiedades = await Propiedad.find();
     var solicitudes_avaluos = await solicitudSchema.find({ perito: null });
     var peritos = await peritoSchema.find();
-    conn.closeDB();
     res.render("perito/menu", {
       title: "Asignar Avaluo",
       contenido: "asignacionAvaluo",
