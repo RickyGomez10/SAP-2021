@@ -196,7 +196,6 @@ router.post("/insertarAvaluo", function (req, res, next) {
     solicitud.avaluoCompletado = true;
     var updatedSolicitud = await solicitudSchema.findOneAndUpdate({ _id: idavaluo }, { avaluoCompletado: true })
     console.log("Se ha guardado correctamente el avaluo")
-    conn.closeDB();
     return res.json({}).status(200);
   });
   /* otra forma de guardar el avaluo
@@ -347,7 +346,6 @@ router.post("/asignarAvaluo", function (req, res, next) {
     var idPerito = new objectid(req.body.idPerito);
     var solicitudAv = await solicitudSchema.findOneAndUpdate({ _id: idSolicitud }, { perito: idPerito });
 
-    conn.closeDB();
     return res.json({}).status(200);
 
   })
