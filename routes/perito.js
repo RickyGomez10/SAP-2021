@@ -259,6 +259,7 @@ router.post("/asignarAvaluo", function (req, res, next) {
 });//cierre de asignar avaluo
 
 router.get("/informes", function (req, res, next) {
+  
   if (!req.cookies.username) return res.redirect('/login');
   let listFuentes = [];
   let listPlantillas = [];
@@ -293,6 +294,7 @@ router.get("/informes", function (req, res, next) {
                     plantillas: listPlantillas,
                     informes: listInformes,
                     user: req.cookies.username,
+                    peritoid: peritoid
                   });
                 })
                 .catch((err) => console.log(err));
