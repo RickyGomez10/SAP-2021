@@ -1,12 +1,59 @@
 <script>
+  var selectedPlantilla = "-1";
+  var selectedFuente = "-1";
+
   $(document).ready(function () {
     $('#plantilla').select2({
       theme: "bootstrap",
       dropdownParent: $("#configModal")
+    }).on("change", function (e) {
+      selectedPlantilla = $(e.target).select2("val");
     });
+
     $('#fuente').select2({
       theme: "bootstrap",
       dropdownParent: $("#configModal")
+    }).on("change", function (e) {
+      selectedFuente = $(e.target).select2("val");
+    });
+
+    function crearInforme() {
+      let nombre = $("#nombre").val();
+      if (nombre.trim() == "" || selectedPlantilla == "-1" || selectedFuente == "-1") {
+        Swal.fire(
+          'Error',
+          'Por favor asegúrese de llenar todos los campos.',
+          'error'
+        );
+      } else {
+        let perito = $("#enviar").data().perito;
+        var info = { nombre: nombre, plantilla: selectedPlantilla, fuente: selectedFuente, idperito: perito };
+        console.log(info)
+        $.ajax({
+          url: "/perito/crearInforme",
+          type: "POST",
+          dataType: "json",
+          data: info,
+          success: function () {
+            $('#form-avaluo').trigger("reset");
+            Swal.fire({
+              title: 'Éxito',
+              text: 'Se ha creado el informe.',
+              icon: 'success',
+              allowOutsideClick: false
+            }).then(function () {
+              window.location = "/perito/informes";
+            });
+          },
+          error: function (xhr, status, error) {
+            console.log("Error...");
+          }
+        });
+      }
+    }
+
+    $("#enviar").click(function (event) {
+      crearInforme();
     });
   });
 </script>
@@ -67,23 +114,23 @@
             </select>
           </div>
 
-            <div class="w-100 pt-2">
-              <label for="fuente">Fuente de datos</label>
-              <select id="fuente" name="fuente" class="form-control">
-                <option value="-1">Seleccione una fuente de datos</option>
-                <% for (var i=0; i < fuentes.length ; i++) { %>
-                  <option value="<%= fuentes[i]._id%>">
-                    <%= fuentes[i].nombres + " " +fuentes[i].apellidos + " - " +fuentes[i].direccion1 + " " +
-                      fuentes[i].direccion2 %>
-                  </option>
-                  <% } %>
-              </select>
-            </div>
+          <div class="w-100 pt-2">
+            <label for="fuente">Fuente de datos</label>
+            <select id="fuente" name="fuente" class="form-control">
+              <option value="-1">Seleccione una fuente de datos</option>
+              <% for (var i=0; i < fuentes.length ; i++) { %>
+                <option value="<%= fuentes[i]._id%>">
+                  <%= fuentes[i].nombres + " " +fuentes[i].apellidos + " - " +fuentes[i].direccion1 + " " +
+                    fuentes[i].direccion2 %>
+                </option>
+                <% } %>
+            </select>
+          </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" onclick="crearInforme()">Crear y continuar</button>
+        <button type="button" class="btn btn-primary" id="enviar" data-perito=<%=peritoid %> >Crear y continuar</button>
       </div>
     </div>
   </div>

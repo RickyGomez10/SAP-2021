@@ -1,55 +1,72 @@
 <h1>Avaluos a asignar</h1>
+<table class="table table-hover mt-5">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Dui</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Telefono</th>
+      <th scope="col">Correo</th>
+      <th scope="col">Direccion</th>
+      <th scope="col">Puntos de referencia</th>
+      <th scope="col">Peritos disponibles para asignación</th>
+      <th scope="col">Accion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for (var i=0; i < solicitudes.length ; i++) { %>
+      <tr>
+        <th>
+          <%= i+1 %>
+        </th>
+        <td>
+          <%= solicitudes[i].dui %>
+            </th>
+        <td>
+          <%= solicitudes[i].nombres + " " + solicitudes[i].apellidos %>
+        </td>
+        <td>
+          <%= solicitudes[i].telefono %>
+        </td>
+        <td>
+          <%= solicitudes[i].correo %>
+        </td>
+        <td>
+          <%= solicitudes[i].direccion1 + " " + solicitudes[i].direccion2 + ", " +solicitudes[i].ciudad + ", "
+            +solicitudes[i].pais %>
+        </td>
+        <td>
+          <%= solicitudes[i].puntosReferencia %>
+        </td>
+        <td> <select class="form-control" name="perito" id="perito" id=<%=solicitudes[i]._id %>>
+            <option value="-1">Asignar a un perito</option>
+            <% for (perito of peritos) { %>
+              <option value="<%= perito._id %>">
+                <%= perito.user %>
+              </option>
+              <% } %>
+          </select>
+        </td>
+        <td>
+          <button class="btn btn-primary" id="enviar" name=<%=solicitudes[i]._id %>>
+            Asignar Avaluo
+          </button>
+        </td>
+      </tr>
+      <% } %>
+  </tbody>
+</table>
+
 <script>
+  var selected = "";
   $(document).ready(function () {
     $('#perito').select2({
       theme: "bootstrap"
+    }).on("change", function (e) {
+      selected = $(e.target).select2("val");
     });
-  });
-</script>
-<table class="table table-hover mt-5">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Dui</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Telefono</th>
-        <th scope="col">Correo</th>
-        <th scope="col">Direccion</th>
-        <th scope="col">Puntos de referencia</th>
-        <th scope="col">Peritos disponibles para asignación</th>
-        <th scope="col">Accion</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% for (var i = 0; i < solicitudes.length ; i++) { %>
-        <tr>
-          <th><%= i+1 %></th>
-          <td><%= solicitudes[i].dui %></th>
-          <td> <%= solicitudes[i].nombres + " " + solicitudes[i].apellidos %> </td>
-          <td><%= solicitudes[i].telefono %></td>
-          <td><%= solicitudes[i].correo %></td>
-          <td> <%= solicitudes[i].direccion1 + " " + solicitudes[i].direccion2 + ", "+solicitudes[i].ciudad + ", "+solicitudes[i].pais %> </td>
-          <td><%= solicitudes[i].puntosReferencia %></td>
-          <td> <select class= "form-control" name="perito" id="perito" id=<%= solicitudes[i]._id %>>
-            <option value="-1">Asignar a un perito</option>
-            <%
-            for (perito of peritos)
-            {
-                %><option value="<%= perito._id %>"> <%= perito.user %></option><%
-            }
-            %></td>
-            <td> <button class="btn btn-primary"  name= <%= solicitudes[i]._id %> onClick="asignarAvaluo(this.name)"> Asignar Avaluo</button></td>
-        </tr>
-      <% } %>
-    </tbody>
-  </table>
-
-<script>
     function asignarAvaluo(id) {
-      var elem = document.getElementById(id);
-      console.log(elem);
-      
-      var info = { idSolicitud:elem.id, idPerito: elem.value};
+      var info = { idSolicitud: id, idPerito: selected };
       console.log(info)
       $.ajax({
         url: "/perito/asignarAvaluo",
@@ -65,11 +82,12 @@
           );
         },
         error: function (xhr, status, error) {
-          alert("Fallo al enviar datos, almacenando localmente...");
+          console.log("Error...");
         }
       });
-  
     }
-  
-  //console.log(data);
-  </script>
+    $("#enviar").click(function (event) {
+      asignarAvaluo($(event.target).attr('name'));
+    });
+  });
+</script>
