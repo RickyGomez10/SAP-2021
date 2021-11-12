@@ -225,6 +225,36 @@ router.get('/close', function (req, res, next) {
   res.redirect('/login');
 });
 
+router.get('/templates/:style/:idAvaluo', (req, res, next)=>{
+  if (!req.cookies.username) return res.redirect('/login');
+  var style = req.params.style;
+  var id = req.params.idAvaluo;
+  if(!id) return res.send("Necesitas de un avaluo para acceder aqui");
+
+  if(style == 'temp1') return res.render("perito/menu", {
+    title: "Plantilla 1",
+    contenido: "formats/temp1",
+    user: req.cookies.username,
+    id: id
+  });
+
+  if(style == 'temp2') return res.render("perito/menu", {
+    title: "Plantilla 2",
+    contenido: "formats/temp2",
+    user: req.cookies.username,
+    id: id
+  });
+
+  if(style == 'temp3') return res.render("perito/menu", {
+    title: "Plantilla 3",
+    contenido: "formats/temp3",
+    user: req.cookies.username,
+    id: id
+  });
+
+  
+
+});
 router.get("/asignarAvaluo", function (req, res, next) {
   if (!req.cookies.username) return res.redirect('/login');
   conn.connectDB().then(async () => {
