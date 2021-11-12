@@ -1,32 +1,13 @@
 <script>
   $(document).ready(function () {
-    var count = 0;
-    var numeroMax = $("#config-form").data().max;
-    for (let index = 1; index < numeroMax; index++) {
-      $("#fuente"+index).hide();
-    }
-    function left() {
-      let current = count;
-      if (count > 0) {
-        count--;
-      }else{
-        count = numeroMax-1;
-      }
-      $("#fuente"+current).hide();
-      $("#fuente"+count).show();
-    }
-    function right() {
-      let current = count;
-      if (count < numeroMax-1) {
-        count++;
-      }else{
-        count = 0
-      }
-      $("#fuente"+current).hide();
-      $("#fuente"+count).show();
-    }
-    $("#left").click(function(){ left(); });
-    $("#right").click(function(){ right(); });
+    $('#plantilla').select2({
+      theme: "bootstrap",
+      dropdownParent: $("#configModal")
+    });
+    $('#fuente').select2({
+      theme: "bootstrap",
+      dropdownParent: $("#configModal")
+    });
   });
 </script>
 <h1>Mis informes</h1>
@@ -56,7 +37,7 @@
 </table>
 <!-- Modal de configuracion -->
 <div class="modal fade" id="configModal" tabindex="-1" aria-labelledby="modalConfiguracion" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Crear un nuevo informe</h5>
@@ -67,16 +48,17 @@
       <div class="modal-body">
         <label>Para crear un nuevo informe seleccione la fuente de datos (avalúo) y la plantilla que se llenará con esos
           datos.</label>
-        <form class="pt-1 d-flex flex-column justify-content-around align-items-center" id="config-form" data-max=<%= fuentes.length%>>
-          <div>
+        <form class="pt-1 d-flex flex-column justify-content-around align-items-center" id="config-form"
+          data-max=<%=fuentes.length%>>
+          <div class="w-100">
             <label for="nombre">Nombre del informe</label>
             <input type="text" id="nombre" name="nombre" class="form-control" value="Mi Informe">
           </div>
 
-          <div>
+          <div class="w-100 pt-2">
             <label for="plantilla">Plantilla del informe</label>
-            <select id="plantilla" name="plantilla" class="form-control">
-              <option value="">-- Seleccione una plantilla --</option>
+            <select id="plantilla" name="plantilla" class="form-control" class="form-control">
+              <option value="-1">Seleccione una plantilla</option>
               <% for (var i=0; i < plantillas.length ; i++) { %>
                 <option value="<%= plantillas[i]._id%>">
                   <%= plantillas[i].nombre%>
@@ -84,31 +66,19 @@
                 <% } %>
             </select>
           </div>
-          
-          <div>
-            <div>
-              <label>Fuente de datos</label>
-            </div>
-            <div>
-              <button type="button" id="left">Anterior</button>
-              <button type="button" id="right">Siguiente</button>
-            </div>
-            <% for (var i=0; i < fuentes.length ; i++) { %>
-            <div id="fuente<%= i%>">
-              <table>
-                <tr id="<%= (fuentes[i].nombres).toLowerCase() %>" data-index="<%= i%>">
-                  <td>Solicitante:</td>
-                  <td><%= fuentes[i].nombres + " " + fuentes[i].apellidos%></td>
-                </tr>
-                <tr>
-                  <td>Dirección:</td>
-                  <td><%= fuentes[i].direccion1%> <br> <%=fuentes[i].direccion2%></td>
-                </tr>
-              </table>
-              </div>
-            <% } %>
 
-          </div>
+            <div class="w-100 pt-2">
+              <label for="fuente">Fuente de datos</label>
+              <select id="fuente" name="fuente" class="form-control">
+                <option value="-1">Seleccione una fuente de datos</option>
+                <% for (var i=0; i < fuentes.length ; i++) { %>
+                  <option value="<%= fuentes[i]._id%>">
+                    <%= fuentes[i].nombres + " " +fuentes[i].apellidos + " - " +fuentes[i].direccion1 + " " +
+                      fuentes[i].direccion2 %>
+                  </option>
+                  <% } %>
+              </select>
+            </div>
         </form>
       </div>
       <div class="modal-footer">

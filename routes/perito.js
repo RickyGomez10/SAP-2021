@@ -280,7 +280,7 @@ router.get("/informes", function (req, res, next) {
               if (doc != null) {
                 listPlantillas = doc;
               }
-              informeSchema.find()
+              informeSchema.find({perito: peritoid})
                 .exec()
                 .then((doc) => {
                   if (doc != null) {

@@ -35,6 +35,7 @@ router.post('/insertar', function (req, res, next) {
     ciudad: req.body.ciudad,
     avaluoCompletado: false,
     avaluoSimple: req.body.valuo ? req.body.valuo : null,
+    fecha: new Date(),
     perito: null,
   }
 

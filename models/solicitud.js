@@ -13,6 +13,7 @@ const solicitudSchema = mongoose.Schema({
     ciudad: String,
     avaluoCompletado: Boolean,
     avaluoSimple: Object,
+    fecha: Date,
     perito: mongoose.Schema.Types.ObjectId
 });
 

@@ -1,4 +1,11 @@
 <h1>Avaluos a asignar</h1>
+<script>
+  $(document).ready(function () {
+    $('#perito').select2({
+      theme: "bootstrap"
+    });
+  });
+</script>
 <table class="table table-hover mt-5">
     <thead>
       <tr>
@@ -23,7 +30,8 @@
           <td><%= solicitudes[i].correo %></td>
           <td> <%= solicitudes[i].direccion1 + " " + solicitudes[i].direccion2 + ", "+solicitudes[i].ciudad + ", "+solicitudes[i].pais %> </td>
           <td><%= solicitudes[i].puntosReferencia %></td>
-          <td> <select class= "form-control" name="propiedad" id=<%= solicitudes[i]._id %>
+          <td> <select class= "form-control" name="perito" id="perito" id=<%= solicitudes[i]._id %>>
+            <option value="-1">Asignar a un perito</option>
             <%
             for (perito of peritos)
             {

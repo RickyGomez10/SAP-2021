@@ -35,6 +35,8 @@ app.use('/bi', express.static(__dirname + '/node_modules/bootstrap-icons')); // 
 app.use('/img', express.static(__dirname + '/public/images')); // Images
 app.use('/idb', express.static(__dirname + '/node_modules/idb/build/iife')); //IndexedDB
 app.use('/css', express.static(__dirname + '/public/stylesheets'));
+app.use('/select', express.static(__dirname + '/node_modules/select2/dist'));
+app.use('/selectbs', express.static(__dirname + '/node_modules/select2-bootstrap-theme/dist'));
 app.use('/', express.static(__dirname));
 
 app.use('/', indexRouter);
