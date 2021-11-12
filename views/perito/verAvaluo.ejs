@@ -1,0 +1,665 @@
+<h1>Avalúo de una Propiedad</h1>
+<form id="form-avaluo">
+  <div class="form-group row">
+    <label for="solicitante" class="col-sm-2 col-form-label col-form-label-sm">SOLICITANTE:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control form-control-sm" id="solicitante" name="solicitante" value="<%= datos.modelo.solicitante %>" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="propietario" class="col-sm-2 col-form-label col-form-label-sm">PROPIETARIOS:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control form-control-sm" id="propietario" name="propietario" value="<%= datos.modelo.propietario %>" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="dirEscritura" class="col-sm-2 col-form-label col-form-label-sm">DIRECCIÓN ESCRITURA:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control form-control-sm" id="dirEscritura" name="dirEscritura" value="<%= datos.modelo.dirEscritura %>" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="dirCampo" class="col-sm-2 col-form-label col-form-label-sm">DIRECCIÓN EN CAMPO:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control form-control-sm" id="dirCampo" name="dirCampo" value="<%= datos.modelo.dirCampo %>" readonly>
+    </div>
+  </div>
+  <h4 class="my-4">Descripción general del inmueble</h4>
+
+  <div class="form-group row">
+    <label class="col-12 col-lg-2 col-form-label col-form-label-sm">TIPO DE BIEN</label>
+    <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+      <input class="form-check-input" type="checkbox" id="urbano" value="urbano" name="urbano" <%= datos.modelo.urbano?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="urbano">Urbano</label>
+      <input class="form-check-input" type="checkbox" id="rural" value="rural" name="rural" <%= datos.modelo.rural?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="rural">Rural</label>
+      <input class="form-check-input" type="checkbox" id="subUrbano" value="subUrbano" name="subUrbano" <%= datos.modelo.subUrbano?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="subUrbano">Sub urbano</label>
+      <input class="form-check-input" type="checkbox" id="rustico" value="rustico" name="rustico" <%= datos.modelo.rustico?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="rustico">Rústico</label>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-12 col-lg-2 col-form-label col-form-label-sm">USO ACTUAL</label>
+    <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+      <input class="form-check-input" type="checkbox" id="residencial" value="residencial" name="residencial" <%= datos.modelo.residencial?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="residencial">Residencial</label>
+      <input class="form-check-input" type="checkbox" id="industrial" value="industrial" name="industrial" <%= datos.modelo.industrial?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="industrial">Industrial</label>
+      <input class="form-check-input" type="checkbox" id="oficinas" value="oficinas" name="oficinas" <%= datos.modelo.oficinas?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="oficinas">Oficinas</label>
+      <input class="form-check-input" type="checkbox" id="comercio" value="comercio" name="comercio" <%= datos.modelo.comercio?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="comercio">Comercio</label>
+      <input class="form-check-input" type="checkbox" id="recreativo" value="recreativo" name="recreativo" <%= datos.modelo.recreativo?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="recreativo">Rrecreativo</label>
+      <input class="form-check-input" type="checkbox" id="valdio" value="valdio" name="valdio" <%= datos.modelo.valdio?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="valdio">Valdío</label>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-12 col-lg-2 col-form-label col-form-label-sm">OFERTA EN ZONA</label>
+    <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+      <input class="form-check-input" type="checkbox" id="abundante" value="abundante" name="abundante" <%= datos.modelo.abundante?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="abundante">Abundante</label>
+      <input class="form-check-input" type="checkbox" id="promedio" value="promedio" name="promedio" <%= datos.modelo.promedio?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="promedio">Promedio</label>
+      <input class="form-check-input" type="checkbox" id="regular" value="regular" name="regular" <%= datos.modelo.regular?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="regular">Regular</label>
+      <input class="form-check-input" type="checkbox" id="equilibrada" value="equilibrada" name="equilibrada" <%= datos.modelo.equilibrada?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="equilibrada">Equilibrada</label>
+      <input class="form-check-input" type="checkbox" id="escasa" value="escasa" name="escasa" <%= datos.modelo.escasa?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="escasa">Escasa</label>
+      <input class="form-check-input" type="checkbox" id="no" value="no" name="no" <%= datos.modelo.no?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="no">No se observó</label>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-12 col-lg-2 col-form-label col-form-label-sm">DEMANDA EN ZONA</label>
+    <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+      <input class="form-check-input" type="checkbox" id="Dalta" value="Dalta" name="Dalta" <%= datos.modelo.Dalta?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="Dalta">Alta</label>
+      <input class="form-check-input" type="checkbox" id="Dbuena" value="Dbuena" name="Dbuena" <%= datos.modelo.Dbuena?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="Dbuena">Buena</label>
+      <input class="form-check-input" type="checkbox" id="Destable" value="Destable" name="Destable" <%= datos.modelo.Destable?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="Destable">Estable</label>
+      <input class="form-check-input" type="checkbox" id="Dregular" value="Dregular" name="Dregular" <%= datos.modelo.Dregular?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="Dregular">Regular</label>
+      <input class="form-check-input" type="checkbox" id="Dbaja" value="Dbaja" name="Dbaja" <%= datos.modelo.Dbaja?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="Dbaja">Baja</label>
+      <input class="form-check-input" type="checkbox" id="Dno" value="Dno" name="Dno" <%= datos.modelo.Dno?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="Dno">No existe</label>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-12 col-lg-2 col-form-label col-form-label-sm">PLUSVALIA</label>
+    <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+      <input class="form-check-input" type="checkbox" id="Pcreciente" value="Pcreciente" name="Pcreciente" <%= datos.modelo.Pcreciente?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="Pcreciente">Creciente</label>
+      <input class="form-check-input" type="checkbox" id="Pestable" value="Pestable" name="Pestable" <%= datos.modelo.Pestable?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="Pestable">Estable</label>
+      <input class="form-check-input" type="checkbox" id="Pdeterioro" value="Pdeterioro" name="Pdeterioro" <%= datos.modelo.Pdeterioro?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="Pdeterioro">En deterioro</label>
+      <input class="form-check-input" type="checkbox" id="Ptrans" value="Ptrans" name="Ptrans" <%= datos.modelo.Ptrans?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="Ptrans">En transición</label>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-12 col-lg-2 col-form-label col-form-label-sm">ENTORNO</label>
+    <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+      <input class="form-check-input" type="checkbox" id="superior" value="superior" name="superior" <%= datos.modelo.superior?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="superior">Superior</label>
+      <input class="form-check-input" type="checkbox" id="similar" value="similar" name="similar" <%= datos.modelo.similar?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="similar">Similar</label>
+      <input class="form-check-input" type="checkbox" id="inferior" value="inferior" name="inferior" <%= datos.modelo.inferior?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="inferior">Inferior</label>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="ocupado" class="col-sm-2 col-form-label col-form-label-sm">OCUPADO POR:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control form-control-sm" id="ocupado" name="ocupado" value="<%= datos.modelo.ocupado %>" disabled>
+    </div>
+  </div>
+  <h4 class="my-4">Linderos y descripción según escritura</h4>
+  <div class="form-group row">
+    <label for="ocupado" class="col-sm-2 col-form-label col-form-label-sm">DISTANCIAS DE LUGARES IMPORTANTES:</label>
+    <div class="col-sm-10">
+      <div class="form-inline">
+        <div class="form-group">
+          <label for="escuelas" class="col-form-label col-form-label-sm mr-sm-3">Escuelas o colegios</label>
+          <input type="number" class="form-control form-control-sm" id="escuelas" name="escuelas" placeholder="mt" value="<%= datos.modelo.escuelas %>"
+            min="0" disabled>
+        </div>
+        <div class="form-group">
+          <label for="transporte" class="col-form-label col-form-label-sm  mx-sm-3">Transporte público</label>
+          <input type="number" class="form-control form-control-sm" id="transporte" name="transporte" placeholder="mt" value="<%= datos.modelo.transporte %>"
+            min="0" disabled>
+        </div>
+        <div class="form-group ">
+          <label for="comercioformal" class="col-form-label col-form-label-sm  mx-sm-3">Comercio formal</label>
+          <input type="number" class="form-control form-control-sm" id="comercioformal" name="comercioformal" value="<%= datos.modelo.comercioformal %>"
+            placeholder="mt" min="0" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h4 class="mt-4">Descripción del terreno</h4>
+  <h5>Medidas perimétricas y colindancias: (verificado en campo)</h5>
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <label for="norte" class="col-form-label col-form-label-sm">Norte</label>
+      <input type="number" class="form-control form-control-sm" id="norte" name="norte" min="0" value="<%= datos.modelo.norte %>" disabled>
+    </div>
+    <div class="col-sm-10">
+      <label for="Lnorte" class="col-form-label col-form-label-sm">Linda con</label>
+      <input type="text" class="form-control form-control-sm" id="Lnorte" name="Lnorte" min="0" value="<%= datos.modelo.Lnorte %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <label for="sur" class="col-form-label col-form-label-sm">Sur</label>
+      <input type="number" class="form-control form-control-sm" id="sur" name="sur" min="0" value="<%= datos.modelo.sur %>" disabled>
+    </div>
+    <div class="col-sm-10">
+      <label for="Lsur" class="col-form-label col-form-label-sm">Linda con</label>
+      <input type="text" class="form-control form-control-sm" id="Lsur" name="Lsur" min="0" value="<%= datos.modelo.Lsur %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <label for="oriente" class="col-form-label col-form-label-sm">Oriente</label>
+      <input type="number" class="form-control form-control-sm" id="oriente" name="oriente" value="<%= datos.modelo.oriente %>" min="0" disabled>
+    </div>
+    <div class="col-sm-10">
+      <label for="Loriente" class="col-form-label col-form-label-sm">Linda con</label>
+      <input type="text" class="form-control form-control-sm" id="Loriente" name="Loriente" min="0" value="<%= datos.modelo.Loriente %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <label for="poniente" class="col-form-label col-form-label-sm">Poniente</label>
+      <input type="number" class="form-control form-control-sm" id="poniente" name="poniente" min="0" value="<%= datos.modelo.poniente %>" disabled>
+    </div>
+    <div class="col-sm-10">
+      <label for="Lponiente" class="col-form-label col-form-label-sm">Linda con</label>
+      <input type="text" class="form-control form-control-sm" id="Lponiente" name="Lponiente" min="0" value="<%= datos.modelo.Lponiente %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inscripcion" class="col-sm-2 col-form-label col-form-label-sm">N° DE INSCRIPCIÓN R.P.R.H.</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control form-control-sm" id="inscripcion" name="inscripcion" value="<%= datos.modelo.inscripcion %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="ocupado" class="col-sm-2 col-form-label col-form-label-sm">ÁREA DE TERRENO SEGÚN ESCRITURA:</label>
+    <div class="col-sm-10">
+      <div class="form-inline">
+        <div class="form-group mr-3">
+          <input type="number" class="form-control form-control-sm" id="areaEscritura" name="areaEscritura" value="<%= datos.modelo.areaEscritura %>"
+            placeholder="M2" min="0" disabled>
+        </div>
+        <div class="form-group">
+          <input type="number" class="form-control form-control-sm" id="volumenEscritura" name="volumenEscritura" value="<%= datos.modelo.volumenEscritura %>"
+            placeholder="V2" min="0" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="ocupado" class="col-sm-2 col-form-label col-form-label-sm">ÁREA DE TERRENO SEGÚN CAMPO:</label>
+    <div class="col-sm-10">
+      <div class="form-inline">
+        <div class="form-group mr-3">
+          <input type="number" class="form-control form-control-sm" id="areaCampo" name="areaCampo" placeholder="M2" value="<%= datos.modelo.areaCampo %>"
+            min="0" disabled>
+        </div>
+        <div class="form-group">
+          <input type="number" class="form-control form-control-sm" id="volumenCampo" name="volumenCampo" value="<%= datos.modelo.volumenCampo %>"
+            placeholder="V2" min="0" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h4 class="my-4">Información sobre servicios</h4>
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="aguaPotable" id="aguaPotable" value="aguaPotable" <%= datos.modelo.aguaPotable?'checked':''%> disabled>
+        <label class="form-check-label" for="aguaPotable">Agua potable</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="electrica" id="electrica" value="energiaElectrica" <%= datos.modelo.electrica?'checked':''%> disabled>
+        <label class="form-check-label" for="electrica">E. Electrica</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="aceras" id="aceras" value="aceras" <%= datos.modelo.aceras?'checked':''%> disabled>
+        <label class="form-check-label" for="aceras">Aceras</label>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="arriate" id="arriate" value="arriate" <%= datos.modelo.arriate?'checked':''%> disabled>
+        <label class="form-check-label" for="arriate">Arriate</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="alumbrado" id="alumbrado" value="alumbrado" <%= datos.modelo.alumbrado?'checked':''%> disabled>
+        <label class="form-check-label" for="alumbrado">Alum. Público</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="aseo" id="aseo" value="aseo" <%= datos.modelo.aseo?'checked':''%> disabled>
+        <label class="form-check-label" for="aseo">Tren de aseo</label>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="tanque" id="tanque" value="tanque" <%= datos.modelo.tanque?'checked':''%> disabled>
+        <label class="form-check-label" for="tanque">Tanque</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="telefono" id="telefono" value="telefono" <%= datos.modelo.telefono?'checked':''%> disabled>
+        <label class="form-check-label" for="telefono">Teléfono</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="caseta" id="caseta" value="caseta" <%= datos.modelo.caseta?'checked':''%> disabled>
+        <label class="form-check-label" for="caseta">Caseta de vig.</label>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="cisterna" id="cisterna" value="cisterna" <%= datos.modelo.cisterna?'checked':''%> disabled>
+        <label class="form-check-label" for="cisterna">Cisterna</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="alcantarillados" id="alcantarillados"
+          value="alcantarillados" <%= datos.modelo.alcantarillados?'checked':''%> disabled>
+        <label class="form-check-label" for=alcantarillados">Alcantarillados</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row my-3">
+    <label for="acceso" class="col-sm-2 col-form-label col-form-label-sm">ACCESO:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control form-control-sm" id="acceso" value="<%= datos.modelo.acceso %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-12 col-lg-2 col-form-label col-form-label-sm">FORMA PARTE DE UN PROYECTO:</label>
+    <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+      <input class="form-check-input" type="checkbox" id="condominio" name="condominio" value="condominio" <%= datos.modelo.condominio?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="condominio">Condominio vertical</label>
+      <input class="form-check-input" type="checkbox" id="urbanizacion" name="urbanizacion" value="urbanizacion" <%= datos.modelo.urbanizacion?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="urbanizacion">De urbanización</label>
+      <input class="form-check-input" type="checkbox" id="formal" name="formal" value="formal" <%= datos.modelo.formal?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="formal">Formal</label>
+      <div class="form-inline">
+        <div class="form-group">
+          <label for="otros" class="col-form-label col-form-label-sm mr-sm-3">Otros:</label>
+          <input type="text" class="form-control form-control-sm" id="otros" name="otros"  value="<%= datos.modelo.otros %>" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h4 class="my-4">Descripción de las construcciones</h4>
+  <div class="form-group row my-3">
+    <label for="edadEstimada" class="col-sm-2 col-form-label col-form-label-sm">EDAD ESTIMADA DE LA CONSTRUCCIÓN
+      (años):</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control form-control-sm" id="edadEstimada" name="edadEstimada" value="<%= datos.modelo.edadEstimada %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row my-3">
+    <label for="vidaUtil" class="col-sm-2 col-form-label col-form-label-sm">VIDA ÚTIL REMANENTE (años):</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control form-control-sm" id="vidaUtil" name="vidaUtil" value="<%= datos.modelo.vidaUtil %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-12 col-lg-2 col-form-label col-form-label-sm">TIPO DE CONSTRUCCIÓN:</label>
+    <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+      <input class="form-check-input" type="checkbox" id="mixto" value="mixto" name="mixto" <%= datos.modelo.mixto?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="mixto">mixto L.B.C.</label>
+      <input class="form-check-input" type="checkbox" id="mamposteria" name="mamposteria" value="mamposteria" <%= datos.modelo.mamposteria?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="mamposteria">Mampostería</label>
+      <input class="form-check-input" type="checkbox" id="prefabricado" name="prefabricado" value="prefabricado" <%= datos.modelo.prefabricado?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="prefabricado">Prefabricado</label>
+      <input class="form-check-input" type="checkbox" id="tipoPerf" name="tipoPerf" value="tipoPerf" <%= datos.modelo.tipoPerf?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="tipoPerf">est. tipo perf.</label>
+      <input class="form-check-input" type="checkbox" id="adobe" name="adobe" value="adobe" <%= datos.modelo.adobe?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="adobe">Adobe</label>
+      <input class="form-check-input" type="checkbox" id="bahareque" name="bahareque" value="bahareque" <%= datos.modelo.bahareque?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="bahareque">Bahareque</label>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-12 col-lg-2 col-form-label col-form-label-sm">TIPO DE EDIFICACIÓN:</label>
+    <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+      <input class="form-check-input" type="checkbox" id="unifamiliar" name="unifamiliar" value="unifamiliar" disabled>
+      <label class="form-check-label pr-3" for="unifamiliar">Unifamiliar</label>
+      <input class="form-check-input" type="checkbox" id="condV" name="condV" value="condV" disabled>
+      <label class="form-check-label pr-3" for="condV">Cond. Vert.</label>
+      <input class="form-check-input" type="checkbox" id="condH" name="condH" value="condH" disabled>
+      <label class="form-check-label pr-3" for="condH">Cond. Horiz.</label>
+      <input class="form-check-input" type="checkbox" id="multifamiliar" name="multifamiliar" value="multifamiliar" disabled>
+      <label class="form-check-label pr-3" for="multifamiliar">Multifamiliar</label>
+      <input class="form-check-input" type="checkbox" id="otroEdif" name="otroEdif" value="otroEdif" disabled>
+      <label class="form-check-label pr-3" for="otroEdif">Otro</label>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-12 col-lg-2 col-form-label col-form-label-sm">DISTRIBUCIÓN ARQUITECTÓNICA:</label>
+    <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+      <input class="form-check-input" type="checkbox" id="arqBuena" name="arqBuena" value="arqBuena" <%= datos.modelo.arqBuena?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="arqBuena">Buena</label>
+      <input class="form-check-input" type="checkbox" id="arqRegular" name="arqRegular" value="arqRegular" <%= datos.modelo.arqRegular?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="arqRegular">Regular</label>
+      <input class="form-check-input" type="checkbox" id="arqDeficiente" name="arqDeficiente" value="arqDeficiente" <%= datos.modelo.arqDeficiente?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="arqDeficiente">Deficiente</label>
+      <input class="form-check-input" type="checkbox" id="arqMala" name="arqMala" value="arqMala" <%= datos.modelo.arqMala?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="arqMala">Mala</label>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-12 col-lg-2 col-form-label col-form-label-sm">TIPO DE DISEÑO:</label>
+    <div class="col-12 col-lg-10 form-check form-check-inline checkboxes">
+      <input class="form-check-input" type="checkbox" id="unaPlanta" name="unaPlanta" value="unaPlanta" <%= datos.modelo.unaPlanta?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="unaPlanta">1 Planta</label>
+      <input class="form-check-input" type="checkbox" id="dosPlanta" name="dosPlanta" value="dosPlanta" <%= datos.modelo.dosPlanta?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="dosPlanta">2 Planta</label>
+      <input class="form-check-input" type="checkbox" id="tresPlanta" name="tresPlanta" value="tresPlanta" <%= datos.modelo.tresPlanta?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="tresPlanta">3 Planta</label>
+      <input class="form-check-input" type="checkbox" id="ochoNiveles" name="ochoNiveles" value="ochoNiveles" <%= datos.modelo.ochoNiveles?'checked':''%> disabled>
+      <label class="form-check-label pr-3" for="ochoNiveles">Edificio de 8 niveles</label>
+    </div>
+  </div>
+  <h4 class="my-4">Descripción de la vivienda</h4>
+  <div class="form-group row">
+    <label for="cochera" class="col-sm-1 col-form-label col-form-label-sm">COCHERA:</label>
+    <div class="form-check col-sm-1">
+      <input class="form-check-input position-static" type="checkbox" id="cochera" name="cochera" value="cochera" <%= datos.modelo.cochera?'checked':''%> disabled>
+    </div>
+    <label for="paredes" class="col-sm-1 col-form-label col-form-label-sm">Paredes:</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control form-control-sm" id="paredes" name="paredes" value="<%= datos.modelo.paredes %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="terraza" class="col-sm-1 col-form-label col-form-label-sm">TERRAZA:</label>
+    <div class="form-check col-sm-1">
+      <input class="form-check-input position-static" type="checkbox" id="terraza" name="terraza" value="terraza" <%= datos.modelo.terraza?'checked':''%> disabled>
+    </div>
+    <label for="techo" class="col-sm-1 col-form-label col-form-label-sm">Techo:</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control form-control-sm" id="techo" name="techo" value="<%= datos.modelo.techo %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="dormitorio" class="col-sm-1 col-form-label col-form-label-sm">DORMITORIO:</label>
+    <div class="form-check col-sm-1">
+      <input class="form-check-input position-static" type="checkbox" id="dormitorio" name="dormitorio" <%= datos.modelo.domitorio?'checked':''%>
+        value="dormitorio" disabled>
+    </div>
+    <label for="estructura" class="col-sm-1 col-form-label col-form-label-sm">Estructura:</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control form-control-sm" id="estructura" name="estructura" value="<%= datos.modelo.estructura %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="sala" class="col-sm-1 col-form-label col-form-label-sm">SALA:</label>
+    <div class="form-check col-sm-1">
+      <input class="form-check-input position-static" type="checkbox" id="sala" name="sala" value="sala" <%= datos.modelo.sala?'checked':''%> disabled>
+    </div>
+    <label for="cielos" class="col-sm-1 col-form-label col-form-label-sm">Cielos:</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control form-control-sm" id="cielos" name="cielos" value="<%= datos.modelo.cielos %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="comedor" class="col-sm-1 col-form-label col-form-label-sm">COMEDOR:</label>
+    <div class="form-check col-sm-1">
+      <input class="form-check-input position-static" type="checkbox" id="comedor" name="comedor" value="comedor" <%= datos.modelo.comedor?'checked':''%> disabled>
+    </div>
+    <label for="pisos" class="col-sm-1 col-form-label col-form-label-sm">Pisos:</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control form-control-sm" id="pisos" name="pisos" value="<%= datos.modelo.pisos %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="cocina" class="col-sm-1 col-form-label col-form-label-sm">COCINA:</label>
+    <div class="form-check col-sm-1">
+      <input class="form-check-input position-static" type="checkbox" id="cocina" name="cocina" value="cocina" <%= datos.modelo.cocina?'checked':''%> disabled>
+    </div>
+    <label for="ventanas" class="col-sm-1 col-form-label col-form-label-sm">Ventanas:</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control form-control-sm" id="ventanas" name="ventanas" value="<%= datos.modelo.ventanas %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="sanitarioC" class="col-sm-1 col-form-label col-form-label-sm">SANITARIO COMP.:</label>
+    <div class="form-check col-sm-1">
+      <input class="form-check-input position-static" type="checkbox" id="sanitarioC" name="sanitarioC" <%= datos.modelo.sanitarioC?'checked':''%>
+        value="sanitarioC" disabled>
+    </div>
+    <label for="puertas" class="col-sm-1 col-form-label col-form-label-sm">Puertas:</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control form-control-sm" id="puertas" name="puertas" value="<%= datos.modelo.puertas %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="sanitarioS" class="col-sm-1 col-form-label col-form-label-sm">SANITARIO SOCIAL:</label>
+    <div class="form-check col-sm-1">
+      <input class="form-check-input position-static" type="checkbox" id="sanitarioS" name="sanitarioS" <%= datos.modelo.sanitarioS?'checked':''%>
+        value="sanitarioS" disabled>
+    </div>
+    <label for="defensas" class="col-sm-1 col-form-label col-form-label-sm">Defensas:</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control form-control-sm" id="defensas" name="defensas" value="<%= datos.modelo.defensas %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="estar" class="col-sm-1 col-form-label col-form-label-sm">ESTAR FAMILIAR:</label>
+    <div class="form-check col-sm-1">
+      <input class="form-check-input position-static" type="checkbox" id="estar" name="estar" value="estar" <%= datos.modelo.estar?'checked':''%> disabled>
+    </div>
+    <label for="entrePisos" class="col-sm-1 col-form-label col-form-label-sm">Entrepisos:</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control form-control-sm" id="entrePisos" name="entrePisos" value="<%= datos.modelo.entrePisos %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="usosM" class="col-sm-1 col-form-label col-form-label-sm">USOS MÚLTIPLES:</label>
+    <div class="form-check col-sm-1">
+      <input class="form-check-input position-static" type="checkbox" id="usosM" name="usosM" value="usosM" <%= datos.modelo.usosM?'checked':''%> disabled>
+    </div>
+    <label for="pantry" class="col-sm-1 col-form-label col-form-label-sm">Pantry:</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control form-control-sm" id="pantry" name="pantry" value="<%= datos.modelo.pantry %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="estudio" class="col-sm-1 col-form-label col-form-label-sm">ESTUDIO:</label>
+    <div class="form-check col-sm-1">
+      <input class="form-check-input position-static" type="checkbox" id="estudio" name="estudio" value="estudio" <%= datos.modelo.estudio?'checked':''%> disabled>
+    </div>
+    <label for="closets" class="col-sm-1 col-form-label col-form-label-sm">Closets:</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control form-control-sm" id="closets" name="closets" value="<%= datos.modelo.closets %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="dormServicio" class="col-sm-1 col-form-label col-form-label-sm">DORM. SERVICIO:</label>
+    <div class="form-check col-sm-1">
+      <input class="form-check-input position-static" type="checkbox" id="dormServicio" name="dormServicio" <%= datos.modelo.dormServicio?'checked':''%>
+        value="dormServicio" disabled>
+    </div>
+    <label for="revestimientos" class="col-sm-1 col-form-label col-form-label-sm">Revestimientos:</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control form-control-sm" id="revestimientos" name="revestimientos" value="<%= datos.modelo.revestimientos %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="bañoS" class="col-sm-1 col-form-label col-form-label-sm">BAÑO DE SERVICIO:</label>
+    <div class="form-check col-sm-1">
+      <input class="form-check-input position-static" type="checkbox" id="bañoS" name="bañoS" value="bañoS" <%= datos.modelo.bañoS?'checked':''%> disabled>
+    </div>
+    <label for="servSanit" class="col-sm-1 col-form-label col-form-label-sm">Serv. Sanit.:</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control form-control-sm" id="servSanit" name="servSanit" value="<%= datos.modelo.servSanit %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="areaOficio" class="col-sm-1 col-form-label col-form-label-sm">AREA DE OFICIOS:</label>
+    <div class="form-check col-sm-1">
+      <input class="form-check-input position-static" type="checkbox" id="areaOficio" name="areaOficio" <%= datos.modelo.areaOficio?'checked':''%>
+        value="areaOficio" disabled>
+    </div>
+    <label for="acabEsp" class="col-sm-1 col-form-label col-form-label-sm">Acab. Esp.:</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control form-control-sm" id="acabEsp" name="acabEsp" value="<%= datos.modelo.acabEsp %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="patio" class="col-sm-1 col-form-label col-form-label-sm">PATIO:</label>
+    <div class="form-check col-sm-1">
+      <input class="form-check-input position-static" type="checkbox" id="patio" name="patio" value="patio" <%= datos.modelo.patio?'checked':''%> disabled>
+    </div>
+    <label for="tapial" class="col-sm-1 col-form-label col-form-label-sm">Tapial:</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control form-control-sm" id="tapial" name="tapial" value="<%= datos.modelo.tapial %>" disabled>
+    </div>
+  </div>
+  <div class="form-group mt-5 row">
+    <label class="col-sm-2 col-form-label col-form-label-sm">BAÑOS:</label>
+    <div class="col-sm-10">
+      <div class="form-inline">
+        <div class="form-group">
+          <label for="numBaños" class="col-form-label col-form-label-sm mr-sm-3">Número</label>
+          <input type="number" class="form-control form-control-sm" id="numBaños" name="numBaños" placeholder="0" value="<%= datos.modelo.numBaños %>"
+            min="0" disabled>
+        </div>
+        <div class="form-group">
+          <label for="numPiezas" class="col-form-label col-form-label-sm  mx-sm-3">No de piezas</label>
+          <input type="number" class="form-control form-control-sm" id="numPiezas" name="numPiezas" placeholder="0" value="<%= datos.modelo.numPiezas %>"
+            min="0" disabled>
+        </div>
+        <div class="form-group ">
+          <label for="enchapes" class="col-form-label col-form-label-sm  mx-sm-3">Enchapes</label>
+          <input type="number" class="form-control form-control-sm" id="enchapes" name="enchapes" placeholder="0" value="<%= datos.modelo.enchapes %>"
+            min="0" disabled>
+        </div>
+        <div class="form-group ">
+          <label for="griferia" class="col-form-label col-form-label-sm  mx-sm-3">Grifería</label>
+          <input type="number" class="form-control form-control-sm" id="griferia" name="griferia" placeholder="0" value="<%= datos.modelo.griferia %>"
+            min="0" disabled>
+        </div>
+        <div class="form-group ">
+          <label for="otrosBaños" class="col-form-label col-form-label-sm  mx-sm-3">Otros</label>
+          <input type="text" class="form-control form-control-sm" id="otrosBaños" name="otrosBaños" value="<%= datos.modelo.otrosBaños %>" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group mt-5 row">
+    <label class="col-sm-2 col-form-label col-form-label-sm">COCINA:</label>
+    <div class="col-sm-10">
+      <div class="form-inline">
+        <div class="form-group">
+          <label for="gabinetes" class="col-form-label col-form-label-sm mr-sm-3">Gabinetes</label>
+          <input type="number" class="form-control form-control-sm" id="gabinetes" name="gabinetes" placeholder="0" value="<%= datos.modelo.gabinetes %>"
+            min="0" disabled>
+        </div>
+        <div class="form-group">
+          <label for="fregadero" class="col-form-label col-form-label-sm  mx-sm-3">Fregadero</label>
+          <input type="number" class="form-control form-control-sm" id="fregadero" name="fregadero" placeholder="0" value="<%= datos.modelo.fregadero %>"
+            min="0" disabled>
+        </div>
+        <div class="form-group ">
+          <label for="enchapesC" class="col-form-label col-form-label-sm  mx-sm-3">Enchapes</label>
+          <input type="number" class="form-control form-control-sm" id="enchapesC" name="enchapesC" placeholder="0" value="<%= datos.modelo.enchapesC %>"
+            min="0" disabled>
+        </div>
+        <div class="form-group ">
+          <label for="griferiaC" class="col-form-label col-form-label-sm  mx-sm-3">Grifería</label>
+          <input type="number" class="form-control form-control-sm" id="griferiaC" name="griferiaC" placeholder="0" value="<%= datos.modelo.griferiaC %>"
+            min="0" disabled>
+        </div>
+        <div class="form-group ">
+          <label for="otrosCocina" class="col-form-label col-form-label-sm  mx-sm-3">Otros</label>
+          <input type="text" class="form-control form-control-sm" id="otrosCocina" name="otrosCocina" value="<%= datos.modelo.otrosCocina %>" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group mt-5 row">
+    <label class="col-sm-2 col-form-label col-form-label-sm">HABITACIONAL:</label>
+    <div class="col-sm-10">
+      <div class="form-inline">
+        <div class="form-group">
+          <label for="enrejados" class="col-form-label col-form-label-sm mr-sm-3">Enrejados</label>
+          <input type="number" class="form-control form-control-sm" id="enrejados" name="enrejados" placeholder="0" value="<%= datos.modelo.enrejados %>"
+            min="0" disabled>
+        </div>
+        <div class="form-group">
+          <label for="tapiales" class="col-form-label col-form-label-sm  mx-sm-3">Tapiales</label>
+          <input type="number" class="form-control form-control-sm" id="tapiales" name="tapiales" placeholder="0" value="<%= datos.modelo.tapiales %>"
+            min="0" disabled>
+        </div>
+        <div class="form-group ">
+          <label for="patios" class="col-form-label col-form-label-sm  mx-sm-3">Patios</label>
+          <input type="number" class="form-control form-control-sm" id="patios" name="patios" placeholder="0" min="0" value="<%= datos.modelo.patios %>" disabled>
+        </div>
+        <div class="form-group ">
+          <label for="cisternaH" class="col-form-label col-form-label-sm  mx-sm-3">Cisterna</label>
+          <input type="number" class="form-control form-control-sm" id="cisternaH" name="cisternaH" placeholder="0" value="<%= datos.modelo.cisternaH %>"
+            min="0" disabled>
+        </div>
+        <div class="form-group ">
+          <label for="piscina" class="col-form-label col-form-label-sm  mx-sm-3">Piscina</label>
+          <input type="number" class="form-control form-control-sm" id="piscina" name="piscina" placeholder="0" min="0" value="<%= datos.modelo.piscina %>" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h4 class="my-4">Descripción de las áreas construídas - Área m²</h4>
+  <div class="form-group row">
+    <label for="areaPrincipal" class="col-sm-2 col-form-label col-form-label-sm">PRINCIPAL:</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control form-control-sm" id="areaPrincipal" name="areaPrincipal" min="0" onfocusout="sumaArea()" value="<%= datos.modelo.areaPrincipal %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="segundoNivel" class="col-sm-2 col-form-label col-form-label-sm">2 NIVEL:</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control form-control-sm" id="segundoNivel" name="segundoNivel" min="0" onfocusout="sumaArea()" value="<%= datos.modelo.segundoNivel %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="areaCochera" class="col-sm-2 col-form-label col-form-label-sm">COCHERA:</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control form-control-sm" id="areaCochera" name="areaCochera" min="0" onfocusout="sumaArea()" value="<%= datos.modelo.areaCochera %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="areaTechado" class="col-sm-2 col-form-label col-form-label-sm">PATIO TECHADO:</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control form-control-sm" id="areaTechado" name="areaTechado" min="0"  onfocusout="sumaArea()" value="<%= datos.modelo.areaTechado %>" disabled>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="areaTotal" class="col-sm-2 col-form-label col-form-label-sm">TOTAL DE ÁREA DE CONSTRUCCIÓN:</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control form-control-sm" id="areaTotal" name="areaTotal" min="0" value="<%= datos.modelo.areaTotal %>" disabled>
+    </div>
+  </div>
+  <h4 class="my-4">Imagen</h4>
+  <div class="avatar-upload form-group row">
+    <div class="avatar-preview col-sm-2">
+      <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7)"></div>
+    </div>
+    <div class="col-sm-10">
+      <label for="nombre">Nombre de imagen:</label>
+      <input class="form-control" type="text" name="nombreImagen" id="nombreImagen" disabled>
+    </div>
+  </div>
+  <button type="button" class="btn btn-secondary btn-lg btn-block mt-5" onclick="location.href='/perito/buscar-propiedad';">REGRESAR</button>
+</form>

@@ -66,6 +66,23 @@ router.get("/avaluo/:idAvaluo?", function (req, res, next) {
     });
 });
 
+router.get("/verAvaluo/:idAvaluo?", function (req, res, next) {
+  if (!req.cookies.username) return res.redirect('/login');
+
+  avaluoSchema.findById(req.params.idAvaluo)
+  .exec()
+  .then((doc) => {
+    res.render("perito/menu", {
+      title: "Ver avalúo",
+      contenido: "verAvaluo",
+      user: req.cookies.username,
+      datos: doc
+    });
+  })
+  .catch((err) => console.log(err));
+
+});
+
 router.get("/buscar-propiedad", function (req, res, next) {
   if (!req.cookies.username) return res.redirect('/login');
 
