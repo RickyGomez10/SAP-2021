@@ -68,12 +68,21 @@ router.get("/avaluo/:idAvaluo?", function (req, res, next) {
 
 router.get("/buscar-propiedad", function (req, res, next) {
   if (!req.cookies.username) return res.redirect('/login');
-  res.render("perito/menu", {
-    title: "Búscar Propiedad",
-    contenido: "buscarPropiedad",
-    user: req.cookies.username,
-    propiedades: "",
-  });
+
+  avaluoSchema.find({})
+  .exec()
+  .then((doc) => {
+
+    res.render("perito/menu", {
+      title: "Búscar Propiedad",
+      contenido: "buscarPropiedad",
+      user: req.cookies.username,
+      propiedades: doc,
+    });
+  })
+  .catch((err) => console.log(err));
+
+
 });
 
 router.get("/propiedad", function (req, res, next) {
@@ -103,9 +112,7 @@ router.get("/propiedad", function (req, res, next) {
 
 
 router.post("/buscar", function (req, res, next) {
-  var dir = req.body.dir;
-  var depto = req.body.depto;
-  var muni = req.body.muni;
+
 
   console.log(dir);
 
@@ -155,7 +162,6 @@ router.get("/avaluos", function (req, res, next) {
 });
 
 router.post("/insertarAvaluo", function (req, res, next) {
-
   conn.connectDB().then(async () => {
     idavaluo = new objectid(req.body.idAvaluo);
     //var perito = await peritoSchema.find({ user: req.body.idAvaluo });

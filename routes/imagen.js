@@ -38,6 +38,7 @@ router.get('/upload', function(req, res, next){
 router.post('/upload', upload.single("image"), function(req, res, next) {
     res.send('image uploaded');
     var nombre_archivo = req.body.nombre;
+    
     conn.connectDB().then(()=>{
     
       imagenSchema({nombre: nombre_archivo}).save()

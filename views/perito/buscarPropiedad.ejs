@@ -1,40 +1,25 @@
-<h1>Búscar Propiedades</h1>
-<form class="mt-5" id="buscarPropiedad" method="POST" action="./buscar">
-    <div class="form-row">
-        <div class="col-6">
-            <input type="text" name="dir" class="form-control" placeholder="Dirección">
-        </div>
-        <div class="col">
-            <input type="text" name="depto" class="form-control" placeholder="Departamento">
-        </div>
-        <div class="col">
-            <input type="text" name="muni" class="form-control" placeholder="Municipio">
-        </div>
-        <div class="col">
-            <button type="sumbit" class="btn btn-success btn-user btn-block">Búscar</button>
-        </div>
-
-    </div>
-</form>
-<table class="table table-hover mt-5">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Dirección</th>
-        <th scope="col">Departamento</th>
-        <th scope="col">Municipio</th>
-        <th scope="col">Opciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% for (var i = 0; i < propiedades.length ; i++) { %>
-        <tr>
-          <th><%= i+1 %></th>
-          <td> <%= propiedades[i].direccion %> </td>
-          <td> <%= propiedades[i].departamento %> </td>
-          <td> <%= propiedades[i].municipio %> </td>
-          <td> <a href=<%= "/perito/propiedad/"+propiedades[i]._id %>>Ver</a> </td>
-        </tr>
-      <% } %>
-    </tbody>
-  </table>
+<h1>Búscar propiedades</h1>
+<div class="tabla mt-5">
+  <div class="col">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+              <tr>
+                  <th>Número</th>
+                  <th>Dirección de la propiedad</th>
+                  <th>Accion</th>
+              </tr>
+          </thead>
+          <tbody id="bodyOrders">
+              <% for (var i = 0; i < propiedades.length ; i++) { %>
+                  <tr>
+                    <th><%= i+1 %></th>
+                    <td> <%= propiedades[i].modelo.dirCampo %> </td>
+                    <td> <a href="/perito/images-visualizer/<%= propiedades[i]._id %>">Ver avalúo</a> </td>
+                  </tr>
+                <% } %>
+          </tbody>
+      </table>
+  </div>
+  </div>
+</div>

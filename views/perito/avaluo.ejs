@@ -651,6 +651,18 @@
       <input type="number" class="form-control form-control-sm" id="areaTotal" name="areaTotal" min="0" value="0">
     </div>
   </div>
+  <h4 class="my-4">Imagen</h4>
+  <div class="avatar-upload form-group row">
+    <div class="avatar-preview col-sm-2">
+      <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7)"></div>
+    </div>
+    <div class="col-sm-10">
+      <label for="nombre">Nombre de imagen:</label>
+      <input class="form-control" type="text" name="nombreImagen" id="nombreImagen">
+      
+      <input class="form-control-file mt-3" type="file" name="image" id="image" accept=".png, .jpg, .jpeg" />
+    </div>
+  </div>
   <button type="button" class="btn btn-primary btn-lg btn-block mt-5" onclick="guardarAvaluo()">GUARDAR</button>
 </form>
 <script>
@@ -737,6 +749,24 @@
 
     total.value = a1+a2+a3+a4;
   }
+
+  function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				$("#imagePreview").css(
+					"background-image",
+					"url(" + e.target.result + ")"
+				);
+				$("#imagePreview").hide();
+				$("#imagePreview").fadeIn(650);
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+	$("#image").change(function () {
+		readURL(this);
+	});
 
 //console.log(data);
 </script>
