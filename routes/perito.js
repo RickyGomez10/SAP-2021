@@ -70,17 +70,17 @@ router.get("/buscar-propiedad", function (req, res, next) {
   if (!req.cookies.username) return res.redirect('/login');
 
   avaluoSchema.find({})
-  .exec()
-  .then((doc) => {
+    .exec()
+    .then((doc) => {
 
-    res.render("perito/menu", {
-      title: "Búscar Propiedad",
-      contenido: "buscarPropiedad",
-      user: req.cookies.username,
-      propiedades: doc,
-    });
-  })
-  .catch((err) => console.log(err));
+      res.render("perito/menu", {
+        title: "Búscar Propiedad",
+        contenido: "buscarPropiedad",
+        user: req.cookies.username,
+        propiedades: doc,
+      });
+    })
+    .catch((err) => console.log(err));
 
 
 });
@@ -163,9 +163,9 @@ router.get("/avaluos", function (req, res, next) {
 
 router.post("/insertarAvaluo", function (req, res, next) {
   conn.connectDB().then(async () => {
-    idavaluo = new objectid(req.body.idAvaluo);
+    let idavaluo = new objectid(req.body.idAvaluo);
     //var perito = await peritoSchema.find({ user: req.body.idAvaluo });
-    var solicitud = await solicitudSchema.find({_id: idavaluo});
+    var solicitud = await solicitudSchema.find({ _id: idavaluo });
     var idPerito = new objectid(solicitud.perito);
     console.log(req.body);
     avaluo = {
@@ -177,7 +177,7 @@ router.post("/insertarAvaluo", function (req, res, next) {
 
     var avaluo = await avaluoSchema(avaluo).save();
     solicitud.avaluoCompletado = true;
-    var updatedSolicitud = await solicitudSchema.findOneAndUpdate({_id: idavaluo},{ avaluoCompletado: true})
+    var updatedSolicitud = await solicitudSchema.findOneAndUpdate({ _id: idavaluo }, { avaluoCompletado: true })
     console.log("Se ha guardado correctamente el avaluo")
     conn.closeDB();
     return res.json({}).status(200);
@@ -225,44 +225,93 @@ router.get('/close', function (req, res, next) {
   res.redirect('/login');
 });
 
-router.get('/templates/:style/:idAvaluo', (req, res, next)=>{
+router.get('/informe/:informe', (req, res, next) => {
   if (!req.cookies.username) return res.redirect('/login');
-  var style = req.params.style;
-  var id = req.params.idAvaluo;
-  if(!id) return res.send("Necesitas de un avaluo para acceder aqui");
 
-  if(style == 'temp1') return res.render("perito/menu", {
-    title: "Plantilla 1",
-    contenido: "formats/temp1",
-    user: req.cookies.username,
-    id: id
-  });
+  informeSchema.findOne({ _id: req.params.informe })
+    .exec()
+    .then((informe) => {
+      if (informe != null) {
+        console.log(informe);
+        plantillaSchema.findOne({ _id: informe.plantilla })
+          .exec()
+          .then((doc) => {
+            if (doc != null) {
+              let style = doc.contenido;
+              avaluoSchema.findOne({ _id: informe.fuente })
+                .exec()
+                .then((avaluo) => {
+                  if (avaluo != null) {
 
-  if(style == 'temp2') return res.render("perito/menu", {
-    title: "Plantilla 2",
-    contenido: "formats/temp2",
-    user: req.cookies.username,
-    id: id
-  });
+                    let contenido = "";
 
-  if(style == 'temp3') return res.render("perito/menu", {
-    title: "Plantilla 3",
-    contenido: "formats/temp3",
-    user: req.cookies.username,
-    id: id
-  });
+                    if (style == 'temp1') {
+                      contenido = "formats/temp1";
+                    } else if (style == 'temp2') {
+                      contenido = "formats/temp2";
+                    } else if (style == 'temp3') {
+                      contenido = "formats/temp3";
+                    }
+                    return res.render("perito/menu", {
+                      title: informe.nombre,
+                      contenido: contenido,
+                      user: req.cookies.username,
+                      avaluo: avaluo.modelo
+                    });
 
-  
-
+                  } else {
+                    return res.render("perito/menu", {
+                      title: "Error",
+                      msg: "Recurso no encontrado",
+                      user: req.cookies.username
+                    });
+                  }
+                })
+                .catch((err) => {
+                  return res.render("perito/menu", {
+                    title: "Error",
+                    contenido: "not-found",
+                    user: req.cookies.username
+                  });
+                });
+            } else {
+              return res.render("perito/menu", {
+                title: "Error",
+                contenido: "not-found",
+                user: req.cookies.username
+              });
+            }
+          })
+          .catch((err) => {
+            return res.render("perito/menu", {
+              title: "Error",
+              contenido: "not-found",
+              user: req.cookies.username
+            });
+          });
+      } else {
+        return res.render("perito/menu", {
+          title: "Error",
+          contenido: "not-found",
+          user: req.cookies.username
+        });
+      }
+    })
+    .catch((err) => {
+      return res.render("perito/menu", {
+        title: "Error",
+        contenido: "not-found",
+        user: req.cookies.username
+      });
+    });
 });
 router.get("/asignarAvaluo", function (req, res, next) {
   if (!req.cookies.username) return res.redirect('/login');
   conn.connectDB().then(async () => {
     var propiedades = await Propiedad.find();
-    var solicitudes_avaluos = await solicitudSchema.find({perito: null});
+    var solicitudes_avaluos = await solicitudSchema.find({ perito: null });
     var peritos = await peritoSchema.find();
-    
-
+    conn.closeDB();
     res.render("perito/menu", {
       title: "Asignar Avaluo",
       contenido: "asignacionAvaluo",
@@ -280,7 +329,7 @@ router.post("/asignarAvaluo", function (req, res, next) {
     console.log(res)
     var idSolicitud = new objectid(req.body.idSolicitud);
     var idPerito = new objectid(req.body.idPerito);
-    var solicitudAv = await solicitudSchema.findOneAndUpdate({_id: idSolicitud},{perito: idPerito});
+    var solicitudAv = await solicitudSchema.findOneAndUpdate({ _id: idSolicitud }, { perito: idPerito });
 
     conn.closeDB();
     return res.json({}).status(200);
@@ -289,15 +338,15 @@ router.post("/asignarAvaluo", function (req, res, next) {
 });//cierre de asignar avaluo
 
 router.get("/informes", function (req, res, next) {
-  
+
   if (!req.cookies.username) return res.redirect('/login');
   let listFuentes = [];
   let listPlantillas = [];
   let listInformes = [];
-  Usuario.find({ user: req.cookies.username })
+  Usuario.findOne({ user: req.cookies.username })
     .exec()
     .then((doc) => {
-      var peritoid = doc[0]._id;
+      var peritoid = doc._id;
 
       solicitudSchema.find({ perito: peritoid, avaluoCompletado: true })
         .exec()
@@ -311,7 +360,7 @@ router.get("/informes", function (req, res, next) {
               if (doc != null) {
                 listPlantillas = doc;
               }
-              informeSchema.find({perito: peritoid})
+              informeSchema.find({ perito: peritoid })
                 .exec()
                 .then((doc) => {
                   if (doc != null) {
@@ -334,6 +383,23 @@ router.get("/informes", function (req, res, next) {
         .catch((err) => console.log(err));
     })
     .catch((err) => console.log(err));
-})
+});
+
+router.post("/crearInforme", function (req, res, next) {
+
+    let informe = {
+      nombre: req.body.nombre,
+      fuente: req.body.fuente,
+      plantilla: req.body.plantilla,
+      perito: req.body.idperito
+    }
+
+    informeSchema(informe).save().then((response) => {
+      return res.json({}).status(200);
+    }).catch((err) => {
+      return res.json({}).status(401);
+    });
+
+});
 
 module.exports = router;

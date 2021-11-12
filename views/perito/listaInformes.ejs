@@ -21,31 +21,34 @@
       let nombre = $("#nombre").val();
       if (nombre.trim() == "" || selectedPlantilla == "-1" || selectedFuente == "-1") {
         Swal.fire(
-            'Error',
-            'Por favor asegúrese de llenar todos los campos.',
-            'error'
-          );
+          'Error',
+          'Por favor asegúrese de llenar todos los campos.',
+          'error'
+        );
       } else {
         let perito = $("#enviar").data().perito;
-        var info = { nombre: nombre, plantilla: selectedPlantilla, fuente: selectedFuente, idperito: perito};
+        var info = { nombre: nombre, plantilla: selectedPlantilla, fuente: selectedFuente, idperito: perito };
         console.log(info)
-        /*$.ajax({
+        $.ajax({
           url: "/perito/crearInforme",
           type: "POST",
           dataType: "json",
           data: info,
           success: function () {
             $('#form-avaluo').trigger("reset");
-            Swal.fire(
-              'Éxito',
-              'La asignación de avalúo  se ha procesado correctamente.',
-              'success'
-            );
+            Swal.fire({
+              title: 'Éxito',
+              text: 'Se ha creado el informe.',
+              icon: 'success',
+              allowOutsideClick: false
+            }).then(function () {
+              window.location = "/perito/informes";
+            });
           },
           error: function (xhr, status, error) {
             console.log("Error...");
           }
-        });*/
+        });
       }
     }
 
@@ -127,7 +130,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" id="enviar" data-perito=<%= peritoid %> >Crear y continuar</button>
+        <button type="button" class="btn btn-primary" id="enviar" data-perito=<%=peritoid %> >Crear y continuar</button>
       </div>
     </div>
   </div>
