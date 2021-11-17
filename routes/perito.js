@@ -268,10 +268,16 @@ router.get('/informe/:informe', (req, res, next) => {
                     } else if (style == 'temp3') {
                       contenido = "formats/temp3";
                     }
+                    let perito = {
+                      nombres: req.cookies.name,
+                      apellidos: req.cookies.lastname,
+                      numregistro: req.cookies.numregistro                      
+                    }
                     return res.render("perito/menu", {
                       title: informe.nombre,
                       contenido: contenido,
                       user: req.cookies.username,
+                      perito: perito,
                       avaluo: avaluo
                     });
 

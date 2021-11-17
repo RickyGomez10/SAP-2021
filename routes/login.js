@@ -15,6 +15,9 @@ router.post('/verificar', function (req, res, next) {
       if (doc != null) {
         if (doc.password == contra) {
           res.cookie('username',usuario);
+          res.cookie('name',doc.nombres);
+          res.cookie('lastname',doc.apellidos);
+          res.cookie('numregistro',doc.numregistro);
           res.status(200).send({ msg: 'Validación correcta' });
         } else {
           res.status(401).send({ msg: 'Error de validación' });

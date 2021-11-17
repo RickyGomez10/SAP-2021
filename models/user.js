@@ -4,9 +4,10 @@ const userSchema = mongoose.Schema({
     user: String,
     password: String,
     rol: String,
-    nombre: String,
-    apellido: String,
-    correo: String
+    nombres: String,
+    apellidos: String,
+    correo: String,
+    numregistro: String
 });
 
 module.exports = mongoose.model('user', userSchema);
