@@ -658,8 +658,7 @@
     </div>
     <div class="col-sm-10">
       <label for="nombre">Nombre de imagen:</label>
-      <input class="form-control" type="text" name="nombreImagen" id="nombreImagen">
-      
+      <input class="form-control" type="text" name="nombreImagen" id="nombreImagen">      
       <input class="form-control-file mt-3" type="file" name="image" id="image" accept=".png, .jpg, .jpeg" />
     </div>
   </div>
@@ -712,6 +711,7 @@
     });
 
     data.idAvaluo = form.data().avaluo;
+    
 
     $.ajax({
       url: "/perito/insertarAvaluo",

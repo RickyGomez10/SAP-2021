@@ -7,9 +7,29 @@ const solicitudSchema = require("../models/solicitud");
 const plantillaSchema = require("../models/plantilla");
 const informeSchema = require("../models/informe");
 const peritoSchema = require("../models/user");
-const Imagen = require("../models/imagen");
+const imagenSchema = require('../models/imagen');
 const conn = require('./../DB/connection')
+const pat = require('path');
+const multer = require('multer');
 var objectid = require('mongodb').ObjectId;
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb)=>{
+      // Ubicacion donde se guardara el archivo, en este caso root/Images
+      cb(null, 'Images')
+    },
+    filename: (req, file, cb)=>{
+
+      var nombre_archivo = req.body.nombre;
+      console.log(file);
+      console.log(Date.now());
+      cb(null, nombre_archivo + pat.extname(file.originalname));
+    }
+
+
+});
+
+const upload = multer({storage: storage});
 
 router.get("/", function (req, res, next) {
   if (!req.cookies.username) return res.redirect('/login');
@@ -178,13 +198,15 @@ router.get("/avaluos", function (req, res, next) {
     .catch((err) => console.log(err));
 });
 
-router.post("/insertarAvaluo", function (req, res, next) {
+router.post("/insertarAvaluo", upload.single("image"), function (req, res, next) {
+
   conn.connectDB().then(async () => {
+    let nombre_archivo = req.body.nombreImagen;
     let idavaluo = new objectid(req.body.idAvaluo);
     //var perito = await peritoSchema.find({ user: req.body.idAvaluo });
     var solicitud = await solicitudSchema.find({ _id: idavaluo });
+    var imagen = await  imagenSchema({nombre: nombre_archivo, tipo: 0, avaluo: idavaluo}).save();
     var idPerito = new objectid(solicitud.perito);
-    console.log(req.body);
     avaluo = {
       _id: idavaluo,
       modelo: req.body,
