@@ -1,7 +1,7 @@
 <div class="cabecera">
     <div class="row mb-3">
         <div class="col-10"></div>
-        <div class="col-2">Fecha: dd/mm/yy</div>
+        <div class="col-2">Fecha: <%= avaluo.fecha.getDate()+"/"+(avaluo.fecha.getMonth()+1)+"/"+avaluo.fecha.getFullYear() %> </div>
     </div>
 
     <div class="row mb-3">
@@ -9,7 +9,7 @@
             <label for="">Propietario:</label>
         </div>
         <div class="col-10">
-            <input type="text" name="propietario" id="propietario" value="nombre" class="form-control" disabled>
+            <input type="text" name="propietario" id="propietario" value='<%= avaluo.modelo.propietario %>' class="form-control" disabled>
         </div>
     </div>
 
@@ -18,7 +18,7 @@
             <label for="">Solicitante:</label>
         </div>
         <div class="col-10">
-            <input type="text" name="solicitante" id="solicitante" value="nombre" class="form-control" disabled>
+            <input type="text" name="solicitante" id="solicitante" value='<%= avaluo.modelo.solicitante %>' class="form-control" disabled>
         </div>
     </div>
 
@@ -27,7 +27,7 @@
             <label for="">Dirección según campo:</label>
         </div>
         <div class="col-10">
-            <input type="text" name="addrCampo" id="addrCampo" value="addrCampo" class="form-control" disabled>
+            <input type="text" name="addrCampo" id="addrCampo" value='<%= avaluo.modelo.dirCampo %>' class="form-control" disabled>
         </div>
     </div>
 
@@ -36,7 +36,7 @@
             <label for="">Dirección según documento legal:</label>
         </div>
         <div class="col-10">
-            <input type="text" name="addrLegal" id="addrLegal" value="addrLegal" class="form-control" disabled>
+            <input type="text" name="addrLegal" id="addrLegal" value='<%= avaluo.modelo.dirEscritura %>' class="form-control" disabled>
         </div>
     </div>
 </div>
@@ -44,16 +44,40 @@
 <div class="cuerpo1 mb-5">
     <div class="row">
         <div class="col">
-            <label for="">Tipo de bien:</label>
+            <% let tipoBien = [] %>
+            <% if(avaluo.modelo.urbano) tipoBien.push(avaluo.modelo.urbano) %> 
+            <% if(avaluo.modelo.rural) tipoBien.push(avaluo.modelo.rural) %> 
+            <% if(avaluo.modelo.subUrbano) tipoBien.push(avaluo.modelo.subUrbano) %> 
+            <% if(avaluo.modelo.rustico) tipoBien.push(avaluo.modelo.rustico) %> 
+            <label for="">Tipo de bien: <%= tipoBien.join(" - ") %> </label>
         </div>
         <div class="col">
-            <label for="">Uso actual:</label>
+            <% let usoActual = [] %>
+            <% if(avaluo.modelo.residencial) usoActual.push(avaluo.modelo.residencial) %>
+            <% if(avaluo.modelo.industrial) usoActual.push(avaluo.modelo.industrial) %>
+            <% if(avaluo.modelo.oficinas) usoActual.push(avaluo.modelo.oficinas) %>
+            <% if(avaluo.modelo.comercio) usoActual.push(avaluo.modelo.comercio) %>
+            <% if(avaluo.modelo.recreativo) usoActual.push(avaluo.modelo.recreativo) %>
+            <% if(avaluo.modelo.valdio) usoActual.push(avaluo.modelo.valdio) %>
+            <label for="">Uso actual: <%= usoActual.join(" - ") %></label>
         </div>
         <div class="col">
-            <label for="">Demanda en la zona:</label>
+            <% let demanda = [] %>
+            <% if(avaluo.modelo.Dalta) demanda.push(avaluo.modelo.Dalta.substring(1)) %>
+            <% if(avaluo.modelo.Dbuena) demanda.push(avaluo.modelo.Dbuena.substring(1)) %>
+            <% if(avaluo.modelo.Destable) demanda.push(avaluo.modelo.Destable.substring(1)) %>
+            <% if(avaluo.modelo.Dregular) demanda.push(avaluo.modelo.Dregular.substring(1)) %>
+            <% if(avaluo.modelo.Dbaja) demanda.push(avaluo.modelo.Dbaja.substring(1)) %>
+            <% if(avaluo.modelo.Dno) demanda.push("no se observó") %>
+            <label for="">Demanda en la zona: <%= demanda.join(" - ") %></label>
         </div>
         <div class="col">
-            <label for="">Estado actual de la plusvalia:</label>
+            <% let plusvalia = [] %>
+            <% if(avaluo.modelo.Pcreciente) plusvalia.push(avaluo.modelo.Pcreciente.substring(1)) %>
+            <% if(avaluo.modelo.Pestable) plusvalia.push(avaluo.modelo.Pestable.substring(1)) %>
+            <% if(avaluo.modelo.Pdeterioro) plusvalia.push(avaluo.modelo.Pdeterioro.substring(1)) %>
+            <% if(avaluo.modelo.Ptrans) plusvalia.push("en transición") %>
+            <label for="">Estado actual de la plusvalia: <%= plusvalia.join(" - ") %></label>
         </div>
     </div>
 </div>
@@ -66,34 +90,34 @@
             </div>
             <div class="row mb-3">
                 <div class="col">
-                    Norte:
+                    Norte: <%= avaluo.modelo.norte %> mt
                 </div>
                 <div class="col">
-                    Linda con: <span class="text-decoration-underline">Aqui va el colindante</span>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col">
-                    Sur:
-                </div>
-                <div class="col">
-                    Linda con: <span class="text-decoration-underline">Aqui va el colindante</span>
+                    Linda con: <span class="text-decoration-underline"><%= avaluo.modelo.Lnorte %></span>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col">
-                    Oriente:
+                    Sur: <%= avaluo.modelo.sur %> mt
                 </div>
                 <div class="col">
-                    Linda con: <span class="text-decoration-underline">Aqui va el colindante</span>
+                    Linda con: <span class="text-decoration-underline"><%= avaluo.modelo.Lsur %></span>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col">
-                    Poniente:
+                    Oriente: <%= avaluo.modelo.oriente %> mt
                 </div>
                 <div class="col">
-                    Linda con: <span class="text-decoration-underline">Aqui va el colindante</span>
+                    Linda con: <span class="text-decoration-underline"><%= avaluo.modelo.Loriente %></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    Poniente: <%= avaluo.modelo.poniente %> mt
+                </div>
+                <div class="col">
+                    Linda con: <span class="text-decoration-underline"><%= avaluo.modelo.Lponiente %></span>
                 </div>
             </div>
         </div>
@@ -102,13 +126,13 @@
                 <h3>Distancias de puntos importantes</h1>
             </div>
             <div class="row">
-                Escuelas o colegios: valor <strong>mt</strong>
+                Escuelas o colegios: <%= avaluo.modelo.escuelas %> &nbsp;<strong>mt</strong>
             </div>
             <div class="row">
-                Transporte publico: valor <strong>mt</strong>
+                Transporte publico: <%= avaluo.modelo.transporte %> &nbsp;<strong>mt</strong>
             </div>
             <div class="row">
-                Comercio Formal: valor <strong>mt</strong>
+                Comercio Formal: <%= avaluo.modelo.comercioformal %> &nbsp;<strong >mt</strong>
             </div>
         </div>
     </div>
@@ -116,18 +140,18 @@
 
 <div class="cuerpo3 mt-3">
     <div class="row justify-content-center mb-3">
-        <h4>Numero de inscripcion legal: ___VALOR___</h4>
+        <h4>Numero de inscripcion legal: <%= avaluo.modelo.inscripcion %></h4>
     </div>
     <div class="row">
         <div class="col text-center p-2 shadow border border-dark rounded m-1">
             <h5>Área según escritura:</h5>
-            <p>Valor en metros m2</p>
-            <p>Valor en varas v2</p>
+            <p>Valor en metros: <%= avaluo.modelo.areaEscritura %> m<sup>2</sup></p>
+            <p>Valor en varas: <%= avaluo.modelo.volumenEscritura %> v<sup>2</sup></p>
         </div>
         <div class="col text-center p-2 shadow border border-dark rounded m-1">
             <h5>Área según campo:</h5>
-            <p>Valor en metros m2</p>
-            <p>Valor en varas v2</p>
+            <p>Valor en metros: <%= avaluo.modelo.areaCampo %> m<sup>2</sup></p>
+            <p>Valor en varas: <%= avaluo.modelo.volumenCampo %> v<sup>2</sup></p>
         </div>
     </div>
 </div>

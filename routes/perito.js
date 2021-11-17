@@ -189,6 +189,7 @@ router.post("/insertarAvaluo", function (req, res, next) {
       _id: idavaluo,
       modelo: req.body,
       perito: idPerito,
+      fecha: new Date(),
       propiedad: null
     };
 
@@ -248,7 +249,6 @@ router.get('/informe/:informe', (req, res, next) => {
     .exec()
     .then((informe) => {
       if (informe != null) {
-        console.log(informe);
         plantillaSchema.findOne({ _id: informe.plantilla })
           .exec()
           .then((doc) => {
@@ -272,7 +272,7 @@ router.get('/informe/:informe', (req, res, next) => {
                       title: informe.nombre,
                       contenido: contenido,
                       user: req.cookies.username,
-                      avaluo: avaluo.modelo
+                      avaluo: avaluo
                     });
 
                   } else {
