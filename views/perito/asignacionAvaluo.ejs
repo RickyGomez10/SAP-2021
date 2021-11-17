@@ -38,18 +38,19 @@
         <td>
           <%= solicitudes[i].puntosReferencia %>
         </td>
-        <td> <select class="form-control" name="perito" id="perito" id=<%=solicitudes[i]._id %>>
-            <option value="-1">Asignar a un perito</option>
-            <% for (perito of peritos) { %>
-              <option value="<%= perito._id %>">
-                <%= perito.user %>
-              </option>
-              <% } %>
+        <td> <select class="form-control" name="perito" id="<%="p"+solicitudes[i]._id %>" id='<%=solicitudes[i]._id %>
+              '>
+              <option value="-1">Asignar a un perito</option>
+              <% for (perito of peritos) { %>
+                <option value="<%= perito._id %>">
+                  <%= perito.user %>
+                </option>
+                <% } %>
           </select>
         </td>
         <td>
-          <button class="btn btn-primary" id="enviar" name=<%=solicitudes[i]._id %>>
-            Asignar Avaluo
+          <button class="btn btn-primary enviar" id="enviar" name=<%=solicitudes[i]._id %>>
+            Asignar
           </button>
         </td>
       </tr>
@@ -58,35 +59,41 @@
 </table>
 
 <script>
-  var selected = "";
   $(document).ready(function () {
-    $('#perito').select2({
-      theme: "bootstrap"
-    }).on("change", function (e) {
-      selected = $(e.target).select2("val");
-    });
     function asignarAvaluo(id) {
-      var info = { idSolicitud: id, idPerito: selected };
+      let perito = $("#p" + id).val();
+      var info = { idSolicitud: id, idPerito: perito };
       console.log(info)
-      $.ajax({
-        url: "/perito/asignarAvaluo",
-        type: "POST",
-        dataType: "json",
-        data: info,
-        success: function () {
-          $('#form-avaluo').trigger("reset");
-          Swal.fire(
-            'Éxito',
-            'La asignación de avalúo  se ha procesado correctamente.',
-            'success'
-          );
-        },
-        error: function (xhr, status, error) {
-          console.log("Error...");
-        }
-      });
+      if (perito != "-1") {
+        $.ajax({
+          url: "/perito/asignarAvaluo",
+          type: "POST",
+          dataType: "json",
+          data: info,
+          success: function () {
+            $('#form-avaluo').trigger("reset");
+            Swal.fire({
+              title: 'Éxito',
+              text: 'La asignación de avalúo  se ha procesado correctamente.',
+              icon: 'success',
+              allowOutsideClick: false
+            }).then(function () {
+              window.location = "/perito/asignarAvaluo";
+            });
+          },
+          error: function (xhr, status, error) {
+            console.log("Error...");
+          }
+        });
+      } else {
+        Swal.fire(
+          'Error',
+          'Debe seleccionar un perito para la asignación.',
+          'error'
+        );
+      }
     }
-    $("#enviar").click(function (event) {
+    $(".enviar").click(function (event) {
       asignarAvaluo($(event.target).attr('name'));
     });
   });
