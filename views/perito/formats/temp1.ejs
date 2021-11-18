@@ -1,355 +1,360 @@
-<div class="cabecera">
-    <div class="row mb-3">
-        <div class="col-10"></div>
-        <div class="col-2">Fecha: <%= avaluo.fecha.getDate()+"/"+(avaluo.fecha.getMonth()+1)+"/"+avaluo.fecha.getFullYear() %> </div>
-    </div>
+<div id="content" class="content">
+    <div class="cabecera">
+        <div class="row mb-3">
+            <div class="col-10"></div>
+            <div class="col-2">Fecha: <%= avaluo.fecha.getDate()+"/"+(avaluo.fecha.getMonth()+1)+"/"+avaluo.fecha.getFullYear() %> </div>
+        </div>
 
-    <div class="row mb-3">
-        <div class="col-2">
-            <label for="">Propietario:</label>
-        </div>
-        <div class="col-10">
-            <input type="text" name="propietario" id="propietario" value='<%= avaluo.modelo.propietario %>' class="form-control" disabled>
-        </div>
-    </div>
-
-    <div class="row mb-3">
-        <div class="col-2">
-            <label for="">Solicitante:</label>
-        </div>
-        <div class="col-10">
-            <input type="text" name="solicitante" id="solicitante" value='<%= avaluo.modelo.solicitante %>' class="form-control" disabled>
-        </div>
-    </div>
-
-    <div class="row mb-3">
-        <div class="col-2">
-            <label for="">Dirección según campo:</label>
-        </div>
-        <div class="col-10">
-            <input type="text" name="addrCampo" id="addrCampo" value='<%= avaluo.modelo.dirCampo %>' class="form-control" disabled>
-        </div>
-    </div>
-
-    <div class="row mb-3">
-        <div class="col-2">
-            <label for="">Dirección según documento legal:</label>
-        </div>
-        <div class="col-10">
-            <input type="text" name="addrLegal" id="addrLegal" value='<%= avaluo.modelo.dirEscritura %>' class="form-control" disabled>
-        </div>
-    </div>
-</div>
-
-<div class="cuerpo1 mb-5">
-    <div class="row">
-        <div class="col">
-            <% let tipoBien = [];
-            if(avaluo.modelo.urbano) tipoBien.push(avaluo.modelo.urbano);
-            if(avaluo.modelo.rural) tipoBien.push(avaluo.modelo.rural);
-            if(avaluo.modelo.subUrbano) tipoBien.push("sub urbano");
-            if(avaluo.modelo.rustico) tipoBien.push(avaluo.modelo.rustico); %> 
-            <label for="">Tipo de bien: <%= tipoBien.join(" - ") %> </label>
-        </div>
-        <div class="col">
-            <% let usoActual = [];
-            if(avaluo.modelo.residencial) usoActual.push(avaluo.modelo.residencial);
-            if(avaluo.modelo.industrial) usoActual.push(avaluo.modelo.industrial);
-            if(avaluo.modelo.oficinas) usoActual.push(avaluo.modelo.oficinas);
-            if(avaluo.modelo.comercio) usoActual.push(avaluo.modelo.comercio);
-            if(avaluo.modelo.recreativo) usoActual.push(avaluo.modelo.recreativo);
-            if(avaluo.modelo.valdio) usoActual.push(avaluo.modelo.valdio); %>
-            <label for="">Uso actual: <%= usoActual.join(" - ") %></label>
-        </div>
-        <div class="col">
-            <% let demanda = [];
-            if(avaluo.modelo.Dalta) demanda.push(avaluo.modelo.Dalta.substring(1));
-            if(avaluo.modelo.Dbuena) demanda.push(avaluo.modelo.Dbuena.substring(1));
-            if(avaluo.modelo.Destable) demanda.push(avaluo.modelo.Destable.substring(1));
-            if(avaluo.modelo.Dregular) demanda.push(avaluo.modelo.Dregular.substring(1));
-            if(avaluo.modelo.Dbaja) demanda.push(avaluo.modelo.Dbaja.substring(1));
-            if(avaluo.modelo.Dno) demanda.push("no se observó"); %>
-            <label for="">Demanda en la zona: <%= demanda.join(" - ") %></label>
-        </div>
-        <div class="col">
-            <% let plusvalia = [];
-            if(avaluo.modelo.Pcreciente) plusvalia.push(avaluo.modelo.Pcreciente.substring(1));
-            if(avaluo.modelo.Pestable) plusvalia.push(avaluo.modelo.Pestable.substring(1));
-            if(avaluo.modelo.Pdeterioro) plusvalia.push(avaluo.modelo.Pdeterioro.substring(1));
-            if(avaluo.modelo.Ptrans) plusvalia.push("en transición"); %>
-            <label for="">Estado actual de la plusvalía: <%= plusvalia.join(" - ") %></label>
-        </div>
-    </div>
-</div>
-
-<div class="cuerpo2">
-    <div class="row">
-        <div class="col">
-            <div class="row justify-content-center">
-                <h3>Medidas Paramétricas</h3>
+        <div class="row mb-3">
+            <div class="col-2">
+                <label for="">Propietario:</label>
             </div>
-            <div class="row mb-3">
-                <div class="col">
-                    Norte: <%= avaluo.modelo.norte %> mt
+            <div class="col-10">
+                <input type="text" name="propietario" id="propietario" value='<%= avaluo.modelo.propietario %>' class="form-control" disabled>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-2">
+                <label for="">Solicitante:</label>
+            </div>
+            <div class="col-10">
+                <input type="text" name="solicitante" id="solicitante" value='<%= avaluo.modelo.solicitante %>' class="form-control" disabled>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-2">
+                <label for="">Dirección según campo:</label>
+            </div>
+            <div class="col-10">
+                <input type="text" name="addrCampo" id="addrCampo" value='<%= avaluo.modelo.dirCampo %>' class="form-control" disabled>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-2">
+                <label for="">Dirección según documento legal:</label>
+            </div>
+            <div class="col-10">
+                <input type="text" name="addrLegal" id="addrLegal" value='<%= avaluo.modelo.dirEscritura %>' class="form-control" disabled>
+            </div>
+        </div>
+    </div>
+
+    <div class="cuerpo1 mb-5">
+        <div class="row">
+            <div class="col">
+                <% let tipoBien = [];
+                if(avaluo.modelo.urbano) tipoBien.push(avaluo.modelo.urbano);
+                if(avaluo.modelo.rural) tipoBien.push(avaluo.modelo.rural);
+                if(avaluo.modelo.subUrbano) tipoBien.push("sub urbano");
+                if(avaluo.modelo.rustico) tipoBien.push(avaluo.modelo.rustico); %> 
+                <label for="">Tipo de bien: <%= tipoBien.join(" - ") %> </label>
+            </div>
+            <div class="col">
+                <% let usoActual = [];
+                if(avaluo.modelo.residencial) usoActual.push(avaluo.modelo.residencial);
+                if(avaluo.modelo.industrial) usoActual.push(avaluo.modelo.industrial);
+                if(avaluo.modelo.oficinas) usoActual.push(avaluo.modelo.oficinas);
+                if(avaluo.modelo.comercio) usoActual.push(avaluo.modelo.comercio);
+                if(avaluo.modelo.recreativo) usoActual.push(avaluo.modelo.recreativo);
+                if(avaluo.modelo.valdio) usoActual.push(avaluo.modelo.valdio); %>
+                <label for="">Uso actual: <%= usoActual.join(" - ") %></label>
+            </div>
+            <div class="col">
+                <% let demanda = [];
+                if(avaluo.modelo.Dalta) demanda.push(avaluo.modelo.Dalta.substring(1));
+                if(avaluo.modelo.Dbuena) demanda.push(avaluo.modelo.Dbuena.substring(1));
+                if(avaluo.modelo.Destable) demanda.push(avaluo.modelo.Destable.substring(1));
+                if(avaluo.modelo.Dregular) demanda.push(avaluo.modelo.Dregular.substring(1));
+                if(avaluo.modelo.Dbaja) demanda.push(avaluo.modelo.Dbaja.substring(1));
+                if(avaluo.modelo.Dno) demanda.push("no se observó"); %>
+                <label for="">Demanda en la zona: <%= demanda.join(" - ") %></label>
+            </div>
+            <div class="col">
+                <% let plusvalia = [];
+                if(avaluo.modelo.Pcreciente) plusvalia.push(avaluo.modelo.Pcreciente.substring(1));
+                if(avaluo.modelo.Pestable) plusvalia.push(avaluo.modelo.Pestable.substring(1));
+                if(avaluo.modelo.Pdeterioro) plusvalia.push(avaluo.modelo.Pdeterioro.substring(1));
+                if(avaluo.modelo.Ptrans) plusvalia.push("en transición"); %>
+                <label for="">Estado actual de la plusvalía: <%= plusvalia.join(" - ") %></label>
+            </div>
+        </div>
+    </div>
+
+    <div class="cuerpo2">
+        <div class="row">
+            <div class="col">
+                <div class="row justify-content-center">
+                    <h3>Medidas Paramétricas</h3>
                 </div>
-                <div class="col">
-                    Linda con: <span class="text-decoration-underline"><%= avaluo.modelo.Lnorte %></span>
+                <div class="row mb-3">
+                    <div class="col">
+                        Norte: <%= avaluo.modelo.norte %> mt
+                    </div>
+                    <div class="col">
+                        Linda con: <span class="text-decoration-underline"><%= avaluo.modelo.Lnorte %></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        Sur: <%= avaluo.modelo.sur %> mt
+                    </div>
+                    <div class="col">
+                        Linda con: <span class="text-decoration-underline"><%= avaluo.modelo.Lsur %></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        Oriente: <%= avaluo.modelo.oriente %> mt
+                    </div>
+                    <div class="col">
+                        Linda con: <span class="text-decoration-underline"><%= avaluo.modelo.Loriente %></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        Poniente: <%= avaluo.modelo.poniente %> mt
+                    </div>
+                    <div class="col">
+                        Linda con: <span class="text-decoration-underline"><%= avaluo.modelo.Lponiente %></span>
+                    </div>
                 </div>
             </div>
-            <div class="row mb-3">
-                <div class="col">
-                    Sur: <%= avaluo.modelo.sur %> mt
+            <div class="col shadow p-4 border border-success rounded">
+                <div class="row">
+                    <h3>Distancias de puntos importantes</h1>
                 </div>
-                <div class="col">
-                    Linda con: <span class="text-decoration-underline"><%= avaluo.modelo.Lsur %></span>
+                <div class="row">
+                    Escuelas o colegios: <%= avaluo.modelo.escuelas %> &nbsp;<strong>mt</strong>
                 </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col">
-                    Oriente: <%= avaluo.modelo.oriente %> mt
+                <div class="row">
+                    Transporte público: <%= avaluo.modelo.transporte %> &nbsp;<strong>mt</strong>
                 </div>
-                <div class="col">
-                    Linda con: <span class="text-decoration-underline"><%= avaluo.modelo.Loriente %></span>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col">
-                    Poniente: <%= avaluo.modelo.poniente %> mt
-                </div>
-                <div class="col">
-                    Linda con: <span class="text-decoration-underline"><%= avaluo.modelo.Lponiente %></span>
+                <div class="row">
+                    Comercio Formal: <%= avaluo.modelo.comercioformal %> &nbsp;<strong >mt</strong>
                 </div>
             </div>
         </div>
-        <div class="col shadow p-4 border border-success rounded">
-            <div class="row">
-                <h3>Distancias de puntos importantes</h1>
+    </div>
+
+    <div class="cuerpo3 mt-3">
+        <div class="row justify-content-center mb-3">
+            <h4>Número de inscripción legal: <%= avaluo.modelo.inscripcion %></h4>
+        </div>
+        <div class="row">
+            <div class="col text-center p-2 shadow border border-dark rounded m-1">
+                <h5>Área según escritura:</h5>
+                <p>Valor en metros: <%= avaluo.modelo.areaEscritura %> m<sup>2</sup></p>
+                <p>Valor en varas: <%= avaluo.modelo.volumenEscritura %> v<sup>2</sup></p>
             </div>
-            <div class="row">
-                Escuelas o colegios: <%= avaluo.modelo.escuelas %> &nbsp;<strong>mt</strong>
-            </div>
-            <div class="row">
-                Transporte público: <%= avaluo.modelo.transporte %> &nbsp;<strong>mt</strong>
-            </div>
-            <div class="row">
-                Comercio Formal: <%= avaluo.modelo.comercioformal %> &nbsp;<strong >mt</strong>
+            <div class="col text-center p-2 shadow border border-dark rounded m-1">
+                <h5>Área según campo:</h5>
+                <p>Valor en metros: <%= avaluo.modelo.areaCampo %> m<sup>2</sup></p>
+                <p>Valor en varas: <%= avaluo.modelo.volumenCampo %> v<sup>2</sup></p>
             </div>
         </div>
     </div>
+
+    <div class="cuerpo4">
+        <div class="row">
+            <div class="col">
+                <div class="row justify-content-center">
+                    <h3>Servicios Públicos y privados</h3>
+                </div>
+                <div class="row mt-1 mb-3">
+                    <% let servicios = [];
+                    if(avaluo.modelo.aguaPotable) servicios.push("Agua potable");
+                    if(avaluo.modelo.energiaElectrica) servicios.push("Energía eléctrica");
+                    if(avaluo.modelo.aceras) servicios.push("Aceras");
+                    if(avaluo.modelo.arriate) servicios.push("Arriate");
+                    if(avaluo.modelo.alumbrado) servicios.push("Alumbrado público");
+                    if(avaluo.modelo.aseo) servicios.push("Tren de aseo");
+                    if(avaluo.modelo.tanque) servicios.push("Tanque");
+                    if(avaluo.modelo.telefono) servicios.push("Teléfono");
+                    if(avaluo.modelo.caseta) servicios.push("Caseta de vigilancia");
+                    if(avaluo.modelo.cisterna) servicios.push("Cisterna");
+                    if(avaluo.modelo.arriate) servicios.push("Aarriate");
+                    if(avaluo.modelo.alcantarillados) servicios.push("Alcantarillados");
+                    %>
+                    <p>La propiedad cuenta con los siguientes servicios:</p>
+                    <p><%= servicios.join(", ") %>.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row justify-content-center">
+                    <h3>Descripción de la construcción</h3>
+                </div>
+                <%  let tipoConst = [];
+                    let tipoEdif = [];
+                    let tipoDist = [];
+                    let tipoDis = [];
+                    
+                    if(avaluo.modelo.mixto) tipoConst.push("Mixto L.B.C.");
+                    if(avaluo.modelo.mamposteria) tipoConst.push("Mampostería");
+                    if(avaluo.modelo.prefabricado) tipoConst.push("Prefabricado");
+                    if(avaluo.modelo.tipoPerf) tipoConst.push("Est. tipo perf.");
+                    if(avaluo.modelo.adobe) tipoConst.push("Adobe");
+                    if(avaluo.modelo.bahareque) tipoConst.push("Bahareque");
+
+                    if(avaluo.modelo.unifamiliar) tipoEdif.push("Unifamiliar");
+                    if(avaluo.modelo.condV) tipoEdif.push("Condominio vertical");
+                    if(avaluo.modelo.condH) tipoEdif.push("Condominio horizontal");
+                    if(avaluo.modelo.multifamiliar) tipoEdif.push("Multifamiliar");
+                    if(avaluo.modelo.otroEdif) tipoEdif.push("Otro");
+
+                    if(avaluo.modelo.arqBuena) tipoDist.push("Buena");
+                    if(avaluo.modelo.arqRegular) tipoDist.push("Regular");
+                    if(avaluo.modelo.arqDeficiente) tipoDist.push("Deficiente");
+                    if(avaluo.modelo.arqMala) tipoDist.push("Mala");
+
+                    if(avaluo.modelo.planta1) tipoDis.push("1 planta");
+                    if(avaluo.modelo.planta2) tipoDis.push("2 plantas");
+                    if(avaluo.modelo.planta3) tipoDis.push("3 plantas");
+                    if(avaluo.modelo.niveles8) tipoDis.push("Edificio de 8 niveles");
+                    %>
+                <div class="row mt-1 mb-3">Tipo de construcción: <%= tipoConst.join(" - ") %> </div>
+                <div class="row mt-1 mb-3">Tipo de edificación: <%= tipoEdif.join(" - ") %></div>
+                <div class="row mt-1 mb-3">Tipo de distribución arquitectónica: <%= tipoDist.join(" - ") %></div>
+                <div class="row mt-1 mb-3">Tipo de diseño: <%= tipoDis.join(" - ") %></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cuerpo5">
+        <div class="row justify-content-center">
+            <h3>Espacios disponibles</h3>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row mb-2">Cochera <%= avaluo.modelo.cochera?" ✓":"" %></div>
+                <div class="row mb-2">Terraza <%= avaluo.modelo.terraza?" ✓":"" %></div>
+                <div class="row mb-2">Dormitorio <%= avaluo.modelo.dormitorio?" ✓":"" %></div>
+                <div class="row mb-2">Sala <%= avaluo.modelo.sala?" ✓":"" %></div>
+                <div class="row mb-2">Comedor <%= avaluo.modelo.comedor?" ✓":"" %></div>
+            </div>
+            <div class="col">
+                <div class="row mb-2">Cocina <%= avaluo.modelo.cocina?" ✓":"" %></div>
+                <div class="row mb-2">Sanitario completo <%= avaluo.modelo.sanitarioC?" ✓":"" %></div>
+                <div class="row mb-2">Sanitario parcial <%= avaluo.modelo.sanitarioS?" ✓":"" %></div>
+                <div class="row mb-2">Sala de estar familiar <%= avaluo.modelo.estar?" ✓":"" %></div>
+                <div class="row mb-2">Usos múltiples <%= avaluo.modelo.usosM?" ✓":"" %></div>
+            </div>
+            <div class="col">
+                <div class="row mb-2">Estudio <%= avaluo.modelo.estudio?" ✓":"" %></div>
+                <div class="row mb-2">Dormitorio de servico <%= avaluo.modelo.dormServicio?" ✓":"" %></div>
+                <div class="row mb-2">Baño de servicio <%= avaluo.modelo.banoS?" ✓":"" %></div>
+                <div class="row mb-2">Área de oficios <%= avaluo.modelo.areaOficio?" ✓":"" %></div>
+                <div class="row mb-2">Patio <%= avaluo.modelo.patio?" ✓":"" %></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cuerpo6 mt-5">
+        <div class="row justify-content-center">
+            <h3>Acabados</h3>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row mb-2">Paredes: <%= avaluo.modelo.paredes?avaluo.modelo.paredes:"-"; %></div>
+                <div class="row mb-2">Techo: <%= avaluo.modelo.techo?avaluo.modelo.techo:"-"; %></div>
+                <div class="row mb-2">Estructura: <%= avaluo.modelo.estructura?avaluo.modelo.estructura:"-"; %></div>
+                <div class="row mb-2">Cielos: <%= avaluo.modelo.cielos?avaluo.modelo.cielos:"-"; %></div>
+                <div class="row mb-2">Pisos: <%= avaluo.modelo.pisos?avaluo.modelo.pisos:"-"; %></div>
+            </div>
+            <div class="col">
+                <div class="row mb-2">Ventanas: <%= avaluo.modelo.ventanas?avaluo.modelo.ventanas:"-"; %></div>
+                <div class="row mb-2">Puertas: <%= avaluo.modelo.puertas?avaluo.modelo.puertas:"-"; %></div>
+                <div class="row mb-2">Defensas: <%= avaluo.modelo.defensas?avaluo.modelo.defensas:"-"; %></div>
+                <div class="row mb-2">Entrepisos: <%= avaluo.modelo.entrePisos?avaluo.modelo.entrePisos:"-"; %></div>
+                <div class="row mb-2">Pantry: <%= avaluo.modelo.pantry?avaluo.modelo.pantry:"-"; %></div>
+            </div>
+            <div class="col">
+                <div class="row mb-2">Closets: <%= avaluo.modelo.closets?avaluo.modelo.closets:"-"; %></div>
+                <div class="row mb-2">Revestimiento: <%= avaluo.modelo.paredes?avaluo.modelo.paredes:"-"; %></div>
+                <div class="row mb-2">Servicio Sanitario: <%= avaluo.modelo.servSanit?avaluo.modelo.servSanit:"-"; %></div>
+                <div class="row mb-2">Acabados especiales: <%= avaluo.modelo.acabEsp?avaluo.modelo.acabEsp:"-"; %></div>
+                <div class="row mb-2">Tapial: <%= avaluo.modelo.tapial?avaluo.modelo.tapial:"-"; %></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cuerpo7 mt-5">
+        <div class="row justify-content-center">
+            <h3>Áreas construidas</h3>
+        </div>
+        <% 
+            let areas = [];
+            areas.push(["Área principal en metros cuadrados:",avaluo.modelo.areaPrincipal]);
+            areas.push(["Área segundo nivel en metros cuadrados:",avaluo.modelo.nivel2]);
+            areas.push(["Área cochera en metros cuadrados:",avaluo.modelo.areaCochera]);
+            areas.push(["Área patio techado en metros cuadrados:",avaluo.modelo.areaTechado]);
+            let total = 0;
+            for (let index = 0; index < areas.length; index++) {
+                total += parseFloat(areas[index][1]);
+        %>
+        <div class="row mb-3">
+            <div class="col-10 text-right">
+                <label><%= areas[index][0] %></label>
+            </div>
+            <div class="col-2">
+                <input type="text" name="propietario" id="propietario" value="<%= areas[index][1] %>" class="form-control" disabled>
+            </div>
+        </div>
+        <%}%>
+
+        <div class="row mb-3">
+            <div class="col-10 text-right">
+                <label for="">Sumatoria de áreas de construcción:</label>
+            </div>
+            <div class="col-2">
+                <input type="text" name="solicitante" id="solicitante" value="<%= total %>" class="form-control" disabled>
+            </div>
+        </div>
+    </div>
+
+    <div class="cierre shadow border border-success rounded p-5">
+        <div class="row">
+            <div class="col text-center">
+                <div class="row"><h2>Factores de Homologación</h2></div>
+                <div class="row">Factor 1</div>
+                <div class="row">Factor 2</div>
+                <div class="row">Factor 3</div>
+            </div>
+            <div class="col">
+                <div class="row h-100 flex-column align-items-center">
+                    <h1>Valor de mercado</h1>
+                    <h1>$__.__</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="informacionPerito mt-5">
+        <div class="row">
+            <div class="col-9"></div>
+            <div class="col-3">
+                <div class="row justify-content-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Firma_Len%C3%ADn_Moreno_Garc%C3%A9s.png/1200px-Firma_Len%C3%ADn_Moreno_Garc%C3%A9s.png" width="150px" alt="">
+                </div>
+                <div class="row justify-content-center">
+                    <%= perito.nombres + " " + perito.apellidos %>
+                </div>
+                <div class="row justify-content-center">
+                    No. de registro: <%= perito.numregistro %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cuerpo7 mt-5">
+        <div class="row justify-content-center">
+            <h3>Imágenes y planos anexos</h3>
+        </div>
+
+    </div>
+    
 </div>
-
-<div class="cuerpo3 mt-3">
-    <div class="row justify-content-center mb-3">
-        <h4>Número de inscripción legal: <%= avaluo.modelo.inscripcion %></h4>
-    </div>
-    <div class="row">
-        <div class="col text-center p-2 shadow border border-dark rounded m-1">
-            <h5>Área según escritura:</h5>
-            <p>Valor en metros: <%= avaluo.modelo.areaEscritura %> m<sup>2</sup></p>
-            <p>Valor en varas: <%= avaluo.modelo.volumenEscritura %> v<sup>2</sup></p>
-        </div>
-        <div class="col text-center p-2 shadow border border-dark rounded m-1">
-            <h5>Área según campo:</h5>
-            <p>Valor en metros: <%= avaluo.modelo.areaCampo %> m<sup>2</sup></p>
-            <p>Valor en varas: <%= avaluo.modelo.volumenCampo %> v<sup>2</sup></p>
-        </div>
-    </div>
-</div>
-
-<div class="cuerpo4">
-    <div class="row">
-        <div class="col">
-            <div class="row justify-content-center">
-                <h3>Servicios Públicos y privados</h3>
-            </div>
-            <div class="row mt-1 mb-3">
-                <% let servicios = [];
-                if(avaluo.modelo.aguaPotable) servicios.push("Agua potable");
-                if(avaluo.modelo.energiaElectrica) servicios.push("Energía eléctrica");
-                if(avaluo.modelo.aceras) servicios.push("Aceras");
-                if(avaluo.modelo.arriate) servicios.push("Arriate");
-                if(avaluo.modelo.alumbrado) servicios.push("Alumbrado público");
-                if(avaluo.modelo.aseo) servicios.push("Tren de aseo");
-                if(avaluo.modelo.tanque) servicios.push("Tanque");
-                if(avaluo.modelo.telefono) servicios.push("Teléfono");
-                if(avaluo.modelo.caseta) servicios.push("Caseta de vigilancia");
-                if(avaluo.modelo.cisterna) servicios.push("Cisterna");
-                if(avaluo.modelo.arriate) servicios.push("Aarriate");
-                if(avaluo.modelo.alcantarillados) servicios.push("Alcantarillados");
-                %>
-                <p>La propiedad cuenta con los siguientes servicios:</p>
-                <p><%= servicios.join(", ") %>.</p>
-            </div>
-        </div>
-        <div class="col">
-            <div class="row justify-content-center">
-                <h3>Descripción de la construcción</h3>
-            </div>
-            <%  let tipoConst = [];
-                let tipoEdif = [];
-                let tipoDist = [];
-                let tipoDis = [];
-                
-                if(avaluo.modelo.mixto) tipoConst.push("Mixto L.B.C.");
-                if(avaluo.modelo.mamposteria) tipoConst.push("Mampostería");
-                if(avaluo.modelo.prefabricado) tipoConst.push("Prefabricado");
-                if(avaluo.modelo.tipoPerf) tipoConst.push("Est. tipo perf.");
-                if(avaluo.modelo.adobe) tipoConst.push("Adobe");
-                if(avaluo.modelo.bahareque) tipoConst.push("Bahareque");
-
-                if(avaluo.modelo.unifamiliar) tipoEdif.push("Unifamiliar");
-                if(avaluo.modelo.condV) tipoEdif.push("Condominio vertical");
-                if(avaluo.modelo.condH) tipoEdif.push("Condominio horizontal");
-                if(avaluo.modelo.multifamiliar) tipoEdif.push("Multifamiliar");
-                if(avaluo.modelo.otroEdif) tipoEdif.push("Otro");
-
-                if(avaluo.modelo.arqBuena) tipoDist.push("Buena");
-                if(avaluo.modelo.arqRegular) tipoDist.push("Regular");
-                if(avaluo.modelo.arqDeficiente) tipoDist.push("Deficiente");
-                if(avaluo.modelo.arqMala) tipoDist.push("Mala");
-
-                if(avaluo.modelo.planta1) tipoDis.push("1 planta");
-                if(avaluo.modelo.planta2) tipoDis.push("2 plantas");
-                if(avaluo.modelo.planta3) tipoDis.push("3 plantas");
-                if(avaluo.modelo.niveles8) tipoDis.push("Edificio de 8 niveles");
-                %>
-            <div class="row mt-1 mb-3">Tipo de construcción: <%= tipoConst.join(" - ") %> </div>
-            <div class="row mt-1 mb-3">Tipo de edificación: <%= tipoEdif.join(" - ") %></div>
-            <div class="row mt-1 mb-3">Tipo de distribución arquitectónica: <%= tipoDist.join(" - ") %></div>
-            <div class="row mt-1 mb-3">Tipo de diseño: <%= tipoDis.join(" - ") %></div>
-        </div>
-    </div>
-</div>
-
-<div class="cuerpo5">
-    <div class="row justify-content-center">
-        <h3>Espacios disponibles</h3>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="row mb-2">Cochera <%= avaluo.modelo.cochera?" ✓":"" %></div>
-            <div class="row mb-2">Terraza <%= avaluo.modelo.terraza?" ✓":"" %></div>
-            <div class="row mb-2">Dormitorio <%= avaluo.modelo.dormitorio?" ✓":"" %></div>
-            <div class="row mb-2">Sala <%= avaluo.modelo.sala?" ✓":"" %></div>
-            <div class="row mb-2">Comedor <%= avaluo.modelo.comedor?" ✓":"" %></div>
-        </div>
-        <div class="col">
-            <div class="row mb-2">Cocina <%= avaluo.modelo.cocina?" ✓":"" %></div>
-            <div class="row mb-2">Sanitario completo <%= avaluo.modelo.sanitarioC?" ✓":"" %></div>
-            <div class="row mb-2">Sanitario parcial <%= avaluo.modelo.sanitarioS?" ✓":"" %></div>
-            <div class="row mb-2">Sala de estar familiar <%= avaluo.modelo.estar?" ✓":"" %></div>
-            <div class="row mb-2">Usos múltiples <%= avaluo.modelo.usosM?" ✓":"" %></div>
-        </div>
-        <div class="col">
-            <div class="row mb-2">Estudio <%= avaluo.modelo.estudio?" ✓":"" %></div>
-            <div class="row mb-2">Dormitorio de servico <%= avaluo.modelo.dormServicio?" ✓":"" %></div>
-            <div class="row mb-2">Baño de servicio <%= avaluo.modelo.banoS?" ✓":"" %></div>
-            <div class="row mb-2">Área de oficios <%= avaluo.modelo.areaOficio?" ✓":"" %></div>
-            <div class="row mb-2">Patio <%= avaluo.modelo.patio?" ✓":"" %></div>
-        </div>
-    </div>
-</div>
-
-<div class="cuerpo6 mt-5">
-    <div class="row justify-content-center">
-        <h3>Acabados</h3>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="row mb-2">Paredes: <%= avaluo.modelo.paredes?avaluo.modelo.paredes:"-"; %></div>
-            <div class="row mb-2">Techo: <%= avaluo.modelo.techo?avaluo.modelo.techo:"-"; %></div>
-            <div class="row mb-2">Estructura: <%= avaluo.modelo.estructura?avaluo.modelo.estructura:"-"; %></div>
-            <div class="row mb-2">Cielos: <%= avaluo.modelo.cielos?avaluo.modelo.cielos:"-"; %></div>
-            <div class="row mb-2">Pisos: <%= avaluo.modelo.pisos?avaluo.modelo.pisos:"-"; %></div>
-        </div>
-        <div class="col">
-            <div class="row mb-2">Ventanas: <%= avaluo.modelo.ventanas?avaluo.modelo.ventanas:"-"; %></div>
-            <div class="row mb-2">Puertas: <%= avaluo.modelo.puertas?avaluo.modelo.puertas:"-"; %></div>
-            <div class="row mb-2">Defensas: <%= avaluo.modelo.defensas?avaluo.modelo.defensas:"-"; %></div>
-            <div class="row mb-2">Entrepisos: <%= avaluo.modelo.entrePisos?avaluo.modelo.entrePisos:"-"; %></div>
-            <div class="row mb-2">Pantry: <%= avaluo.modelo.pantry?avaluo.modelo.pantry:"-"; %></div>
-        </div>
-        <div class="col">
-            <div class="row mb-2">Closets: <%= avaluo.modelo.closets?avaluo.modelo.closets:"-"; %></div>
-            <div class="row mb-2">Revestimiento: <%= avaluo.modelo.paredes?avaluo.modelo.paredes:"-"; %></div>
-            <div class="row mb-2">Servicio Sanitario: <%= avaluo.modelo.servSanit?avaluo.modelo.servSanit:"-"; %></div>
-            <div class="row mb-2">Acabados especiales: <%= avaluo.modelo.acabEsp?avaluo.modelo.acabEsp:"-"; %></div>
-            <div class="row mb-2">Tapial: <%= avaluo.modelo.tapial?avaluo.modelo.tapial:"-"; %></div>
-        </div>
-    </div>
-</div>
-
-<div class="cuerpo7 mt-5">
-    <div class="row justify-content-center">
-        <h3>Áreas construidas</h3>
-    </div>
-    <% 
-        let areas = [];
-        areas.push(["Área principal en metros cuadrados:",avaluo.modelo.areaPrincipal]);
-        areas.push(["Área segundo nivel en metros cuadrados:",avaluo.modelo.nivel2]);
-        areas.push(["Área cochera en metros cuadrados:",avaluo.modelo.areaCochera]);
-        areas.push(["Área patio techado en metros cuadrados:",avaluo.modelo.areaTechado]);
-        let total = 0;
-        for (let index = 0; index < areas.length; index++) {
-            total += parseFloat(areas[index][1]);
-    %>
-    <div class="row mb-3">
-        <div class="col-10 text-right">
-            <label><%= areas[index][0] %></label>
-        </div>
-        <div class="col-2">
-            <input type="text" name="propietario" id="propietario" value="<%= areas[index][1] %>" class="form-control" disabled>
-        </div>
-    </div>
-    <%}%>
-
-    <div class="row mb-3">
-        <div class="col-10 text-right">
-            <label for="">Sumatoria de áreas de construcción:</label>
-        </div>
-        <div class="col-2">
-            <input type="text" name="solicitante" id="solicitante" value="<%= total %>" class="form-control" disabled>
-        </div>
-    </div>
-</div>
-
-<div class="cierre shadow border border-success rounded p-5">
-    <div class="row">
-        <div class="col text-center">
-            <div class="row"><h2>Factores de Homologación</h2></div>
-            <div class="row">Factor 1</div>
-            <div class="row">Factor 2</div>
-            <div class="row">Factor 3</div>
-        </div>
-        <div class="col">
-            <div class="row h-100 flex-column align-items-center">
-                <h1>Valor de mercado</h1>
-                <h1>$__.__</h1>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="informacionPerito mt-5">
-    <div class="row">
-        <div class="col-9"></div>
-        <div class="col-3">
-            <div class="row justify-content-center">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Firma_Len%C3%ADn_Moreno_Garc%C3%A9s.png/1200px-Firma_Len%C3%ADn_Moreno_Garc%C3%A9s.png" width="150px" alt="">
-            </div>
-            <div class="row justify-content-center">
-                <%= perito.nombres + " " + perito.apellidos %>
-            </div>
-            <div class="row justify-content-center">
-                No. de registro: <%= perito.numregistro %>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="cuerpo7 mt-5">
-    <div class="row justify-content-center">
-        <h3>Imágenes y planos anexos</h3>
-    </div>
-
-</div>
+<div id="elementH"></div>
+<button name="exportar" id="exportar" onclick="exportar()">Exportar informe</button>
